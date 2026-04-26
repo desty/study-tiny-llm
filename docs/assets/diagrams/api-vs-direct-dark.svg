@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 480" font-family="Pretendard, -apple-system, BlinkMacSystemFont, sans-serif">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5"/>
+    </pattern>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#64748b"/></marker>
+    <marker id="arr-input" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#60a5fa"/></marker>
+    <marker id="arr-llm" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#fb923c"/></marker>
+    <marker id="arr-model" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#a78bfa"/></marker>
+    <marker id="arr-token" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#34d399"/></marker>
+    <marker id="arr-output" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#34d399"/></marker>
+    <marker id="arr-gate" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#fbbf24"/></marker>
+    <marker id="arr-tool" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#22d3ee"/></marker>
+    <marker id="arr-memory" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#f472b6"/></marker>
+    <marker id="arr-error" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#f87171"/></marker>
+  </defs>
+  <rect width="1000" height="480" fill="#020617"/>
+  <rect width="1000" height="480" fill="url(#grid)"/>
+  <text x="500" y="38" text-anchor="middle" font-size="18" font-weight="700" fill="#f1f5f9">API 호출 vs 직접 forward — 무엇이 보이나</text>
+  <text x="500" y="60" text-anchor="middle" font-size="12" fill="#94a3b8">회색 영역은 API 사용자에게 black box. 직접 굴리면 그 경계가 사라진다.</text>
+  <rect x="201" y="86" width="598" height="104" rx="12" fill="rgba(248,113,113,0.05)" stroke="#f87171" stroke-width="1" stroke-dasharray="8,4"/>
+  <text x="213" y="104" font-size="10" font-weight="700" fill="#f87171" font-family="JetBrains Mono, monospace">API 사용자에게는 black box</text>
+  <path d="M 197,145 L 211,145" stroke="#64748b" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <path d="M 345,145 L 359,145" stroke="#64748b" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <path d="M 493,145 L 507,145" stroke="#64748b" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <path d="M 641,145 L 655,145" stroke="#64748b" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <path d="M 789,145 L 803,145" stroke="#64748b" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <rect x="65" y="110" width="130" height="70" rx="10" fill="#0f172a"/>
+  <rect x="65" y="110" width="130" height="70" rx="10" fill="rgba(96,165,250,0.15)" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="130.0" y="141.0" text-anchor="middle" font-size="14" font-weight="700" fill="#bfdbfe">프롬프트</text>
+  <text x="130.0" y="157.0" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#60a5fa">prompt</text>
+  <rect x="213" y="110" width="130" height="70" rx="10" fill="#0f172a"/>
+  <rect x="213" y="110" width="130" height="70" rx="10" fill="rgba(52,211,153,0.15)" stroke="#34d399" stroke-width="1.5"/>
+  <text x="278.0" y="141.0" text-anchor="middle" font-size="14" font-weight="700" fill="#a7f3d0">토큰화</text>
+  <text x="278.0" y="157.0" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#34d399">tokenize</text>
+  <rect x="361" y="110" width="130" height="70" rx="10" fill="#0f172a"/>
+  <rect x="361" y="110" width="130" height="70" rx="10" fill="rgba(167,139,250,0.15)" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="426.0" y="141.0" text-anchor="middle" font-size="14" font-weight="700" fill="#ddd6fe">Forward</text>
+  <text x="426.0" y="157.0" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#a78bfa">attn + ffn</text>
+  <rect x="509" y="110" width="130" height="70" rx="10" fill="#0f172a"/>
+  <rect x="509" y="110" width="130" height="70" rx="10" fill="rgba(251,191,36,0.15)" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="574.0" y="141.0" text-anchor="middle" font-size="14" font-weight="700" fill="#fde68a">로짓</text>
+  <text x="574.0" y="157.0" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#fbbf24">logits</text>
+  <rect x="657" y="110" width="130" height="70" rx="10" fill="#0f172a"/>
+  <rect x="657" y="110" width="130" height="70" rx="10" fill="rgba(251,146,60,0.15)" stroke="#fb923c" stroke-width="1.5"/>
+  <text x="722.0" y="141.0" text-anchor="middle" font-size="14" font-weight="700" fill="#fed7aa">샘플링</text>
+  <text x="722.0" y="157.0" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#fb923c">temperature/top-p</text>
+  <rect x="805" y="110" width="130" height="70" rx="10" fill="#0f172a"/>
+  <rect x="805" y="110" width="130" height="70" rx="10" fill="rgba(52,211,153,0.2)" stroke="#34d399" stroke-width="1.5"/>
+  <text x="870.0" y="141.0" text-anchor="middle" font-size="14" font-weight="700" fill="#a7f3d0">출력 텍스트</text>
+  <text x="870.0" y="157.0" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#34d399">decode</text>
+  <rect x="58" y="280" width="200" height="100" rx="10" fill="#0f172a"/>
+  <rect x="58" y="280" width="200" height="100" rx="10" fill="rgba(52,211,153,0.15)" stroke="#34d399" stroke-width="1.5"/>
+  <text x="158.0" y="326.0" text-anchor="middle" font-size="14" font-weight="700" fill="#a7f3d0">토큰 단위 비용</text>
+  <text x="158.0" y="342.0" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#34d399">len(ids) per req</text>
+  <text x="158.0" y="358.0" text-anchor="middle" font-size="10" fill="#34d399">한국어 1.5~2× 영어</text>
+  <rect x="286" y="280" width="200" height="100" rx="10" fill="#0f172a"/>
+  <rect x="286" y="280" width="200" height="100" rx="10" fill="rgba(251,191,36,0.15)" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="386.0" y="326.0" text-anchor="middle" font-size="14" font-weight="700" fill="#fde68a">로짓 분포</text>
+  <text x="386.0" y="342.0" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#fbbf24">top-k logprobs</text>
+  <text x="386.0" y="358.0" text-anchor="middle" font-size="10" fill="#fbbf24">뾰족 vs 평평</text>
+  <rect x="514" y="280" width="200" height="100" rx="10" fill="#0f172a"/>
+  <rect x="514" y="280" width="200" height="100" rx="10" fill="rgba(251,146,60,0.15)" stroke="#fb923c" stroke-width="1.5"/>
+  <text x="614.0" y="326.0" text-anchor="middle" font-size="14" font-weight="700" fill="#fed7aa">temp / top-p 효과</text>
+  <text x="614.0" y="342.0" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#fb923c">sample(logits, T, p)</text>
+  <text x="614.0" y="358.0" text-anchor="middle" font-size="10" fill="#fb923c">5줄 코드</text>
+  <rect x="742" y="280" width="200" height="100" rx="10" fill="#0f172a"/>
+  <rect x="742" y="280" width="200" height="100" rx="10" fill="rgba(244,114,182,0.15)" stroke="#f472b6" stroke-width="1.5"/>
+  <text x="842.0" y="326.0" text-anchor="middle" font-size="14" font-weight="700" fill="#fbcfe8">PII 흐름</text>
+  <text x="842.0" y="342.0" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#f472b6">on-device only</text>
+  <text x="842.0" y="358.0" text-anchor="middle" font-size="10" fill="#f472b6">데이터 외부 X</text>
+  <text x="500" y="260" text-anchor="middle" font-size="12" fill="#94a3b8">직접 forward 면 추가로 보이는 4가지</text>
+</svg>

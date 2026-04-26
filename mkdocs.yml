@@ -1,0 +1,200 @@
+site_name: Tiny LLM from Scratch
+site_description: 노트북에서 직접 만드는 작은 언어 모델 — 데이터 · 토크나이저 · 트랜스포머 · 훈련 · 양자화 · 배포
+site_author: desty
+site_url: https://desty.github.io/study-tiny-llm/
+repo_url: https://github.com/desty/study-tiny-llm
+repo_name: desty/study-tiny-llm
+
+theme:
+  name: material
+  language: ko
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: deep purple
+      accent: deep purple
+      toggle:
+        icon: material/weather-night
+        name: 다크 모드
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: deep purple
+      accent: deep purple
+      toggle:
+        icon: material/weather-sunny
+        name: 라이트 모드
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.footer
+    - navigation.indexes
+    - toc.follow
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+    - content.tooltips
+  icon:
+    repo: fontawesome/brands/github
+  font:
+    text: Pretendard
+    code: JetBrains Mono
+
+extra_css:
+  - stylesheets/extra.css
+
+extra:
+  analytics:
+    provider: google
+    property: G-4L031NBC3Z   # _study 와 공유. 분리하려면 GA4 신규 property ID 로 교체
+  alternate:
+    - name: 한국어
+      link: /study-tiny-llm/
+      lang: ko
+    - name: English
+      link: /study-tiny-llm/en/
+      lang: en
+
+plugins:
+  - search
+  - i18n:
+      docs_structure: folder
+      fallback_to_default: true
+      languages:
+        - locale: ko
+          default: true
+          name: 한국어
+          build: true
+        - locale: en
+          name: English
+          build: true
+          site_name: Tiny LLM from Scratch
+          nav_translations:
+            홈: Home
+            소개: About
+            학습 시스템: Learning System
+            학습 내용: Curriculum
+            "Part 1. 왜 작은 모델인가": "Part 1. Why Small Models"
+            작은 모델의 부활: The Return of Small Models
+            API와 무엇이 다른가: What Differs from the API
+            노트북에서 가능한 것: What Your Laptop Can Do
+            "Part 2. 데이터 · 토크나이저": "Part 2. Data & Tokenizer"
+            TinyStories와 합성 데이터: TinyStories and Synthetic Data
+            BPE 토크나이저 직접 훈련: Training a BPE Tokenizer
+            데이터 품질이 크기를 이긴다: Quality Beats Size
+            "Part 3. 트랜스포머 손으로": "Part 3. Transformer by Hand"
+            Attention 다시 보기: Attention Revisited
+            현대 블록 RoPE·RMSNorm·SwiGLU·GQA: "Modern Blocks: RoPE, RMSNorm, SwiGLU, GQA"
+            nanoGPT 스타일 100줄: nanoGPT in 100 Lines
+            파라미터·메모리 계산: Parameter and Memory Math
+            "Part 4. 노트북에서 훈련": "Part 4. Training on Your Laptop"
+            학습 루프와 AdamW: Training Loop and AdamW
+            Mixed Precision과 Grad Accumulation: Mixed Precision and Gradient Accumulation
+            손실 곡선과 체크포인트: Loss Curves and Checkpoints
+            4시간 훈련 실전: A Four-Hour Training Run
+            "Part 5. 평가 · 분석": "Part 5. Evaluation & Analysis"
+            perplexity 너머: Beyond Perplexity
+            작은 벤치마크 만들기: Building a Tiny Benchmark
+            어텐션과 로짓 들여다보기: Peeking at Attention and Logits
+            "Part 6. 추론 · 배포": "Part 6. Inference & Deployment"
+            양자화 입문: Quantization Basics
+            llama.cpp와 GGUF: llama.cpp and GGUF
+            작은 챗봇으로 마감: Wrap Up with a Small Chatbot
+            "Part 7. 파인튜닝 응용": "Part 7. Fine-tuning in Practice"
+            처음부터 vs 파인튜닝: From Scratch vs Fine-tuning
+            "LoRA · QLoRA 입문": "LoRA / QLoRA Basics"
+            분류·NER 파인튜닝 (Encoder): "Classification & NER Fine-tuning (Encoder)"
+            "도메인 요약·생성 (Decoder LoRA + 추가 사전학습)": "Domain Summarization & Generation (Decoder LoRA + Continued Pre-training)"
+            "Distillation 미니": Distillation Mini
+            "Seq2seq 미니 — ITN": "Seq2seq Mini — ITN"
+            "Part 8. 프로덕션 운영": "Part 8. Production"
+            "데이터 파이프라인 — PII · 합성 · IAA": "Data Pipeline — PII, Synthetic, IAA"
+            "회귀 평가 · 분포 외 · A/B": "Regression, Out-of-Distribution, A/B"
+            "서빙 — llama.cpp server · vLLM · 지연 예산": "Serving — llama.cpp server, vLLM, Latency Budget"
+            "모니터링 · 피드백 루프 · 비용": "Monitoring, Feedback Loop, Cost"
+            캡스톤: Capstone
+            나만의 도메인 SLM: My Own Domain SLM
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.keys
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+nav:
+  - 홈: index.md
+  - 소개:
+      - 학습 시스템: about/system.md
+      - 학습 내용: about/curriculum.md
+  - Part 1. 왜 작은 모델인가:
+      - 작은 모델의 부활: part1/01-return-of-slm.md
+      - API와 무엇이 다른가: part1/02-vs-api.md
+      - 노트북에서 가능한 것: part1/03-laptop-budget.md
+  - Part 2. 데이터 · 토크나이저:
+      - TinyStories와 합성 데이터: part2/04-tinystories.md
+      - BPE 토크나이저 직접 훈련: part2/05-bpe.md
+      - 데이터 품질이 크기를 이긴다: part2/06-data-quality.md
+  - Part 3. 트랜스포머 손으로:
+      - Attention 다시 보기: part3/07-attention.md
+      - 현대 블록 RoPE·RMSNorm·SwiGLU·GQA: part3/08-modern-blocks.md
+      - nanoGPT 스타일 100줄: part3/09-nanogpt.md
+      - 파라미터·메모리 계산: part3/10-param-memory.md
+  - Part 4. 노트북에서 훈련:
+      - 학습 루프와 AdamW: part4/11-training-loop.md
+      - Mixed Precision과 Grad Accumulation: part4/12-mixed-precision.md
+      - 손실 곡선과 체크포인트: part4/13-loss-curves.md
+      - 4시간 훈련 실전: part4/14-four-hour-run.md
+  - Part 5. 평가 · 분석:
+      - perplexity 너머: part5/15-beyond-ppl.md
+      - 작은 벤치마크 만들기: part5/16-tiny-bench.md
+      - 어텐션과 로짓 들여다보기: part5/17-peek-inside.md
+  - Part 6. 추론 · 배포:
+      - 양자화 입문: part6/18-quantization.md
+      - llama.cpp와 GGUF: part6/19-llamacpp-gguf.md
+      - 작은 챗봇으로 마감: part6/20-final-chatbot.md
+  - Part 7. 파인튜닝 응용:
+      - 처음부터 vs 파인튜닝: part7/21-from-scratch-vs-finetune.md
+      - LoRA · QLoRA 입문: part7/22-lora-intro.md
+      - 분류·NER 파인튜닝 (Encoder): part7/23-encoder-ner.md
+      - 도메인 요약·생성 (Decoder LoRA + 추가 사전학습): part7/24-domain-lora.md
+      - Distillation 미니: part7/25-distillation.md
+      - Seq2seq 미니 — ITN: part7/26-seq2seq-itn.md
+  - Part 8. 프로덕션 운영:
+      - 데이터 파이프라인 — PII · 합성 · IAA: part8/27-data-pipeline.md
+      - 회귀 평가 · 분포 외 · A/B: part8/28-regression-eval.md
+      - 서빙 — llama.cpp server · vLLM · 지연 예산: part8/29-serving.md
+      - 모니터링 · 피드백 루프 · 비용: part8/30-monitoring-cost.md
+  - 캡스톤:
+      - 나만의 도메인 SLM: capstone/domain-slm.md

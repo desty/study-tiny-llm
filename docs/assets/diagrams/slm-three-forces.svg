@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 460" font-family="Pretendard, -apple-system, BlinkMacSystemFont, sans-serif">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#f1f5f9" stroke-width="0.5"/>
+    </pattern>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#6b7280"/></marker>
+    <marker id="arr-input" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#2563eb"/></marker>
+    <marker id="arr-llm" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#ea580c"/></marker>
+    <marker id="arr-model" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#7c3aed"/></marker>
+    <marker id="arr-token" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#059669"/></marker>
+    <marker id="arr-output" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#059669"/></marker>
+    <marker id="arr-gate" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#ca8a04"/></marker>
+    <marker id="arr-tool" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#0891b2"/></marker>
+    <marker id="arr-memory" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#db2777"/></marker>
+    <marker id="arr-error" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#dc2626"/></marker>
+  </defs>
+  <rect width="960" height="460" fill="#ffffff"/>
+  <rect width="960" height="460" fill="url(#grid)"/>
+  <text x="480" y="38" text-anchor="middle" font-size="18" font-weight="700" fill="#0f172a">작은 모델의 부활을 만든 세 가지 동력</text>
+  <text x="480" y="60" text-anchor="middle" font-size="12" fill="#64748b">2023~2024년, 1/10 크기로 같은 능력을 내는 모델이 등장한 이유</text>
+  <rect x="80" y="110" width="180" height="112" rx="10" fill="#ffffff"/>
+  <rect x="80" y="110" width="180" height="112" rx="10" fill="#dcfce7" stroke="#059669" stroke-width="1.5"/>
+  <text x="170.0" y="162.0" text-anchor="middle" font-size="14" font-weight="700" fill="#064e3b">데이터 품질</text>
+  <text x="170.0" y="178.0" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#047857">Quality > Size</text>
+  <text x="170.0" y="194.0" text-anchor="middle" font-size="10" fill="#047857">Phi 시리즈, FineWeb-Edu</text>
+  <rect x="390" y="110" width="180" height="112" rx="10" fill="#ffffff"/>
+  <rect x="390" y="110" width="180" height="112" rx="10" fill="#f3e8ff" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="480.0" y="162.0" text-anchor="middle" font-size="14" font-weight="700" fill="#4c1d95">합성 데이터</text>
+  <text x="480.0" y="178.0" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#6d28d9">Synthetic Data</text>
+  <text x="480.0" y="194.0" text-anchor="middle" font-size="10" fill="#6d28d9">TinyStories, Cosmopedia</text>
+  <rect x="700" y="110" width="180" height="112" rx="10" fill="#ffffff"/>
+  <rect x="700" y="110" width="180" height="112" rx="10" fill="#fce7f3" stroke="#db2777" stroke-width="1.5"/>
+  <text x="790.0" y="162.0" text-anchor="middle" font-size="14" font-weight="700" fill="#500724">Distillation</text>
+  <text x="790.0" y="178.0" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#be185d">Teacher → Student</text>
+  <text x="790.0" y="194.0" text-anchor="middle" font-size="10" fill="#be185d">Gemma 2-2B, SmolLM2</text>
+  <rect x="300" y="320" width="360" height="102" rx="10" fill="#ffffff"/>
+  <rect x="300" y="320" width="360" height="102" rx="10" fill="#d1fae5" stroke="#059669" stroke-width="1.5"/>
+  <text x="480.0" y="367.0" text-anchor="middle" font-size="14" font-weight="700" fill="#064e3b">SLM 부활 (2024~)</text>
+  <text x="480.0" y="383.0" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#047857">Phi-3 / SmolLM2 / Gemma 2-2B</text>
+  <text x="480.0" y="399.0" text-anchor="middle" font-size="10" fill="#047857">작은 모델이 좁은 도메인에서 큰 모델 수준 능력</text>
+  <path d="M 170,226 L 480,314" stroke="#6b7280" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <path d="M 480,226 L 480,314" stroke="#6b7280" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <path d="M 790,226 L 480,314" stroke="#6b7280" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+</svg>

@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 380" font-family="Pretendard, -apple-system, BlinkMacSystemFont, sans-serif">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5"/>
+    </pattern>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#64748b"/></marker>
+    <marker id="arr-input" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#60a5fa"/></marker>
+    <marker id="arr-llm" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#fb923c"/></marker>
+    <marker id="arr-model" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#a78bfa"/></marker>
+    <marker id="arr-token" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#34d399"/></marker>
+    <marker id="arr-output" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#34d399"/></marker>
+    <marker id="arr-gate" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#fbbf24"/></marker>
+    <marker id="arr-tool" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#22d3ee"/></marker>
+    <marker id="arr-memory" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#f472b6"/></marker>
+    <marker id="arr-error" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#f87171"/></marker>
+  </defs>
+  <rect width="1040" height="380" fill="#020617"/>
+  <rect width="1040" height="380" fill="url(#grid)"/>
+  <text x="520" y="38" text-anchor="middle" font-size="18" font-weight="700" fill="#f1f5f9">Scaled Dot-Product Attention — 5단계</text>
+  <text x="520" y="60" text-anchor="middle" font-size="12" fill="#94a3b8">Q · Kᵀ → ÷√d_k → mask → softmax → × V</text>
+  <path d="M 217,170 L 231,170" stroke="#64748b" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <path d="M 365,170 L 379,170" stroke="#64748b" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <path d="M 513,170 L 527,170" stroke="#64748b" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <path d="M 661,170 L 675,170" stroke="#64748b" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <path d="M 809,170 L 823,170" stroke="#64748b" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <rect x="85" y="130" width="130" height="100" rx="10" fill="#0f172a"/>
+  <rect x="85" y="130" width="130" height="100" rx="10" fill="rgba(96,165,250,0.15)" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="150.0" y="176.0" text-anchor="middle" font-size="14" font-weight="700" fill="#bfdbfe">Q, K, V</text>
+  <text x="150.0" y="192.0" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#60a5fa">(B,T,d_k)</text>
+  <text x="150.0" y="208.0" text-anchor="middle" font-size="10" fill="#60a5fa">입력 3 텐서</text>
+  <rect x="233" y="130" width="130" height="100" rx="10" fill="#0f172a"/>
+  <rect x="233" y="130" width="130" height="100" rx="10" fill="rgba(167,139,250,0.15)" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="298.0" y="176.0" text-anchor="middle" font-size="14" font-weight="700" fill="#ddd6fe">Q · Kᵀ</text>
+  <text x="298.0" y="192.0" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#a78bfa">matmul</text>
+  <text x="298.0" y="208.0" text-anchor="middle" font-size="10" fill="#a78bfa">(B,T,T) 점수</text>
+  <rect x="381" y="130" width="130" height="100" rx="10" fill="#0f172a"/>
+  <rect x="381" y="130" width="130" height="100" rx="10" fill="rgba(251,191,36,0.15)" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="446.0" y="176.0" text-anchor="middle" font-size="14" font-weight="700" fill="#fde68a">÷ √d_k</text>
+  <text x="446.0" y="192.0" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#fbbf24">scale</text>
+  <text x="446.0" y="208.0" text-anchor="middle" font-size="10" fill="#fbbf24">분산 안정</text>
+  <rect x="529" y="130" width="130" height="100" rx="10" fill="#0f172a"/>
+  <rect x="529" y="130" width="130" height="100" rx="10" fill="rgba(248,113,113,0.15)" stroke="#f87171" stroke-width="1.5"/>
+  <text x="594.0" y="176.0" text-anchor="middle" font-size="14" font-weight="700" fill="#fecaca">causal mask</text>
+  <text x="594.0" y="192.0" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#f87171">−∞ 위쪽</text>
+  <text x="594.0" y="208.0" text-anchor="middle" font-size="10" fill="#f87171">미래 차단</text>
+  <rect x="677" y="130" width="130" height="100" rx="10" fill="#0f172a"/>
+  <rect x="677" y="130" width="130" height="100" rx="10" fill="rgba(251,146,60,0.15)" stroke="#fb923c" stroke-width="1.5"/>
+  <text x="742.0" y="176.0" text-anchor="middle" font-size="14" font-weight="700" fill="#fed7aa">softmax</text>
+  <text x="742.0" y="192.0" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#fb923c">dim=-1</text>
+  <text x="742.0" y="208.0" text-anchor="middle" font-size="10" fill="#fb923c">확률 분포</text>
+  <rect x="825" y="130" width="130" height="100" rx="10" fill="#0f172a"/>
+  <rect x="825" y="130" width="130" height="100" rx="10" fill="rgba(52,211,153,0.2)" stroke="#34d399" stroke-width="1.5"/>
+  <text x="890.0" y="176.0" text-anchor="middle" font-size="14" font-weight="700" fill="#a7f3d0">× V</text>
+  <text x="890.0" y="192.0" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#34d399">matmul</text>
+  <text x="890.0" y="208.0" text-anchor="middle" font-size="10" fill="#34d399">(B,T,d_k) 출력</text>
+  <text x="520" y="290" text-anchor="middle" font-size="12" fill="#94a3b8">PyTorch ≥ 2.0:  out = F.scaled_dot_product_attention(Q, K, V, is_causal=True)</text>
+  <text x="520" y="312" text-anchor="middle" font-size="11" fill="#94a3b8">(내부적으로 FlashAttention 자동 선택 — 같은 결과, 더 빠름)</text>
+</svg>

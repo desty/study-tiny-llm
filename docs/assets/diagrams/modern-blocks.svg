@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 460" font-family="Pretendard, -apple-system, BlinkMacSystemFont, sans-serif">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#f1f5f9" stroke-width="0.5"/>
+    </pattern>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#6b7280"/></marker>
+    <marker id="arr-input" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#2563eb"/></marker>
+    <marker id="arr-llm" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#ea580c"/></marker>
+    <marker id="arr-model" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#7c3aed"/></marker>
+    <marker id="arr-token" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#059669"/></marker>
+    <marker id="arr-output" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#059669"/></marker>
+    <marker id="arr-gate" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#ca8a04"/></marker>
+    <marker id="arr-tool" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#0891b2"/></marker>
+    <marker id="arr-memory" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#db2777"/></marker>
+    <marker id="arr-error" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#dc2626"/></marker>
+  </defs>
+  <rect width="1040" height="460" fill="#ffffff"/>
+  <rect width="1040" height="460" fill="url(#grid)"/>
+  <text x="520" y="38" text-anchor="middle" font-size="18" font-weight="700" fill="#0f172a">2017 → 2024 — 표준이 된 4 블록</text>
+  <text x="520" y="60" text-anchor="middle" font-size="12" fill="#64748b">각각 코드 5~10줄 차이로 효율·메모리·일반화 한 축에서 이김</text>
+  <rect x="285" y="110" width="220" height="150" rx="10" fill="#ffffff"/>
+  <rect x="285" y="110" width="220" height="150" rx="10" fill="#e3f2fd" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="395.0" y="181.0" text-anchor="middle" font-size="14" font-weight="700" fill="#0d47a1">위치 인코딩</text>
+  <text x="395.0" y="197.0" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#1e40af">sinusoidal PE  →  RoPE</text>
+  <text x="395.0" y="213.0" text-anchor="middle" font-size="10" fill="#1e40af">길이 외삽 가능</text>
+  <rect x="535" y="110" width="220" height="150" rx="10" fill="#ffffff"/>
+  <rect x="535" y="110" width="220" height="150" rx="10" fill="#fef9c3" stroke="#ca8a04" stroke-width="1.5"/>
+  <text x="645.0" y="181.0" text-anchor="middle" font-size="14" font-weight="700" fill="#713f12">정규화</text>
+  <text x="645.0" y="197.0" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#a16207">LayerNorm  →  RMSNorm</text>
+  <text x="645.0" y="213.0" text-anchor="middle" font-size="10" fill="#a16207">7~10% 빠름, 같은 성능</text>
+  <rect x="285" y="284" width="220" height="150" rx="10" fill="#ffffff"/>
+  <rect x="285" y="284" width="220" height="150" rx="10" fill="#fef3e0" stroke="#ea580c" stroke-width="1.5"/>
+  <text x="395.0" y="355.0" text-anchor="middle" font-size="14" font-weight="700" fill="#9a3412">FFN 활성</text>
+  <text x="395.0" y="371.0" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#c2410c">GeLU  →  SwiGLU</text>
+  <text x="395.0" y="387.0" text-anchor="middle" font-size="10" fill="#c2410c">게이팅으로 표현력 ↑</text>
+  <rect x="535" y="284" width="220" height="150" rx="10" fill="#ffffff"/>
+  <rect x="535" y="284" width="220" height="150" rx="10" fill="#fce7f3" stroke="#db2777" stroke-width="1.5"/>
+  <text x="645.0" y="355.0" text-anchor="middle" font-size="14" font-weight="700" fill="#500724">Attention</text>
+  <text x="645.0" y="371.0" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#be185d">MHA (Q=K=V head)  →  GQA (KV head ↓)</text>
+  <text x="645.0" y="387.0" text-anchor="middle" font-size="10" fill="#be185d">추론 KV cache 1/4</text>
+</svg>
