@@ -82,4 +82,4 @@ DPO · RLHF 는 본 책 범위 밖 — 자매 프로젝트 *AI Assistant Enginee
 
 ## 캡스톤
 
-[나만의 도메인 SLM](../capstone/domain-slm.md) — 데이터 수집 → BPE 훈련 → 모델 훈련 → 평가 → GGUF 변환 → 데모. 한 번에 풀 사이클.
+[나만의 도메인 SLM](../capstone/domain-slm.md) — 데이터 수집 → BPE 훈련 → 모델 훈련 → 평가 → 양자화 → GGUF → **HuggingFace Hub 업로드** → 데모. **본인이 만든 모델이 다음 사람의 "기성 sLLM" 이 되는 경험.**

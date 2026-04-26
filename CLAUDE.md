@@ -81,7 +81,7 @@ _slm/
 | 6 | 추론 · 배포 | 3 | int8/int4 양자화 · GGUF · llama.cpp · CLI 챗봇 |
 | 7 | 파인튜닝 응용 | 7 | **기성 sLLM 고르기** · LoRA/QLoRA · Encoder NER · Decoder LoRA · Distillation · Seq2seq ITN |
 | 8 | 프로덕션 운영 | 4 | 데이터 파이프라인 (PII·합성·IAA) · 회귀/A·B · 서빙(vLLM/llama.cpp server) · 모니터링·비용 |
-| 캡스톤 | 도메인 SLM | — | 데이터→토크나이저→학습→평가→GGUF→서빙→모니터링 풀 사이클 |
+| 캡스톤 | 도메인 SLM | — | 데이터→토크나이저→학습→평가→GGUF→**HuggingFace Hub 업로드**→데모. 본인이 만든 모델이 다음 사람의 "기성 sLLM" 이 됨 |
 
 DPO · RLHF 는 본 책 범위 밖 (자매 프로젝트 `_study` Part 7 에 있음).
 

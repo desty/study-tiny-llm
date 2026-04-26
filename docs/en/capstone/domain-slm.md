@@ -8,7 +8,10 @@
     Stub chapter. Body coming soon.
 
 !!! abstract "What you'll learn"
-    - A full data→BPE→train→eval→GGUF→demo cycle in one project.
+    - Full cycle: data → BPE → train → eval → quantize → GGUF → **HuggingFace Hub publish** → demo
+    - The experience of becoming someone else's "off-the-shelf sLLM" — the other side of Ch 22
+    - Production-grade model card, license, README, tokenizer, config
+    - One pass through all eight Parts of the book
 
 ---
 

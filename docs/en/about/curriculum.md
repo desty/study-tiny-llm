@@ -82,4 +82,4 @@ DPO and RLHF are out of scope — see the sister book *AI Assistant Engineering*
 
 ## Capstone
 
-[My Own Domain SLM](../capstone/domain-slm.md) — full cycle: data → BPE → train → eval → GGUF → demo.
+[My Own Domain SLM](../capstone/domain-slm.md) — full cycle: data → BPE → train → eval → quantize → GGUF → **publish on HuggingFace Hub** → demo. **Become someone else's "off-the-shelf sLLM."**
