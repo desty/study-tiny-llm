@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 480" font-family="Pretendard, -apple-system, BlinkMacSystemFont, sans-serif">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5"/>
+    </pattern>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#64748b"/></marker>
+    <marker id="arr-input" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#60a5fa"/></marker>
+    <marker id="arr-llm" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#fb923c"/></marker>
+    <marker id="arr-model" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#a78bfa"/></marker>
+    <marker id="arr-token" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#34d399"/></marker>
+    <marker id="arr-output" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#34d399"/></marker>
+    <marker id="arr-gate" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#fbbf24"/></marker>
+    <marker id="arr-tool" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#22d3ee"/></marker>
+    <marker id="arr-memory" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#f472b6"/></marker>
+    <marker id="arr-error" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#f87171"/></marker>
+  </defs>
+  <rect width="1100" height="480" fill="#020617"/>
+  <rect width="1100" height="480" fill="url(#grid)"/>
+  <text x="550" y="38" text-anchor="middle" font-size="18" font-weight="700" fill="#f1f5f9">5 sLLM 비교 — 한국어 · 라이선스 · 도구호출 · context</text>
+  <text x="550" y="60" text-anchor="middle" font-size="12" fill="#94a3b8">본인 작업에 맞는 결정 표 — 2026 기준</text>
+  <rect x="105" y="100" width="180" height="50" fill="rgba(167,139,250,0.15)" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="195" y="130" text-anchor="middle" font-size="13" font-weight="700" fill="#ddd6fe">모델</text>
+  <rect x="285" y="100" width="130" height="50" fill="rgba(167,139,250,0.15)" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="350" y="130" text-anchor="middle" font-size="13" font-weight="700" fill="#ddd6fe">크기</text>
+  <rect x="415" y="100" width="160" height="50" fill="rgba(167,139,250,0.15)" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="495" y="130" text-anchor="middle" font-size="13" font-weight="700" fill="#ddd6fe">라이선스</text>
+  <rect x="575" y="100" width="130" height="50" fill="rgba(167,139,250,0.15)" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="640" y="130" text-anchor="middle" font-size="13" font-weight="700" fill="#ddd6fe">한국어</text>
+  <rect x="705" y="100" width="130" height="50" fill="rgba(167,139,250,0.15)" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="770" y="130" text-anchor="middle" font-size="13" font-weight="700" fill="#ddd6fe">도구호출</text>
+  <rect x="835" y="100" width="160" height="50" fill="rgba(167,139,250,0.15)" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="915" y="130" text-anchor="middle" font-size="13" font-weight="700" fill="#ddd6fe">context</text>
+  <rect x="105" y="150" width="180" height="50" fill="#020617" stroke="#334155" stroke-width="1"/>
+  <text x="195" y="181" text-anchor="middle" font-size="12" font-weight="500" fill="#f1f5f9">Phi-3.5-mini</text>
+  <rect x="285" y="150" width="130" height="50" fill="#020617" stroke="#334155" stroke-width="1"/>
+  <text x="350" y="181" text-anchor="middle" font-size="12" font-weight="500" fill="#f1f5f9">3.8B</text>
+  <rect x="415" y="150" width="160" height="50" fill="#020617" stroke="#334155" stroke-width="1"/>
+  <text x="495" y="181" text-anchor="middle" font-size="12" font-weight="500" fill="#f1f5f9">MIT</text>
+  <rect x="575" y="150" width="130" height="50" fill="#020617" stroke="#334155" stroke-width="1"/>
+  <text x="640" y="181" text-anchor="middle" font-size="18" font-weight="700" fill="#fbbf24">△</text>
+  <rect x="705" y="150" width="130" height="50" fill="#020617" stroke="#334155" stroke-width="1"/>
+  <text x="770" y="181" text-anchor="middle" font-size="18" font-weight="700" fill="#34d399">◎</text>
+  <rect x="835" y="150" width="160" height="50" fill="#020617" stroke="#334155" stroke-width="1"/>
+  <text x="915" y="181" text-anchor="middle" font-size="12" font-weight="500" fill="#f1f5f9">128K</text>
+  <rect x="105" y="200" width="180" height="50" fill="#020617" stroke="#334155" stroke-width="1"/>
+  <text x="195" y="231" text-anchor="middle" font-size="12" font-weight="500" fill="#f1f5f9">SmolLM2</text>
+  <rect x="285" y="200" width="130" height="50" fill="#020617" stroke="#334155" stroke-width="1"/>
+  <text x="350" y="231" text-anchor="middle" font-size="12" font-weight="500" fill="#f1f5f9">0.135~1.7B</text>
+  <rect x="415" y="200" width="160" height="50" fill="#020617" stroke="#334155" stroke-width="1"/>
+  <text x="495" y="231" text-anchor="middle" font-size="12" font-weight="500" fill="#f1f5f9">Apache 2.0</text>
+  <rect x="575" y="200" width="130" height="50" fill="#020617" stroke="#334155" stroke-width="1"/>
+  <text x="640" y="231" text-anchor="middle" font-size="18" font-weight="700" fill="#f87171">×</text>
+  <rect x="705" y="200" width="130" height="50" fill="#020617" stroke="#334155" stroke-width="1"/>
+  <text x="770" y="231" text-anchor="middle" font-size="18" font-weight="700" fill="#fbbf24">△</text>
+  <rect x="835" y="200" width="160" height="50" fill="#020617" stroke="#334155" stroke-width="1"/>
+  <text x="915" y="231" text-anchor="middle" font-size="12" font-weight="500" fill="#f1f5f9">8K</text>
+  <rect x="105" y="250" width="180" height="50" fill="#020617" stroke="#334155" stroke-width="1"/>
+  <text x="195" y="281" text-anchor="middle" font-size="12" font-weight="500" fill="#f1f5f9">Gemma 2-2B</text>
+  <rect x="285" y="250" width="130" height="50" fill="#020617" stroke="#334155" stroke-width="1"/>
+  <text x="350" y="281" text-anchor="middle" font-size="12" font-weight="500" fill="#f1f5f9">2B</text>
+  <rect x="415" y="250" width="160" height="50" fill="#020617" stroke="#334155" stroke-width="1"/>
+  <text x="495" y="281" text-anchor="middle" font-size="12" font-weight="500" fill="#f1f5f9">Gemma</text>
+  <rect x="575" y="250" width="130" height="50" fill="#020617" stroke="#334155" stroke-width="1"/>
+  <text x="640" y="281" text-anchor="middle" font-size="18" font-weight="700" fill="#fbbf24">△</text>
+  <rect x="705" y="250" width="130" height="50" fill="#020617" stroke="#334155" stroke-width="1"/>
+  <text x="770" y="281" text-anchor="middle" font-size="18" font-weight="700" fill="#fbbf24">△</text>
+  <rect x="835" y="250" width="160" height="50" fill="#020617" stroke="#334155" stroke-width="1"/>
+  <text x="915" y="281" text-anchor="middle" font-size="12" font-weight="500" fill="#f1f5f9">8K</text>
+  <rect x="105" y="300" width="180" height="50" fill="rgba(52,211,153,0.2)" stroke="#334155" stroke-width="1"/>
+  <text x="195" y="331" text-anchor="middle" font-size="12" font-weight="700" fill="#f1f5f9">Qwen 2.5</text>
+  <rect x="285" y="300" width="130" height="50" fill="rgba(52,211,153,0.2)" stroke="#334155" stroke-width="1"/>
+  <text x="350" y="331" text-anchor="middle" font-size="12" font-weight="700" fill="#f1f5f9">0.5~7B</text>
+  <rect x="415" y="300" width="160" height="50" fill="rgba(52,211,153,0.2)" stroke="#334155" stroke-width="1"/>
+  <text x="495" y="331" text-anchor="middle" font-size="12" font-weight="700" fill="#f1f5f9">Apache 2.0</text>
+  <rect x="575" y="300" width="130" height="50" fill="rgba(52,211,153,0.2)" stroke="#334155" stroke-width="1"/>
+  <text x="640" y="331" text-anchor="middle" font-size="18" font-weight="700" fill="#34d399">◎</text>
+  <rect x="705" y="300" width="130" height="50" fill="rgba(52,211,153,0.2)" stroke="#334155" stroke-width="1"/>
+  <text x="770" y="331" text-anchor="middle" font-size="18" font-weight="700" fill="#34d399">◎</text>
+  <rect x="835" y="300" width="160" height="50" fill="rgba(52,211,153,0.2)" stroke="#334155" stroke-width="1"/>
+  <text x="915" y="331" text-anchor="middle" font-size="12" font-weight="700" fill="#f1f5f9">32~128K</text>
+  <rect x="105" y="350" width="180" height="50" fill="#020617" stroke="#334155" stroke-width="1"/>
+  <text x="195" y="381" text-anchor="middle" font-size="12" font-weight="500" fill="#f1f5f9">Llama 3.2</text>
+  <rect x="285" y="350" width="130" height="50" fill="#020617" stroke="#334155" stroke-width="1"/>
+  <text x="350" y="381" text-anchor="middle" font-size="12" font-weight="500" fill="#f1f5f9">1~3B</text>
+  <rect x="415" y="350" width="160" height="50" fill="#020617" stroke="#334155" stroke-width="1"/>
+  <text x="495" y="381" text-anchor="middle" font-size="12" font-weight="500" fill="#f1f5f9">Llama 3.2</text>
+  <rect x="575" y="350" width="130" height="50" fill="#020617" stroke="#334155" stroke-width="1"/>
+  <text x="640" y="381" text-anchor="middle" font-size="18" font-weight="700" fill="#fbbf24">△</text>
+  <rect x="705" y="350" width="130" height="50" fill="#020617" stroke="#334155" stroke-width="1"/>
+  <text x="770" y="381" text-anchor="middle" font-size="18" font-weight="700" fill="#34d399">◎</text>
+  <rect x="835" y="350" width="160" height="50" fill="#020617" stroke="#334155" stroke-width="1"/>
+  <text x="915" y="381" text-anchor="middle" font-size="12" font-weight="500" fill="#f1f5f9">128K</text>
+  <text x="550" y="410" text-anchor="middle" font-size="12" fill="#94a3b8">한국어 + 라이선스 + 도구호출 → Qwen 2.5 (강조 행)</text>
+  <text x="550" y="432" text-anchor="middle" font-size="11" fill="#94a3b8">본 책 캡스톤 = Qwen 2.5-0.5B-Instruct + LoRA</text>
+</svg>

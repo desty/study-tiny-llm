@@ -130,8 +130,8 @@ for L, D in [(6, 256), (6, 320), (8, 384), (12, 512), (12, 768)]:
 
 ---
 
-![학습 메모리 분해 — 14N + activation](../assets/diagrams/memory-stack.svg#only-light)
-![학습 메모리 분해 — 14N + activation](../assets/diagrams/memory-stack-dark.svg#only-dark)
+![학습 메모리 분해 — 항별 비율](../assets/diagrams/memory-breakdown-pct.svg#only-light)
+![학습 메모리 분해 — 항별 비율](../assets/diagrams/memory-breakdown-pct-dark.svg#only-dark)
 
 ## 5. 학습 메모리 — 항별 산수
 

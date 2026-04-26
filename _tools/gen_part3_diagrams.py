@@ -172,8 +172,127 @@ def memory_stack(theme):
     return '\n'.join(lines)
 
 
+# =====================================================================
+# Ch 11. 메모리 비율 (100% 정규화)
+# =====================================================================
+
+def memory_breakdown_pct(theme):
+    from svg_prim import P, T
+    CW, CH = 1000, 460
+    lines = svg_header(CW, CH, theme)
+    lines.extend(text_title(CW // 2, 38, '학습 메모리 — 항별 비율 (모델 크기별)', theme, size=18))
+    lines.extend(text_subtitle(CW // 2, 60, '같은 height = 100% 로 정규화 · 항 비중을 모델 간 비교', theme))
+
+    pal = P(theme); t = T(theme)
+
+    # 비율 (10M, 125M, 1B 순)
+    cases = [
+        ('10M', [('params', 0.02, 'token'), ('grads', 0.02, 'gate'),
+                 ('Adam', 0.08, 'memory'), ('activation', 0.84, 'model')]),
+        ('125M', [('params', 0.08, 'token'), ('grads', 0.08, 'gate'),
+                  ('Adam', 0.34, 'memory'), ('activation', 0.50, 'model')]),
+        ('1B', [('params', 0.10, 'token'), ('grads', 0.10, 'gate'),
+                ('Adam', 0.40, 'memory'), ('activation', 0.40, 'model')]),
+    ]
+
+    bar_top = 110
+    bar_bot = 380
+    bar_h = bar_bot - bar_top
+    bar_w = 180
+    gap = 80
+    n = len(cases)
+    total = n * bar_w + (n - 1) * gap
+    left = (CW - total) // 2
+
+    for i, (name, segs) in enumerate(cases):
+        x = left + i * (bar_w + gap)
+        lines.append(f'  <text x="{x + bar_w//2}" y="{bar_top - 12}" text-anchor="middle" font-size="14" font-weight="700" fill="{t["title"]}">{name}</text>')
+
+        cy = bar_top
+        for label, pct, role in segs:
+            seg_h = bar_h * pct
+            lines.append(f'  <rect x="{x}" y="{cy}" width="{bar_w}" height="{seg_h}" fill="{pal[role]["fill"]}" stroke="{pal[role]["stroke"]}" stroke-width="1.2"/>')
+            if seg_h > 18:
+                lines.append(f'  <text x="{x + bar_w//2}" y="{cy + seg_h/2 + 4}" text-anchor="middle" font-size="11" fill="{pal[role]["text"]}">{label}</text>')
+                lines.append(f'  <text x="{x + bar_w//2}" y="{cy + seg_h/2 + 18}" text-anchor="middle" font-size="9" fill="{pal[role]["sub"]}" font-family="JetBrains Mono, monospace">{int(pct*100)}%</text>')
+            cy += seg_h
+
+    lines.extend(text_subtitle(CW // 2, 410, '* 10M = activation 이 84% · 1B = activation 비중 ↓, Adam state ↑', theme, size=11))
+    lines.extend(text_subtitle(CW // 2, 432, '** gradient checkpointing 사용 시 activation 비율 1/√L 로 ↓', theme, size=11))
+
+    lines.extend(svg_footer())
+    return '\n'.join(lines)
+
+
+# =====================================================================
+# Ch 10. nanoGPT 트랜스포머 블록
+# =====================================================================
+
+def nanogpt_block(theme):
+    from svg_prim import P, T
+    CW, CH = 900, 540
+    lines = svg_header(CW, CH, theme)
+    lines.extend(text_title(CW // 2, 38, 'nanoGPT 블록 — Pre-norm + Residual 두 번', theme, size=18))
+    lines.extend(text_subtitle(CW // 2, 60, 'norm → sublayer → + 입력 (residual) — 두 번 반복', theme))
+
+    pal = P(theme); t = T(theme)
+    cx = CW // 2
+
+    # 입력 x
+    lines.extend(node(cx - 60, 100, 120, 50, 'input', theme, title='x (B,T,D)'))
+
+    # Block 1: Norm → Attn → +
+    by = 180
+    lines.extend(node(cx - 200, by, 120, 50, 'gate', theme, title='RMSNorm'))
+    lines.extend(node(cx - 60, by, 120, 50, 'model', theme, title='SelfAttn', sub='+ RoPE'))
+
+    # 화살표
+    lines.extend(arrow_line(cx, 150, cx - 140, by + 10, theme))      # x → norm1
+    lines.extend(arrow_line(cx - 140, by + 25, cx - 80, by + 25, theme))  # norm → attn
+    # residual: x → +
+    lines.extend(arrow_line(cx + 60, 125, cx + 130, 125, theme))     # x 옆으로
+    # +
+    lines.append(f'  <circle cx="{cx + 130}" cy="{by + 25}" r="18" fill="{pal["output"]["fill"]}" stroke="{pal["output"]["stroke"]}" stroke-width="2"/>')
+    lines.append(f'  <text x="{cx + 130}" y="{by + 31}" text-anchor="middle" font-size="20" font-weight="700" fill="{pal["output"]["text"]}">+</text>')
+    # attn → +
+    lines.extend(arrow_line(cx + 60, by + 25, cx + 113, by + 25, theme))
+    # x (위) → + (residual line)
+    lines.append(f'  <path d="M {cx + 130} 125 L {cx + 130} {by + 7}" stroke="{t["arrow"]}" stroke-width="1.8" fill="none" marker-end="url(#arr)" stroke-dasharray="3,3"/>')
+
+    # Block 2: Norm → FFN → +
+    by2 = 290
+    lines.extend(node(cx - 200, by2, 120, 50, 'gate', theme, title='RMSNorm'))
+    lines.extend(node(cx - 60, by2, 120, 50, 'token', theme, title='FFN', sub='SwiGLU'))
+
+    # 위 + → norm2
+    lines.extend(arrow_line(cx + 130, by + 43, cx - 140, by2 + 10, theme))
+    lines.extend(arrow_line(cx - 140, by2 + 25, cx - 80, by2 + 25, theme))
+    # +
+    lines.append(f'  <circle cx="{cx + 130}" cy="{by2 + 25}" r="18" fill="{pal["output"]["fill"]}" stroke="{pal["output"]["stroke"]}" stroke-width="2"/>')
+    lines.append(f'  <text x="{cx + 130}" y="{by2 + 31}" text-anchor="middle" font-size="20" font-weight="700" fill="{pal["output"]["text"]}">+</text>')
+    lines.extend(arrow_line(cx + 60, by2 + 25, cx + 113, by2 + 25, theme))
+    # 위 + → 아래 + residual
+    lines.append(f'  <path d="M {cx + 148} {by + 25} L {cx + 200} {by + 25} L {cx + 200} {by2 + 25} L {cx + 148} {by2 + 25}" stroke="{t["arrow"]}" stroke-width="1.8" fill="none" marker-end="url(#arr)" stroke-dasharray="3,3"/>')
+
+    # 출력
+    lines.extend(arrow_line(cx + 130, by2 + 43, cx, 410, theme))
+    lines.extend(node(cx - 80, 410, 160, 60, 'output', theme, title='out (B,T,D)', sub='다음 block 으로'))
+
+    # 라벨
+    lines.append(f'  <text x="80" y="200" font-size="11" font-weight="700" fill="{t["legend_text"]}" font-family="JetBrains Mono, monospace">Block 1</text>')
+    lines.append(f'  <text x="80" y="305" font-size="11" font-weight="700" fill="{t["legend_text"]}" font-family="JetBrains Mono, monospace">Block 2</text>')
+    lines.append(f'  <text x="700" y="220" font-size="10" fill="{t["legend_text"]}" font-family="JetBrains Mono, monospace">--- residual</text>')
+
+    lines.extend(text_subtitle(cx, 500, 'GPTMini = Block × N (보통 N=6~12) + final RMSNorm + lm_head', theme, size=12))
+
+    lines.extend(svg_footer())
+    return '\n'.join(lines)
+
+
 if __name__ == '__main__':
-    save('attention-sdpa', attention_sdpa('light'), attention_sdpa('dark'))
-    save('modern-blocks',  modern_blocks('light'),  modern_blocks('dark'))
-    save('memory-stack',   memory_stack('light'),   memory_stack('dark'))
+    save('attention-sdpa',        attention_sdpa('light'),        attention_sdpa('dark'))
+    save('modern-blocks',         modern_blocks('light'),         modern_blocks('dark'))
+    save('memory-stack',          memory_stack('light'),          memory_stack('dark'))
+    save('memory-breakdown-pct',  memory_breakdown_pct('light'),  memory_breakdown_pct('dark'))
+    save('nanogpt-block',         nanogpt_block('light'),         nanogpt_block('dark'))
     print('Done.')

@@ -15,6 +15,9 @@
 
 ---
 
+![5 sLLM 비교 매트릭스](../assets/diagrams/slm-compare-matrix.svg#only-light)
+![5 sLLM 비교 매트릭스](../assets/diagrams/slm-compare-matrix-dark.svg#only-dark)
+
 ## 1. 컨셉 — Part 1~6 의 다음 자리
 
 본 책 Part 1~6 은 **처음부터** 만들었다. 그러나 실제 도메인 작업에선:

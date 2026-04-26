@@ -17,6 +17,9 @@
 
 ---
 
+![nanoGPT 블록 — Pre-norm + Residual 두 번](../assets/diagrams/nanogpt-block.svg#only-light)
+![nanoGPT 블록 — Pre-norm + Residual 두 번](../assets/diagrams/nanogpt-block-dark.svg#only-dark)
+
 ## 1. 개념 — 한 파일에 모델 전체
 
 큰 라이브러리 (transformers, fairseq) 는 추상이 깊어 처음 배울 때 흐름이 안 보인다. nanoGPT 는 정반대 — **단일 파일, 의존성 PyTorch 만, 한 화면에 모델 전체**. 학습용으로 최적.

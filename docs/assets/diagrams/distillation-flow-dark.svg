@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 360" font-family="Pretendard, -apple-system, BlinkMacSystemFont, sans-serif">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5"/>
+    </pattern>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#64748b"/></marker>
+    <marker id="arr-input" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#60a5fa"/></marker>
+    <marker id="arr-llm" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#fb923c"/></marker>
+    <marker id="arr-model" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#a78bfa"/></marker>
+    <marker id="arr-token" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#34d399"/></marker>
+    <marker id="arr-output" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#34d399"/></marker>
+    <marker id="arr-gate" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#fbbf24"/></marker>
+    <marker id="arr-tool" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#22d3ee"/></marker>
+    <marker id="arr-memory" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#f472b6"/></marker>
+    <marker id="arr-error" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#f87171"/></marker>
+  </defs>
+  <rect width="1100" height="360" fill="#020617"/>
+  <rect width="1100" height="360" fill="url(#grid)"/>
+  <text x="550" y="38" text-anchor="middle" font-size="18" font-weight="700" fill="#f1f5f9">Distillation — Teacher 가 Student 를 가르친다</text>
+  <text x="550" y="60" text-anchor="middle" font-size="12" fill="#94a3b8">필터가 통과율 50%+ 가 안전선 · Teacher 환각·편향 차단</text>
+  <path d="M 252,170 L 278,170" stroke="#64748b" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <path d="M 442,170 L 468,170" stroke="#fbbf24" stroke-width="1.5" fill="none" marker-end="url(#arr-gate)" stroke-dasharray="3,3"/>
+  <path d="M 632,170 L 658,170" stroke="#64748b" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <path d="M 822,170 L 848,170" stroke="#64748b" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <rect x="90" y="130" width="160" height="90" rx="10" fill="rgba(96,165,250,0.15)" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="170" y="158" text-anchor="middle" font-size="14" font-weight="700" fill="#bfdbfe">Unlabeled</text>
+  <text x="170" y="174" text-anchor="middle" font-size="14" font-weight="700" fill="#bfdbfe">queries</text>
+  <text x="170" y="196" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#60a5fa">5K~50K</text>
+  <rect x="280" y="130" width="160" height="90" rx="10" fill="rgba(251,146,60,0.15)" stroke="#fb923c" stroke-width="1.5"/>
+  <text x="360" y="158" text-anchor="middle" font-size="14" font-weight="700" fill="#fed7aa">Teacher</text>
+  <text x="360" y="174" text-anchor="middle" font-size="14" font-weight="700" fill="#fed7aa">추론</text>
+  <text x="360" y="196" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#fb923c">Qwen 1.5B</text>
+  <rect x="470" y="130" width="160" height="100" rx="10" fill="rgba(248,113,113,0.15)" stroke="#f87171" stroke-width="1.5"/>
+  <text x="550" y="158" text-anchor="middle" font-size="14" font-weight="700" fill="#fecaca">Filter</text>
+  <text x="550" y="180" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#f87171">judge + 규칙</text>
+  <text x="550" y="198" text-anchor="middle" font-size="11" font-weight="700" fill="#34d399">통과 50%+</text>
+  <rect x="660" y="130" width="160" height="90" rx="10" fill="rgba(52,211,153,0.15)" stroke="#34d399" stroke-width="1.5"/>
+  <text x="740" y="158" text-anchor="middle" font-size="14" font-weight="700" fill="#a7f3d0">Student SFT</text>
+  <text x="740" y="180" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#34d399">Qwen 0.5B + LoRA</text>
+  <rect x="850" y="130" width="160" height="90" rx="10" fill="rgba(52,211,153,0.2)" stroke="#34d399" stroke-width="1.5"/>
+  <text x="930" y="158" text-anchor="middle" font-size="14" font-weight="700" fill="#a7f3d0">Deploy</text>
+  <text x="930" y="180" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#34d399">3× 빠름·1/3 메모리</text>
+  <text x="550" y="290" text-anchor="middle" font-size="12" fill="#94a3b8">Gemma 2-2B / SmolLM2 / Phi-3.5 가 모두 이 길로 학습</text>
+  <text x="550" y="318" text-anchor="middle" font-size="11" fill="#94a3b8">본 책: Qwen 1.5B → 0.5B 미니 distillation 으로 같은 패턴 체험</text>
+</svg>

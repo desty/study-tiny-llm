@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 540" font-family="Pretendard, -apple-system, BlinkMacSystemFont, sans-serif">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#f1f5f9" stroke-width="0.5"/>
+    </pattern>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#6b7280"/></marker>
+    <marker id="arr-input" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#2563eb"/></marker>
+    <marker id="arr-llm" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#ea580c"/></marker>
+    <marker id="arr-model" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#7c3aed"/></marker>
+    <marker id="arr-token" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#059669"/></marker>
+    <marker id="arr-output" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#059669"/></marker>
+    <marker id="arr-gate" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#ca8a04"/></marker>
+    <marker id="arr-tool" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#0891b2"/></marker>
+    <marker id="arr-memory" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#db2777"/></marker>
+    <marker id="arr-error" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#dc2626"/></marker>
+  </defs>
+  <rect width="900" height="540" fill="#ffffff"/>
+  <rect width="900" height="540" fill="url(#grid)"/>
+  <text x="450" y="38" text-anchor="middle" font-size="18" font-weight="700" fill="#0f172a">nanoGPT 블록 — Pre-norm + Residual 두 번</text>
+  <text x="450" y="60" text-anchor="middle" font-size="12" fill="#64748b">norm → sublayer → + 입력 (residual) — 두 번 반복</text>
+  <rect x="390" y="100" width="120" height="50" rx="10" fill="#ffffff"/>
+  <rect x="390" y="100" width="120" height="50" rx="10" fill="#e3f2fd" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="450.0" y="121.0" text-anchor="middle" font-size="14" font-weight="700" fill="#0d47a1">x (B,T,D)</text>
+  <rect x="250" y="180" width="120" height="50" rx="10" fill="#ffffff"/>
+  <rect x="250" y="180" width="120" height="50" rx="10" fill="#fef9c3" stroke="#ca8a04" stroke-width="1.5"/>
+  <text x="310.0" y="201.0" text-anchor="middle" font-size="14" font-weight="700" fill="#713f12">RMSNorm</text>
+  <rect x="390" y="180" width="120" height="50" rx="10" fill="#ffffff"/>
+  <rect x="390" y="180" width="120" height="50" rx="10" fill="#f3e8ff" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="450.0" y="201.0" text-anchor="middle" font-size="14" font-weight="700" fill="#4c1d95">SelfAttn</text>
+  <text x="450.0" y="217.0" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#6d28d9">+ RoPE</text>
+  <path d="M 450,150 L 310,190" stroke="#6b7280" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <path d="M 310,205 L 370,205" stroke="#6b7280" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <path d="M 510,125 L 580,125" stroke="#6b7280" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <circle cx="580" cy="205" r="18" fill="#d1fae5" stroke="#059669" stroke-width="2"/>
+  <text x="580" y="211" text-anchor="middle" font-size="20" font-weight="700" fill="#064e3b">+</text>
+  <path d="M 510,205 L 563,205" stroke="#6b7280" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <path d="M 580 125 L 580 187" stroke="#6b7280" stroke-width="1.8" fill="none" marker-end="url(#arr)" stroke-dasharray="3,3"/>
+  <rect x="250" y="290" width="120" height="50" rx="10" fill="#ffffff"/>
+  <rect x="250" y="290" width="120" height="50" rx="10" fill="#fef9c3" stroke="#ca8a04" stroke-width="1.5"/>
+  <text x="310.0" y="311.0" text-anchor="middle" font-size="14" font-weight="700" fill="#713f12">RMSNorm</text>
+  <rect x="390" y="290" width="120" height="50" rx="10" fill="#ffffff"/>
+  <rect x="390" y="290" width="120" height="50" rx="10" fill="#dcfce7" stroke="#059669" stroke-width="1.5"/>
+  <text x="450.0" y="311.0" text-anchor="middle" font-size="14" font-weight="700" fill="#064e3b">FFN</text>
+  <text x="450.0" y="327.0" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#047857">SwiGLU</text>
+  <path d="M 580,223 L 310,300" stroke="#6b7280" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <path d="M 310,315 L 370,315" stroke="#6b7280" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <circle cx="580" cy="315" r="18" fill="#d1fae5" stroke="#059669" stroke-width="2"/>
+  <text x="580" y="321" text-anchor="middle" font-size="20" font-weight="700" fill="#064e3b">+</text>
+  <path d="M 510,315 L 563,315" stroke="#6b7280" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <path d="M 598 205 L 650 205 L 650 315 L 598 315" stroke="#6b7280" stroke-width="1.8" fill="none" marker-end="url(#arr)" stroke-dasharray="3,3"/>
+  <path d="M 580,333 L 450,410" stroke="#6b7280" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <rect x="370" y="410" width="160" height="60" rx="10" fill="#ffffff"/>
+  <rect x="370" y="410" width="160" height="60" rx="10" fill="#d1fae5" stroke="#059669" stroke-width="1.5"/>
+  <text x="450.0" y="436.0" text-anchor="middle" font-size="14" font-weight="700" fill="#064e3b">out (B,T,D)</text>
+  <text x="450.0" y="452.0" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#047857">다음 block 으로</text>
+  <text x="80" y="200" font-size="11" font-weight="700" fill="#334155" font-family="JetBrains Mono, monospace">Block 1</text>
+  <text x="80" y="305" font-size="11" font-weight="700" fill="#334155" font-family="JetBrains Mono, monospace">Block 2</text>
+  <text x="700" y="220" font-size="10" fill="#334155" font-family="JetBrains Mono, monospace">--- residual</text>
+  <text x="450" y="500" text-anchor="middle" font-size="12" fill="#64748b">GPTMini = Block × N (보통 N=6~12) + final RMSNorm + lm_head</text>
+</svg>

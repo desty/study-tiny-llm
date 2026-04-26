@@ -15,6 +15,9 @@
 
 ---
 
+![Distillation — Teacher → Filter → Student](../assets/diagrams/distillation-flow.svg#only-light)
+![Distillation — Teacher → Filter → Student](../assets/diagrams/distillation-flow-dark.svg#only-dark)
+
 ## 1. 컨셉 — "큰 모델이 작은 모델을 가르친다"
 
 Distillation (Hinton et al., 2015) 은 원래 **soft target distillation** — Teacher 의 logit 분포를 Student 가 모방. 현대 LLM 에선 보통 **하드 distillation** — Teacher 가 만든 답을 Student 가 SFT.
