@@ -81,6 +81,7 @@ plugins:
             작은 모델의 부활: The Return of Small Models
             API와 무엇이 다른가: What Differs from the API
             노트북에서 가능한 것: What Your Laptop Can Do
+            "오픈 웨이트 SLM 풍경 — 크기 · dense · MoE": "The Open-Weight SLM Landscape — Size, Dense, MoE"
             "Part 2. 데이터 · 토크나이저": "Part 2. Data & Tokenizer"
             TinyStories와 합성 데이터: TinyStories and Synthetic Data
             BPE 토크나이저 직접 훈련: Training a BPE Tokenizer
@@ -104,6 +105,7 @@ plugins:
             llama.cpp와 GGUF: llama.cpp and GGUF
             작은 챗봇으로 마감: Wrap Up with a Small Chatbot
             "Part 7. 파인튜닝 응용": "Part 7. Fine-tuning in Practice"
+            기성 sLLM 고르고 쓰기: Choosing and Using an Off-the-Shelf sLLM
             처음부터 vs 파인튜닝: From Scratch vs Fine-tuning
             "LoRA · QLoRA 입문": "LoRA / QLoRA Basics"
             분류·NER 파인튜닝 (Encoder): "Classification & NER Fine-tuning (Encoder)"
@@ -162,39 +164,41 @@ nav:
       - 작은 모델의 부활: part1/01-return-of-slm.md
       - API와 무엇이 다른가: part1/02-vs-api.md
       - 노트북에서 가능한 것: part1/03-laptop-budget.md
+      - 오픈 웨이트 SLM 풍경 — 크기 · dense · MoE: part1/04-open-weight-landscape.md
   - Part 2. 데이터 · 토크나이저:
-      - TinyStories와 합성 데이터: part2/04-tinystories.md
-      - BPE 토크나이저 직접 훈련: part2/05-bpe.md
-      - 데이터 품질이 크기를 이긴다: part2/06-data-quality.md
+      - TinyStories와 합성 데이터: part2/05-tinystories.md
+      - BPE 토크나이저 직접 훈련: part2/06-bpe.md
+      - 데이터 품질이 크기를 이긴다: part2/07-data-quality.md
   - Part 3. 트랜스포머 손으로:
-      - Attention 다시 보기: part3/07-attention.md
-      - 현대 블록 RoPE·RMSNorm·SwiGLU·GQA: part3/08-modern-blocks.md
-      - nanoGPT 스타일 100줄: part3/09-nanogpt.md
-      - 파라미터·메모리 계산: part3/10-param-memory.md
+      - Attention 다시 보기: part3/08-attention.md
+      - 현대 블록 RoPE·RMSNorm·SwiGLU·GQA: part3/09-modern-blocks.md
+      - nanoGPT 스타일 100줄: part3/10-nanogpt.md
+      - 파라미터·메모리 계산: part3/11-param-memory.md
   - Part 4. 노트북에서 훈련:
-      - 학습 루프와 AdamW: part4/11-training-loop.md
-      - Mixed Precision과 Grad Accumulation: part4/12-mixed-precision.md
-      - 손실 곡선과 체크포인트: part4/13-loss-curves.md
-      - 4시간 훈련 실전: part4/14-four-hour-run.md
+      - 학습 루프와 AdamW: part4/12-training-loop.md
+      - Mixed Precision과 Grad Accumulation: part4/13-mixed-precision.md
+      - 손실 곡선과 체크포인트: part4/14-loss-curves.md
+      - 4시간 훈련 실전: part4/15-four-hour-run.md
   - Part 5. 평가 · 분석:
-      - perplexity 너머: part5/15-beyond-ppl.md
-      - 작은 벤치마크 만들기: part5/16-tiny-bench.md
-      - 어텐션과 로짓 들여다보기: part5/17-peek-inside.md
+      - perplexity 너머: part5/16-beyond-ppl.md
+      - 작은 벤치마크 만들기: part5/17-tiny-bench.md
+      - 어텐션과 로짓 들여다보기: part5/18-peek-inside.md
   - Part 6. 추론 · 배포:
-      - 양자화 입문: part6/18-quantization.md
-      - llama.cpp와 GGUF: part6/19-llamacpp-gguf.md
-      - 작은 챗봇으로 마감: part6/20-final-chatbot.md
+      - 양자화 입문: part6/19-quantization.md
+      - llama.cpp와 GGUF: part6/20-llamacpp-gguf.md
+      - 작은 챗봇으로 마감: part6/21-final-chatbot.md
   - Part 7. 파인튜닝 응용:
-      - 처음부터 vs 파인튜닝: part7/21-from-scratch-vs-finetune.md
-      - LoRA · QLoRA 입문: part7/22-lora-intro.md
-      - 분류·NER 파인튜닝 (Encoder): part7/23-encoder-ner.md
-      - 도메인 요약·생성 (Decoder LoRA + 추가 사전학습): part7/24-domain-lora.md
-      - Distillation 미니: part7/25-distillation.md
-      - Seq2seq 미니 — ITN: part7/26-seq2seq-itn.md
+      - 기성 sLLM 고르고 쓰기: part7/22-choosing-slm.md
+      - 처음부터 vs 파인튜닝: part7/23-from-scratch-vs-finetune.md
+      - LoRA · QLoRA 입문: part7/24-lora-intro.md
+      - 분류·NER 파인튜닝 (Encoder): part7/25-encoder-ner.md
+      - 도메인 요약·생성 (Decoder LoRA + 추가 사전학습): part7/26-domain-lora.md
+      - Distillation 미니: part7/27-distillation.md
+      - Seq2seq 미니 — ITN: part7/28-seq2seq-itn.md
   - Part 8. 프로덕션 운영:
-      - 데이터 파이프라인 — PII · 합성 · IAA: part8/27-data-pipeline.md
-      - 회귀 평가 · 분포 외 · A/B: part8/28-regression-eval.md
-      - 서빙 — llama.cpp server · vLLM · 지연 예산: part8/29-serving.md
-      - 모니터링 · 피드백 루프 · 비용: part8/30-monitoring-cost.md
+      - 데이터 파이프라인 — PII · 합성 · IAA: part8/29-data-pipeline.md
+      - 회귀 평가 · 분포 외 · A/B: part8/30-regression-eval.md
+      - 서빙 — llama.cpp server · vLLM · 지연 예산: part8/31-serving.md
+      - 모니터링 · 피드백 루프 · 비용: part8/32-monitoring-cost.md
   - 캡스톤:
       - 나만의 도메인 SLM: capstone/domain-slm.md

@@ -180,7 +180,7 @@ for name, N, D, tf in scenarios:
 
 **2. spec FLOPs 그대로 믿는다** — A100 spec 312 TFLOPS 는 fp16 dense matmul 최대치. 실제 학습은 메모리 대역폭·통신·data loading 으로 30~50%. **실효 ≈ spec × 0.4** 가 안전.
 
-**3. Colab 무료 티어 함정** — T4 제공이 보장 아님. 학습 중 끊김 빈번. 체크포인트 (Ch 13) 없이 7 시간 돌리면 7 시간 손실.
+**3. Colab 무료 티어 함정** — T4 제공이 보장 아님. 학습 중 끊김 빈번. 체크포인트 (Ch 14) 없이 7 시간 돌리면 7 시간 손실.
 
 **4. M2 MPS 의 op 미지원** — PyTorch MPS 가 일부 op (특히 신형 attention 계열) 를 CPU fallback 시키면 카탈로그 7 TFLOPS 의 1/100 으로 떨어짐. 시작 전 `torch.backends.mps.is_available()` + 작은 학습 한 step 으로 실측 권장.
 
@@ -194,16 +194,16 @@ for name, N, D, tf in scenarios:
 
 - [ ] **메모리** — `training_memory_gb(N)` + activation 추정 + 30% 마진 → 디바이스 RAM 안?
 - [ ] **시간** — `hours_to_train(N, D, tflops)` → 일정 안?
-- [ ] **체크포인트** — 30분 또는 1000 step 마다 저장? (Ch 13)
+- [ ] **체크포인트** — 30분 또는 1000 step 마다 저장? (Ch 14)
 - [ ] **Colab 이면** — 끊김 대비 mount된 Drive 에 저장? 무료 티어면 12 시간 제한 인지?
 - [ ] **데이터 준비** — D 토큰만큼 토큰화·shuffle·캐시 완료?
 - [ ] **평가셋 분리** — D 의 1~2% 가 별도 hold-out (Part 5)?
 
 산수가 통과 못 하는 경우:
 
-- 메모리 초과 → **모델 작게** 또는 **batch 작게 + grad accumulation** (Ch 12)
+- 메모리 초과 → **모델 작게** 또는 **batch 작게 + grad accumulation** (Ch 13)
 - 시간 초과 → **모델/토큰 둘 다 줄이기** 또는 **A100 빌리기** (Colab Pro)
-- 둘 다 빠듯 → **데이터 품질 ↑ 로 토큰 수 줄이기** (Part 2 Ch 6)
+- 둘 다 빠듯 → **데이터 품질 ↑ 로 토큰 수 줄이기** (Part 2 Ch 7)
 
 ---
 
@@ -216,15 +216,11 @@ for name, N, D, tf in scenarios:
 
 ---
 
-## Part 1 마무리
+## 다음 단계
 
-세 챕터를 통과했으면 이제 다음이 분명해야 한다:
+본인 장비 한계가 분명해졌다. 그 다음은 **이미 공개된 SLM 들이 어디에 어떻게 분포해 있는지** — 다음 챕터에서 크기·dense·MoE 까지 한 번에 본다.
 
-- **왜** 작은 모델을 직접 만드는가 (Ch 1)
-- **무엇이** 직접 만들어야만 보이는가 (Ch 2)
-- **얼마나** 가능한가 — 본인 장비 기준 (Ch 3)
-
-다음 단계 → [Part 2 데이터·토크나이저](../part2/04-tinystories.md) 로. 모델보다 먼저 **무엇을 먹일까** 부터.
+다음 → [Ch 4 오픈 웨이트 SLM 풍경](04-open-weight-landscape.md).
 
 ---
 

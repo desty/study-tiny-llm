@@ -69,18 +69,18 @@ _slm/
 
 ## 5. 커리큘럼 (확정 v1 · 2026-04-26)
 
-총 **30챕터 + 캡스톤**. 10주 본과정 · 전체 12주 예상.
+총 **32챕터 + 캡스톤**. 10주 본과정 · 전체 12주 예상.
 
 | Part | 주제 | 챕터 수 | 키워드 |
 |---|---|---|---|
-| 1 | 왜 작은 모델인가 | 3 | SLM 부활 (Phi-3, SmolLM2, MobileLLM) · API와의 차이 · 노트북 자원 계산 |
-| 2 | 데이터 · 토크나이저 | 3 | TinyStories · 합성 데이터 (Cosmopedia) · BPE 직접 훈련 · FineWeb-Edu |
+| 1 | 왜 작은 모델인가 | 4 | SLM 부활 · API 와 차이 · 노트북 예산 · **오픈 웨이트 풍경 (크기·dense·MoE)** |
+| 2 | 데이터 · 토크나이저 | 3 | TinyStories · 합성 데이터 · BPE 직접 훈련 · FineWeb-Edu |
 | 3 | 트랜스포머 손으로 | 4 | SDPA · RoPE · RMSNorm · SwiGLU · GQA · nanoGPT 100줄 · 파라미터/메모리 산수 |
 | 4 | 노트북에서 훈련 | 4 | AdamW · cosine schedule · bf16/fp16 · grad accum · 손실 곡선 진단 |
 | 5 | 평가 · 분석 | 3 | perplexity 한계 · custom probe · attention/logit 시각화 |
-| 6 | 추론 · 배포 | 3 | int8/int4 양자화 · GGUF 변환 · llama.cpp · CLI 챗봇 |
-| 7 | 파인튜닝 응용 | 6 | LoRA/QLoRA · Encoder NER · Decoder LoRA + 추가 사전학습 · Distillation · Seq2seq ITN |
-| 8 | 프로덕션 운영 | 4 | 데이터 파이프라인 (PII·합성·IAA) · 회귀/A·B 평가 · 서빙(vLLM/llama.cpp server) · 모니터링·비용 |
+| 6 | 추론 · 배포 | 3 | int8/int4 양자화 · GGUF · llama.cpp · CLI 챗봇 |
+| 7 | 파인튜닝 응용 | 7 | **기성 sLLM 고르기** · LoRA/QLoRA · Encoder NER · Decoder LoRA · Distillation · Seq2seq ITN |
+| 8 | 프로덕션 운영 | 4 | 데이터 파이프라인 (PII·합성·IAA) · 회귀/A·B · 서빙(vLLM/llama.cpp server) · 모니터링·비용 |
 | 캡스톤 | 도메인 SLM | — | 데이터→토크나이저→학습→평가→GGUF→서빙→모니터링 풀 사이클 |
 
 DPO · RLHF 는 본 책 범위 밖 (자매 프로젝트 `_study` Part 7 에 있음).
