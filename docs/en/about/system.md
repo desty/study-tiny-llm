@@ -2,7 +2,7 @@
 
 ## The 8-section chapter template
 
-Same structure as the sister project [AI Assistant Engineering](../../../\_study).
+Same structure as the sister project *AI Assistant Engineering*.
 
 1. **Concept** — one paragraph, one definition
 2. **Why it matters** — what breaks without this tool/idea

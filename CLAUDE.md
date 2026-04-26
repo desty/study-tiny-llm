@@ -49,12 +49,12 @@ _slm/
 ## 3. 로컬 개발
 
 ```bash
-# _study/ai-assistant-engineering 의 venv 공유
-../_study/ai-assistant-engineering/.venv/bin/python3 -m mkdocs serve -a 127.0.0.1:8766
-../_study/ai-assistant-engineering/.venv/bin/python3 -m mkdocs build --strict
+# 형제 폴더 ai-assistant-engineering 의 venv 공유
+../ai-assistant-engineering/.venv/bin/python3 -m mkdocs serve -a 127.0.0.1:8766
+../ai-assistant-engineering/.venv/bin/python3 -m mkdocs build --strict
 ```
 
-(2026-04-26: `_study` 가 `_study/ai-assistant-engineering/` 하위로 재배치돼 venv 경로 변경. shebang 깨짐 → `python3 -m mkdocs` 로 호출.)
+(2026-04-26: 본 프로젝트가 `Documents/_study/_slm/` 으로 이동. 자매 책 `ai-assistant-engineering` 과 형제. `python3 -m mkdocs` 로 호출 — shebang 의 venv 경로 깨짐 회피.)
 
 ## 4. 집필 컨벤션 — `_study`와 동일
 
