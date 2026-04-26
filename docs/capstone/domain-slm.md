@@ -4,9 +4,6 @@
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab">
 </a>
 
-!!! note "Draft"
-    이 챕터는 스텁입니다. 본문 집필 예정.
-
 !!! abstract "이 캡스톤에서 하는 것"
     - 데이터 수집 → BPE → 학습 → 평가 → 양자화 → GGUF → **HuggingFace Hub 업로드** → 데모
     - **본인이 만든 모델이 다음 사람의 "기성 sLLM" 이 되는 경험** — Ch 22 의 다른 면

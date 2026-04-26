@@ -223,7 +223,7 @@ class GPTMini(nn.Module):
 ```python title="run_nano_gpt.py" linenums="1"
 import torch
 
-cfg = GPTConfig(vocab_size=8000, n_layer=6, n_head=8, d_model=256, max_len=512)
+cfg = GPTConfig(vocab_size=8000, n_layer=6, n_head=8, d_model=320, max_len=512)
 model = GPTMini(cfg)
 print(f"params: {sum(p.numel() for p in model.parameters()) / 1e6:.2f} M")
 
@@ -242,7 +242,7 @@ print("gen shape:", out.shape)  # (1, 24)
 전형적 출력:
 
 ```
-params: 9.87 M
+params: 9.93 M
 logits: torch.Size([2, 64, 8000]), loss: 8.992
 gen shape: torch.Size([1, 24])
 ```
