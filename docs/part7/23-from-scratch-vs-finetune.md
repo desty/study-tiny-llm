@@ -15,6 +15,9 @@
 
 ---
 
+![4가지 파인튜닝 길 비교](../assets/diagrams/finetune-paths.svg#only-light)
+![4가지 파인튜닝 길 비교](../assets/diagrams/finetune-paths-dark.svg#only-dark)
+
 ## 1. 컨셉 — 4가지 길
 
 | 길 | 시작 | 데이터 양 | 비용 |

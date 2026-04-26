@@ -1,0 +1,178 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 460" font-family="Pretendard, -apple-system, BlinkMacSystemFont, sans-serif">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5"/>
+    </pattern>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#64748b"/></marker>
+    <marker id="arr-input" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#60a5fa"/></marker>
+    <marker id="arr-llm" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#fb923c"/></marker>
+    <marker id="arr-model" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#a78bfa"/></marker>
+    <marker id="arr-token" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#34d399"/></marker>
+    <marker id="arr-output" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#34d399"/></marker>
+    <marker id="arr-gate" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#fbbf24"/></marker>
+    <marker id="arr-tool" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#22d3ee"/></marker>
+    <marker id="arr-memory" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#f472b6"/></marker>
+    <marker id="arr-error" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#f87171"/></marker>
+  </defs>
+  <rect width="1100" height="460" fill="#020617"/>
+  <rect width="1100" height="460" fill="url(#grid)"/>
+  <text x="550" y="38" text-anchor="middle" font-size="18" font-weight="700" fill="#f1f5f9">3가지 모양 — Encoder · Decoder · Seq2seq</text>
+  <text x="550" y="60" text-anchor="middle" font-size="12" fill="#94a3b8">같은 트랜스포머에서 마스크 차이로 갈리는 세 형태</text>
+  <rect x="100" y="100" width="280" height="200" rx="12" fill="rgba(96,165,250,0.15)" stroke="#60a5fa" stroke-width="2"/>
+  <text x="240" y="130" text-anchor="middle" font-size="16" font-weight="700" fill="#bfdbfe">Encoder-only</text>
+  <text x="240" y="150" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#60a5fa">BERT / KoELECTRA</text>
+  <rect x="180" y="170" width="15" height="15" fill="#60a5fa" opacity="0.5"/>
+  <rect x="180" y="170" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="196" y="170" width="15" height="15" fill="#60a5fa" opacity="0.5"/>
+  <rect x="196" y="170" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="212" y="170" width="15" height="15" fill="#60a5fa" opacity="0.5"/>
+  <rect x="212" y="170" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="228" y="170" width="15" height="15" fill="#60a5fa" opacity="0.5"/>
+  <rect x="228" y="170" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="244" y="170" width="15" height="15" fill="#60a5fa" opacity="0.5"/>
+  <rect x="244" y="170" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="180" y="186" width="15" height="15" fill="#60a5fa" opacity="0.5"/>
+  <rect x="180" y="186" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="196" y="186" width="15" height="15" fill="#60a5fa" opacity="0.5"/>
+  <rect x="196" y="186" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="212" y="186" width="15" height="15" fill="#60a5fa" opacity="0.5"/>
+  <rect x="212" y="186" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="228" y="186" width="15" height="15" fill="#60a5fa" opacity="0.5"/>
+  <rect x="228" y="186" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="244" y="186" width="15" height="15" fill="#60a5fa" opacity="0.5"/>
+  <rect x="244" y="186" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="180" y="202" width="15" height="15" fill="#60a5fa" opacity="0.5"/>
+  <rect x="180" y="202" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="196" y="202" width="15" height="15" fill="#60a5fa" opacity="0.5"/>
+  <rect x="196" y="202" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="212" y="202" width="15" height="15" fill="#60a5fa" opacity="0.5"/>
+  <rect x="212" y="202" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="228" y="202" width="15" height="15" fill="#60a5fa" opacity="0.5"/>
+  <rect x="228" y="202" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="244" y="202" width="15" height="15" fill="#60a5fa" opacity="0.5"/>
+  <rect x="244" y="202" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="180" y="218" width="15" height="15" fill="#60a5fa" opacity="0.5"/>
+  <rect x="180" y="218" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="196" y="218" width="15" height="15" fill="#60a5fa" opacity="0.5"/>
+  <rect x="196" y="218" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="212" y="218" width="15" height="15" fill="#60a5fa" opacity="0.5"/>
+  <rect x="212" y="218" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="228" y="218" width="15" height="15" fill="#60a5fa" opacity="0.5"/>
+  <rect x="228" y="218" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="244" y="218" width="15" height="15" fill="#60a5fa" opacity="0.5"/>
+  <rect x="244" y="218" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="180" y="234" width="15" height="15" fill="#60a5fa" opacity="0.5"/>
+  <rect x="180" y="234" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="196" y="234" width="15" height="15" fill="#60a5fa" opacity="0.5"/>
+  <rect x="196" y="234" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="212" y="234" width="15" height="15" fill="#60a5fa" opacity="0.5"/>
+  <rect x="212" y="234" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="228" y="234" width="15" height="15" fill="#60a5fa" opacity="0.5"/>
+  <rect x="228" y="234" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="244" y="234" width="15" height="15" fill="#60a5fa" opacity="0.5"/>
+  <rect x="244" y="234" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <text x="240" y="275" text-anchor="middle" font-size="10" fill="#60a5fa" font-family="JetBrains Mono, monospace">양방향 attention</text>
+  <text x="240" y="289" text-anchor="middle" font-size="10" fill="#60a5fa" font-family="JetBrains Mono, monospace">(mask 없음)</text>
+  <text x="240" y="324" text-anchor="middle" font-size="12" font-weight="700" fill="#bfdbfe">분류 · NER · 임베딩</text>
+  <rect x="410" y="100" width="280" height="200" rx="12" fill="rgba(251,146,60,0.15)" stroke="#fb923c" stroke-width="2"/>
+  <text x="550" y="130" text-anchor="middle" font-size="16" font-weight="700" fill="#fed7aa">Decoder-only</text>
+  <text x="550" y="150" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#fb923c">GPT / Llama / Qwen / 본 책</text>
+  <rect x="490" y="170" width="15" height="15" fill="#fb923c" opacity="0.5"/>
+  <rect x="490" y="170" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="506" y="170" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="522" y="170" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="538" y="170" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="554" y="170" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="490" y="186" width="15" height="15" fill="#fb923c" opacity="0.5"/>
+  <rect x="490" y="186" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="506" y="186" width="15" height="15" fill="#fb923c" opacity="0.5"/>
+  <rect x="506" y="186" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="522" y="186" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="538" y="186" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="554" y="186" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="490" y="202" width="15" height="15" fill="#fb923c" opacity="0.5"/>
+  <rect x="490" y="202" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="506" y="202" width="15" height="15" fill="#fb923c" opacity="0.5"/>
+  <rect x="506" y="202" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="522" y="202" width="15" height="15" fill="#fb923c" opacity="0.5"/>
+  <rect x="522" y="202" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="538" y="202" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="554" y="202" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="490" y="218" width="15" height="15" fill="#fb923c" opacity="0.5"/>
+  <rect x="490" y="218" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="506" y="218" width="15" height="15" fill="#fb923c" opacity="0.5"/>
+  <rect x="506" y="218" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="522" y="218" width="15" height="15" fill="#fb923c" opacity="0.5"/>
+  <rect x="522" y="218" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="538" y="218" width="15" height="15" fill="#fb923c" opacity="0.5"/>
+  <rect x="538" y="218" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="554" y="218" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="490" y="234" width="15" height="15" fill="#fb923c" opacity="0.5"/>
+  <rect x="490" y="234" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="506" y="234" width="15" height="15" fill="#fb923c" opacity="0.5"/>
+  <rect x="506" y="234" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="522" y="234" width="15" height="15" fill="#fb923c" opacity="0.5"/>
+  <rect x="522" y="234" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="538" y="234" width="15" height="15" fill="#fb923c" opacity="0.5"/>
+  <rect x="538" y="234" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="554" y="234" width="15" height="15" fill="#fb923c" opacity="0.5"/>
+  <rect x="554" y="234" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <text x="550" y="275" text-anchor="middle" font-size="10" fill="#fb923c" font-family="JetBrains Mono, monospace">causal mask</text>
+  <text x="550" y="289" text-anchor="middle" font-size="10" fill="#fb923c" font-family="JetBrains Mono, monospace">(과거만)</text>
+  <text x="550" y="324" text-anchor="middle" font-size="12" font-weight="700" fill="#fed7aa">생성 · 챗봇</text>
+  <rect x="720" y="100" width="280" height="200" rx="12" fill="rgba(251,191,36,0.15)" stroke="#fbbf24" stroke-width="2"/>
+  <text x="860" y="130" text-anchor="middle" font-size="16" font-weight="700" fill="#fde68a">Encoder-Decoder</text>
+  <text x="860" y="150" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#fbbf24">T5 / byT5 / mT5</text>
+  <rect x="800" y="170" width="15" height="15" fill="#fbbf24" opacity="0.5"/>
+  <rect x="800" y="170" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="816" y="170" width="15" height="15" fill="#fbbf24" opacity="0.5"/>
+  <rect x="816" y="170" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="832" y="170" width="15" height="15" fill="#fbbf24" opacity="0.5"/>
+  <rect x="832" y="170" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="848" y="170" width="15" height="15" fill="#fbbf24" opacity="0.5"/>
+  <rect x="848" y="170" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="864" y="170" width="15" height="15" fill="#fbbf24" opacity="0.5"/>
+  <rect x="864" y="170" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="800" y="186" width="15" height="15" fill="#fbbf24" opacity="0.5"/>
+  <rect x="800" y="186" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="816" y="186" width="15" height="15" fill="#fbbf24" opacity="0.5"/>
+  <rect x="816" y="186" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="832" y="186" width="15" height="15" fill="#fbbf24" opacity="0.5"/>
+  <rect x="832" y="186" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="848" y="186" width="15" height="15" fill="#fbbf24" opacity="0.5"/>
+  <rect x="848" y="186" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="864" y="186" width="15" height="15" fill="#fbbf24" opacity="0.5"/>
+  <rect x="864" y="186" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="800" y="202" width="15" height="15" fill="#fbbf24" opacity="0.5"/>
+  <rect x="800" y="202" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="816" y="202" width="15" height="15" fill="#fbbf24" opacity="0.5"/>
+  <rect x="816" y="202" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="832" y="202" width="15" height="15" fill="#fbbf24" opacity="0.5"/>
+  <rect x="832" y="202" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="848" y="202" width="15" height="15" fill="#fbbf24" opacity="0.5"/>
+  <rect x="848" y="202" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="864" y="202" width="15" height="15" fill="#fbbf24" opacity="0.5"/>
+  <rect x="864" y="202" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="800" y="218" width="15" height="15" fill="#fbbf24" opacity="0.5"/>
+  <rect x="800" y="218" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="816" y="218" width="15" height="15" fill="#fbbf24" opacity="0.5"/>
+  <rect x="816" y="218" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="832" y="218" width="15" height="15" fill="#fbbf24" opacity="0.5"/>
+  <rect x="832" y="218" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="848" y="218" width="15" height="15" fill="#fbbf24" opacity="0.5"/>
+  <rect x="848" y="218" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="864" y="218" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="800" y="234" width="15" height="15" fill="#fbbf24" opacity="0.5"/>
+  <rect x="800" y="234" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="816" y="234" width="15" height="15" fill="#fbbf24" opacity="0.5"/>
+  <rect x="816" y="234" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="832" y="234" width="15" height="15" fill="#fbbf24" opacity="0.5"/>
+  <rect x="832" y="234" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="848" y="234" width="15" height="15" fill="#fbbf24" opacity="0.5"/>
+  <rect x="848" y="234" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <rect x="864" y="234" width="15" height="15" fill="#fbbf24" opacity="0.5"/>
+  <rect x="864" y="234" width="15" height="15" fill="none" stroke="#334155" stroke-width="0.4"/>
+  <text x="860" y="275" text-anchor="middle" font-size="10" fill="#fbbf24" font-family="JetBrains Mono, monospace">encoder + cross-attn + decoder</text>
+  <text x="860" y="324" text-anchor="middle" font-size="12" font-weight="700" fill="#fde68a">번역 · 요약 · ITN</text>
+  <text x="550" y="410" text-anchor="middle" font-size="12" fill="#94a3b8">본 책 본문 = decoder-only · Ch 25 = encoder · Ch 28 = seq2seq</text>
+</svg>

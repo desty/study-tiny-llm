@@ -84,6 +84,110 @@ def lora_structure(theme):
     return '\n'.join(lines)
 
 
+# =====================================================================
+# Ch 23. 4가지 파인튜닝 길
+# =====================================================================
+
+def finetune_paths(theme):
+    CW, CH = 1100, 380
+    NW, NH = 220, 110
+    lines = svg_header(CW, CH, theme)
+    lines.extend(text_title(CW // 2, 38, '4가지 길 — from-scratch · CPT · SFT · LoRA', theme, size=18))
+    lines.extend(text_subtitle(CW // 2, 60, '아래로 갈수록 데이터 ↓ · 비용 ↓ · 도메인 적응 능력 ↓', theme))
+
+    rows = [
+        ('llm',    'from-scratch',         '100B+ 토큰',      '대규모 GPU 클러스터 · 수일~수주'),
+        ('model',  'continued pre-training', '1B~10B 토큰',     '큰 GPU 한 장+ · 하루~수일'),
+        ('gate',   'full SFT',             '10K~1M 페어',     'A100 한 장 · 수시간'),
+        ('output', 'LoRA / QLoRA',         '100~10K 페어',    '노트북 · 수십 분~수시간'),
+    ]
+    pal = P(theme); t = T(theme)
+
+    y = 105
+    gap = 12
+    for role, name, data, cost in rows:
+        x = (CW - NW * 3 - 60) // 2
+        # 명칭
+        lines.extend(node(x, y, NW, NH - 20, role, theme, title=name))
+        # 데이터 양
+        lines.extend(node(x + NW + 30, y, NW, NH - 20, role, theme, title=data, sub='데이터'))
+        # 비용
+        lines.extend(node(x + 2 * (NW + 30), y, NW, NH - 20, role, theme, title=cost, sub='비용·시간'))
+        y += NH - 20 + gap
+
+    lines.extend(text_subtitle(CW // 2, 350, '본 책 본문 = 1번 (Part 1~6) · 캡스톤 = 4번 (Part 7)', theme, size=12))
+    lines.extend(svg_footer())
+    return '\n'.join(lines)
+
+
+# =====================================================================
+# Ch 28. 3가지 아키텍처
+# =====================================================================
+
+def three_architectures(theme):
+    CW, CH = 1100, 460
+    lines = svg_header(CW, CH, theme)
+    lines.extend(text_title(CW // 2, 38, '3가지 모양 — Encoder · Decoder · Seq2seq', theme, size=18))
+    lines.extend(text_subtitle(CW // 2, 60, '같은 트랜스포머에서 마스크 차이로 갈리는 세 형태', theme))
+
+    pal = P(theme); t = T(theme)
+
+    # 3 카드
+    cards = [
+        ('input',  'Encoder-only', 'BERT / KoELECTRA',
+         '양방향 attention\n(mask 없음)', '분류 · NER · 임베딩'),
+        ('llm',    'Decoder-only', 'GPT / Llama / Qwen / 본 책',
+         'causal mask\n(과거만)', '생성 · 챗봇'),
+        ('gate',   'Encoder-Decoder', 'T5 / byT5 / mT5',
+         'encoder + cross-attn + decoder', '번역 · 요약 · ITN'),
+    ]
+
+    n = 3
+    NW, NH = 280, 200
+    gap = 30
+    total = n * NW + (n - 1) * gap
+    left = (CW - total) // 2
+    top = 100
+
+    for i, (role, title, models, mask, use) in enumerate(cards):
+        x = left + i * (NW + gap)
+        # 카드
+        lines.append(f'  <rect x="{x}" y="{top}" width="{NW}" height="{NH}" rx="12" fill="{pal[role]["fill"]}" stroke="{pal[role]["stroke"]}" stroke-width="2"/>')
+        # 제목
+        lines.append(f'  <text x="{x + NW//2}" y="{top + 30}" text-anchor="middle" font-size="16" font-weight="700" fill="{pal[role]["text"]}">{title}</text>')
+        lines.append(f'  <text x="{x + NW//2}" y="{top + 50}" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="{pal[role]["sub"]}">{models}</text>')
+
+        # 작은 attention pattern 그림 (5x5 grid)
+        gx = x + NW//2 - 60
+        gy = top + 70
+        cell = 16
+        for r in range(5):
+            for c in range(5):
+                if role == 'input':
+                    fill = pal[role]['stroke']  # 모두 attended (양방향)
+                elif role == 'llm':
+                    fill = pal[role]['stroke'] if c <= r else 'none'  # causal
+                else:
+                    fill = pal[role]['stroke'] if (i == 2 and (r >= 3 and c <= r) or (i == 2 and r < 3)) else 'none'
+                opa = 0.3 if fill != 'none' else 0
+                if fill != 'none':
+                    lines.append(f'  <rect x="{gx + c*cell}" y="{gy + r*cell}" width="{cell-1}" height="{cell-1}" fill="{fill}" opacity="0.5"/>')
+                lines.append(f'  <rect x="{gx + c*cell}" y="{gy + r*cell}" width="{cell-1}" height="{cell-1}" fill="none" stroke="{t["legend_border"]}" stroke-width="0.4"/>')
+
+        # mask 설명
+        for j, line in enumerate(mask.split('\n')):
+            lines.append(f'  <text x="{x + NW//2}" y="{top + 175 + j*14}" text-anchor="middle" font-size="10" fill="{pal[role]["sub"]}" font-family="JetBrains Mono, monospace">{line}</text>')
+
+        # 용도
+        lines.append(f'  <text x="{x + NW//2}" y="{top + NH + 24}" text-anchor="middle" font-size="12" font-weight="700" fill="{pal[role]["text"]}">{use}</text>')
+
+    lines.extend(text_subtitle(CW // 2, 410, '본 책 본문 = decoder-only · Ch 25 = encoder · Ch 28 = seq2seq', theme, size=12))
+    lines.extend(svg_footer())
+    return '\n'.join(lines)
+
+
 if __name__ == '__main__':
-    save('lora-structure', lora_structure('light'), lora_structure('dark'))
+    save('lora-structure',     lora_structure('light'),     lora_structure('dark'))
+    save('finetune-paths',     finetune_paths('light'),     finetune_paths('dark'))
+    save('three-architectures', three_architectures('light'), three_architectures('dark'))
     print('Done.')

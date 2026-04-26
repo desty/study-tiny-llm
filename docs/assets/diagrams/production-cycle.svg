@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" font-family="Pretendard, -apple-system, BlinkMacSystemFont, sans-serif">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#f1f5f9" stroke-width="0.5"/>
+    </pattern>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#6b7280"/></marker>
+    <marker id="arr-input" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#2563eb"/></marker>
+    <marker id="arr-llm" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#ea580c"/></marker>
+    <marker id="arr-model" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#7c3aed"/></marker>
+    <marker id="arr-token" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#059669"/></marker>
+    <marker id="arr-output" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#059669"/></marker>
+    <marker id="arr-gate" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#ca8a04"/></marker>
+    <marker id="arr-tool" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#0891b2"/></marker>
+    <marker id="arr-memory" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#db2777"/></marker>
+    <marker id="arr-error" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#dc2626"/></marker>
+  </defs>
+  <rect width="900" height="600" fill="#ffffff"/>
+  <rect width="900" height="600" fill="url(#grid)"/>
+  <text x="450" y="38" text-anchor="middle" font-size="18" font-weight="700" fill="#0f172a">분기 운영 사이클 — 배포에서 다음 학습까지</text>
+  <text x="450" y="60" text-anchor="middle" font-size="12" fill="#64748b">3개월 한 사이클 · 자동화된 신호로 진행</text>
+  <path d="M 493.30127018922195,155.0 L 579.9038105676658,205.0" stroke="#6b7280" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <path d="M 623.2050807568877,280.0 L 623.2050807568878,380.0" stroke="#6b7280" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <path d="M 579.9038105676659,455.0 L 493.30127018922195,505.0" stroke="#6b7280" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <path d="M 406.69872981077805,505.0 L 320.09618943233426,455.00000000000006" stroke="#6b7280" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <path d="M 276.7949192431123,380.00000000000006 L 276.7949192431123,280.0" stroke="#6b7280" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <path d="M 320.09618943233426,204.99999999999997 L 406.69872981077805,155.0" stroke="#6b7280" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <rect x="360.0" y="95.0" width="180" height="84" rx="10" fill="#ffffff"/>
+  <rect x="360.0" y="95.0" width="180" height="84" rx="10" fill="#d1fae5" stroke="#059669" stroke-width="1.5"/>
+  <text x="450.0" y="133.0" text-anchor="middle" font-size="14" font-weight="700" fill="#064e3b">배포</text>
+  <text x="450.0" y="149.0" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#047857">A/B → ramp</text>
+  <rect x="533.2050807568877" y="195.0" width="180" height="84" rx="10" fill="#ffffff"/>
+  <rect x="533.2050807568877" y="195.0" width="180" height="84" rx="10" fill="#fef9c3" stroke="#ca8a04" stroke-width="1.5"/>
+  <text x="623.2050807568877" y="233.0" text-anchor="middle" font-size="14" font-weight="700" fill="#713f12">모니터링</text>
+  <text x="623.2050807568877" y="249.0" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#a16207">4 시그널</text>
+  <rect x="533.2050807568878" y="395.0" width="180" height="84" rx="10" fill="#ffffff"/>
+  <rect x="533.2050807568878" y="395.0" width="180" height="84" rx="10" fill="#fee2e2" stroke="#dc2626" stroke-width="1.5"/>
+  <text x="623.2050807568878" y="433.0" text-anchor="middle" font-size="14" font-weight="700" fill="#7f1d1d">신호 발견</text>
+  <text x="623.2050807568878" y="449.0" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#b91c1c">거절↑·드리프트</text>
+  <rect x="360.0" y="495.0" width="180" height="84" rx="10" fill="#ffffff"/>
+  <rect x="360.0" y="495.0" width="180" height="84" rx="10" fill="#e3f2fd" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="450.0" y="533.0" text-anchor="middle" font-size="14" font-weight="700" fill="#0d47a1">데이터 수집</text>
+  <text x="450.0" y="549.0" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#1e40af">거절·재요청 케이스</text>
+  <rect x="186.7949192431123" y="395.00000000000006" width="180" height="84" rx="10" fill="#ffffff"/>
+  <rect x="186.7949192431123" y="395.00000000000006" width="180" height="84" rx="10" fill="#dcfce7" stroke="#059669" stroke-width="1.5"/>
+  <text x="276.7949192431123" y="433.00000000000006" text-anchor="middle" font-size="14" font-weight="700" fill="#064e3b">학습</text>
+  <text x="276.7949192431123" y="449.00000000000006" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#047857">재학습·LoRA</text>
+  <rect x="186.7949192431123" y="194.99999999999997" width="180" height="84" rx="10" fill="#ffffff"/>
+  <rect x="186.7949192431123" y="194.99999999999997" width="180" height="84" rx="10" fill="#fef3e0" stroke="#ea580c" stroke-width="1.5"/>
+  <text x="276.7949192431123" y="232.99999999999997" text-anchor="middle" font-size="14" font-weight="700" fill="#9a3412">평가</text>
+  <text x="276.7949192431123" y="248.99999999999997" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#c2410c">회귀·OOD·A/B</text>
+  <text x="450" y="324" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">분기 사이클</text>
+  <text x="450" y="344" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#64748b">3 개월 / 1 회</text>
+  <text x="450" y="570" text-anchor="middle" font-size="11" fill="#b91c1c">↺ 사고 시 롤백 30초 (LoRA 어댑터 swap)</text>
+</svg>

@@ -15,6 +15,9 @@
 
 ---
 
+![3가지 모양 — Encoder · Decoder · Seq2seq](../assets/diagrams/three-architectures.svg#only-light)
+![3가지 모양 — Encoder · Decoder · Seq2seq](../assets/diagrams/three-architectures-dark.svg#only-dark)
+
 ## 1. 컨셉 — 세 번째 모양
 
 | 구조 | encoder | decoder | 적합 작업 |

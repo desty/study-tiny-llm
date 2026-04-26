@@ -103,7 +103,77 @@ def modern_blocks(theme):
     return '\n'.join(lines)
 
 
+# =====================================================================
+# Ch 11. 학습 메모리 분해 스택 (params + grads + Adam + activation)
+# =====================================================================
+
+def memory_stack(theme):
+    from svg_prim import P, T
+    CW, CH = 1000, 460
+    lines = svg_header(CW, CH, theme)
+    lines.extend(text_title(CW // 2, 38, '학습 메모리 분해 — 14N + activation', theme, size=18))
+    lines.extend(text_subtitle(CW // 2, 60, 'bf16 mixed precision 기준 · 본 책 10M / 125M / 1B 비교', theme))
+
+    pal = P(theme); t = T(theme)
+
+    # 3 스택 (10M, 125M, 1B)
+    cases = [
+        ('10M', [('params (bf16)', 0.02, 'token'), ('grads', 0.02, 'gate'),
+                 ('Adam m', 0.04, 'memory'), ('Adam v', 0.04, 'memory'),
+                 ('activation', 0.84, 'model')]),
+        ('125M', [('params', 0.25, 'token'), ('grads', 0.25, 'gate'),
+                  ('Adam m', 0.5, 'memory'), ('Adam v', 0.5, 'memory'),
+                  ('activation', 1.5, 'model')]),
+        ('1B', [('params', 2.0, 'token'), ('grads', 2.0, 'gate'),
+                ('Adam m', 4.0, 'memory'), ('Adam v', 4.0, 'memory'),
+                ('activation', 8.0, 'model')]),
+    ]
+
+    # bar 영역
+    bar_top = 110
+    bar_bot = 360
+    bar_h = bar_bot - bar_top
+    bar_w = 140
+    gap = 100
+    n = len(cases)
+    total = n * bar_w + (n - 1) * gap
+    left = (CW - total) // 2
+
+    # 스케일 — 모든 케이스 비례 비교 위해 max 기준
+    max_total = max(sum(s[1] for s in segs) for _, segs in cases)
+
+    for i, (name, segs) in enumerate(cases):
+        x = left + i * (bar_w + gap)
+        cur_total = sum(s[1] for s in segs)
+        # 본 케이스의 stack 높이 (max 비례)
+        case_h = bar_h * (cur_total / max_total)
+        y_start = bar_bot - case_h
+
+        # 모델 라벨
+        lines.append(f'  <text x="{x + bar_w//2}" y="{bar_top - 10}" text-anchor="middle" font-size="14" font-weight="700" fill="{t["title"]}">{name}</text>')
+        lines.append(f'  <text x="{x + bar_w//2}" y="{bar_bot + 22}" text-anchor="middle" font-size="11" fill="{t["legend_text"]}" font-family="JetBrains Mono, monospace">{cur_total:.2f} GB</text>')
+
+        # 세그먼트 쌓기
+        cy = y_start
+        for label, gb, role in segs:
+            seg_h = bar_h * (gb / max_total)
+            lines.append(f'  <rect x="{x}" y="{cy}" width="{bar_w}" height="{seg_h}" fill="{pal[role]["fill"]}" stroke="{pal[role]["stroke"]}" stroke-width="1.2"/>')
+            # 라벨 (세그먼트 안에)
+            if seg_h > 20:
+                lines.append(f'  <text x="{x + bar_w//2}" y="{cy + seg_h/2 + 4}" text-anchor="middle" font-size="10" fill="{pal[role]["text"]}">{label}</text>')
+                lines.append(f'  <text x="{x + bar_w//2}" y="{cy + seg_h/2 + 18}" text-anchor="middle" font-size="9" fill="{pal[role]["sub"]}" font-family="JetBrains Mono, monospace">{gb:.2f}GB</text>')
+            cy += seg_h
+
+    # 범례
+    lines.extend(text_subtitle(CW // 2, 410, '* activation = batch · seq · hidden · layer · 14 (대략) · 2 byte', theme, size=10))
+    lines.extend(text_subtitle(CW // 2, 432, '** B=32, T=512 가정 · gradient checkpointing 안 함', theme, size=10))
+
+    lines.extend(svg_footer())
+    return '\n'.join(lines)
+
+
 if __name__ == '__main__':
     save('attention-sdpa', attention_sdpa('light'), attention_sdpa('dark'))
     save('modern-blocks',  modern_blocks('light'),  modern_blocks('dark'))
+    save('memory-stack',   memory_stack('light'),   memory_stack('dark'))
     print('Done.')

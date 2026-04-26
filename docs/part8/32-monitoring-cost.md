@@ -16,6 +16,9 @@
 
 ---
 
+![분기 운영 사이클](../assets/diagrams/production-cycle.svg#only-light)
+![분기 운영 사이클](../assets/diagrams/production-cycle-dark.svg#only-dark)
+
 ## 1. 컨셉 — 운영 사이클
 
 ```
