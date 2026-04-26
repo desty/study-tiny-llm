@@ -19,6 +19,9 @@
 
 학습 손실 (training loss) 의 시간에 따른 변화는 **모델 상태의 가장 중요한 시그널**. 곡선만 봐도 5가지 패턴 진단 가능.
 
+![손실 곡선 5가지 패턴](../assets/diagrams/loss-patterns.svg#only-light)
+![손실 곡선 5가지 패턴](../assets/diagrams/loss-patterns-dark.svg#only-dark)
+
 | 패턴 | 무엇이 보이나 | 진단 |
 |---|---|---|
 | **정상** | warmup ↓, cosine 따라 부드럽게 ↓ | 학습 진행 중 |

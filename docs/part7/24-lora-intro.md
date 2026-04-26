@@ -15,6 +15,9 @@
 
 ---
 
+![LoRA 구조 — Full SFT 와 비교](../assets/diagrams/lora-structure.svg#only-light)
+![LoRA 구조 — Full SFT 와 비교](../assets/diagrams/lora-structure-dark.svg#only-dark)
+
 ## 1. 컨셉 — Low-Rank 가 충분한 이유
 
 LoRA (Hu et al., 2021) 의 핵심 가설:

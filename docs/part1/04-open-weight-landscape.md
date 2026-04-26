@@ -15,6 +15,9 @@
 
 ---
 
+![오픈 웨이트 SLM 풍경 — 크기 사다리 + dense/MoE](../assets/diagrams/open-weight-landscape.svg#only-light)
+![오픈 웨이트 SLM 풍경 — 크기 사다리 + dense/MoE](../assets/diagrams/open-weight-landscape-dark.svg#only-dark)
+
 ## 1. 개념 — 크기 사다리에는 이유가 있다
 
 오픈 웨이트 SLM 들은 무작위 크기로 나오지 않는다. **모바일 / 노트북 / 단일 GPU / 큰 GPU 한 장 / 서버 클러스터** 라는 디바이스 사다리에 맞춘 정확한 컷이 있다.

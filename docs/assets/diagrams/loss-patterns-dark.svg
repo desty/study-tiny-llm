@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 480" font-family="Pretendard, -apple-system, BlinkMacSystemFont, sans-serif">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5"/>
+    </pattern>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#64748b"/></marker>
+    <marker id="arr-input" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#60a5fa"/></marker>
+    <marker id="arr-llm" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#fb923c"/></marker>
+    <marker id="arr-model" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#a78bfa"/></marker>
+    <marker id="arr-token" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#34d399"/></marker>
+    <marker id="arr-output" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#34d399"/></marker>
+    <marker id="arr-gate" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#fbbf24"/></marker>
+    <marker id="arr-tool" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#22d3ee"/></marker>
+    <marker id="arr-memory" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#f472b6"/></marker>
+    <marker id="arr-error" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#f87171"/></marker>
+  </defs>
+  <rect width="1100" height="480" fill="#020617"/>
+  <rect width="1100" height="480" fill="url(#grid)"/>
+  <text x="550" y="38" text-anchor="middle" font-size="18" font-weight="700" fill="#f1f5f9">손실 곡선 5가지 패턴</text>
+  <text x="550" y="60" text-anchor="middle" font-size="12" fill="#94a3b8">학습 진단의 가장 강한 시그널 — 곡선 모양으로 즉시 분류</text>
+  <rect x="38" y="95" width="195" height="280" rx="10" fill="rgba(52,211,153,0.2)" stroke="#34d399" stroke-width="1.5"/>
+  <text x="135" y="119" text-anchor="middle" font-size="14" font-weight="700" fill="#a7f3d0">정상</text>
+  <text x="135" y="137" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#34d399">cosine 따라 ↓</text>
+  <rect x="54" y="155" width="163" height="190" fill="#020617" opacity="0.5"/>
+  <line x1="54" y1="345" x2="217" y2="345" stroke="#cbd5e1" stroke-width="1"/>
+  <line x1="54" y1="155" x2="54" y2="345" stroke="#cbd5e1" stroke-width="1"/>
+  <path d="M 54,193 L 63,222 L 71,244 L 80,261 L 88,273 L 97,281 L 105,288 L 114,293 L 123,297 L 131,299 L 140,301 L 148,303 L 157,304 L 166,305 L 174,305 L 183,306 L 191,306 L 200,306 L 208,306 L 217,307" stroke="#34d399" stroke-width="2" fill="none"/>
+  <text x="135" y="367" text-anchor="middle" font-size="9" fill="#cbd5e1" font-family="JetBrains Mono, monospace">step →</text>
+  <rect x="245" y="95" width="195" height="280" rx="10" fill="rgba(248,113,113,0.15)" stroke="#f87171" stroke-width="1.5"/>
+  <text x="342" y="119" text-anchor="middle" font-size="14" font-weight="700" fill="#fecaca">발산</text>
+  <text x="342" y="137" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#f87171">NaN / 폭발</text>
+  <rect x="261" y="155" width="163" height="190" fill="#020617" opacity="0.5"/>
+  <line x1="261" y1="345" x2="424" y2="345" stroke="#cbd5e1" stroke-width="1"/>
+  <line x1="261" y1="155" x2="261" y2="345" stroke="#cbd5e1" stroke-width="1"/>
+  <path d="M 261,269 L 270,260 L 278,250 L 287,240 L 295,231 L 304,222 L 312,212 L 321,202 L 330,193 L 338,183 L 347,174 L 355,164 L 364,155 L 373,146 L 381,136 L 390,160 L 398,160 L 407,160 L 415,160 L 424,160" stroke="#f87171" stroke-width="2" fill="none"/>
+  <text x="342" y="367" text-anchor="middle" font-size="9" fill="#cbd5e1" font-family="JetBrains Mono, monospace">step →</text>
+  <rect x="452" y="95" width="195" height="280" rx="10" fill="rgba(244,114,182,0.15)" stroke="#f472b6" stroke-width="1.5"/>
+  <text x="549" y="119" text-anchor="middle" font-size="14" font-weight="700" fill="#fbcfe8">정체</text>
+  <text x="549" y="137" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#f472b6">ln(vocab) 부근</text>
+  <rect x="468" y="155" width="163" height="190" fill="#020617" opacity="0.5"/>
+  <line x1="468" y1="345" x2="631" y2="345" stroke="#cbd5e1" stroke-width="1"/>
+  <line x1="468" y1="155" x2="468" y2="345" stroke="#cbd5e1" stroke-width="1"/>
+  <path d="M 468,184 L 477,184 L 485,184 L 494,184 L 502,184 L 511,184 L 519,184 L 528,184 L 537,184 L 545,184 L 554,184 L 562,184 L 571,184 L 580,184 L 588,184 L 597,184 L 605,184 L 614,184 L 622,184 L 631,184" stroke="#f472b6" stroke-width="2" fill="none"/>
+  <text x="549" y="367" text-anchor="middle" font-size="9" fill="#cbd5e1" font-family="JetBrains Mono, monospace">step →</text>
+  <rect x="659" y="95" width="195" height="280" rx="10" fill="rgba(251,191,36,0.15)" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="756" y="119" text-anchor="middle" font-size="14" font-weight="700" fill="#fde68a">스파이크</text>
+  <text x="756" y="137" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#fbbf24">한 번씩 ↑</text>
+  <rect x="675" y="155" width="163" height="190" fill="#020617" opacity="0.5"/>
+  <line x1="675" y1="345" x2="838" y2="345" stroke="#cbd5e1" stroke-width="1"/>
+  <line x1="675" y1="155" x2="675" y2="345" stroke="#cbd5e1" stroke-width="1"/>
+  <path d="M 675,193 L 684,218 L 692,238 L 701,253 L 709,265 L 718,274 L 726,281 L 735,287 L 744,215 L 752,295 L 761,298 L 769,300 L 778,301 L 787,303 L 795,228 L 804,304 L 812,305 L 821,305 L 829,306 L 838,306" stroke="#fbbf24" stroke-width="2" fill="none"/>
+  <text x="756" y="367" text-anchor="middle" font-size="9" fill="#cbd5e1" font-family="JetBrains Mono, monospace">step →</text>
+  <rect x="866" y="95" width="195" height="280" rx="10" fill="rgba(251,146,60,0.15)" stroke="#fb923c" stroke-width="1.5"/>
+  <text x="963" y="119" text-anchor="middle" font-size="14" font-weight="700" fill="#fed7aa">과적합</text>
+  <text x="963" y="137" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#fb923c">train ↓ val ↑</text>
+  <rect x="882" y="155" width="163" height="190" fill="#020617" opacity="0.5"/>
+  <line x1="882" y1="345" x2="1045" y2="345" stroke="#cbd5e1" stroke-width="1"/>
+  <line x1="882" y1="155" x2="882" y2="345" stroke="#cbd5e1" stroke-width="1"/>
+  <path d="M 882,184 L 891,218 L 899,243 L 908,262 L 916,276 L 925,287 L 933,294 L 942,300 L 951,304 L 959,307 L 968,310 L 976,312 L 985,313 L 994,314 L 1002,314 L 1011,315 L 1019,315 L 1028,316 L 1036,316 L 1045,316" stroke="#34d399" stroke-width="2" fill="none"/>
+  <path d="M 882,193 L 891,218 L 899,236 L 908,249 L 916,259 L 925,267 L 933,272 L 942,276 L 951,279 L 959,282 L 968,260 L 976,263 L 985,267 L 994,271 L 1002,275 L 1011,278 L 1019,282 L 1028,286 L 1036,290 L 1045,294" stroke="#f87171" stroke-width="2" fill="none" stroke-dasharray="4,2"/>
+  <text x="1041" y="169" text-anchor="end" font-size="9" fill="#34d399">train</text>
+  <text x="1041" y="183" text-anchor="end" font-size="9" fill="#f87171">val</text>
+  <text x="963" y="367" text-anchor="middle" font-size="9" fill="#cbd5e1" font-family="JetBrains Mono, monospace">step →</text>
+</svg>

@@ -18,6 +18,9 @@
 
 ---
 
+![캡스톤 10단계 풀 사이클](../assets/diagrams/capstone-pipeline.svg#only-light)
+![캡스톤 10단계 풀 사이클](../assets/diagrams/capstone-pipeline-dark.svg#only-dark)
+
 ## 1. 컨셉 — 다음 사람의 "기성 sLLM" 이 된다
 
 [Ch 22](../part7/22-choosing-slm.md) 에서 우리는 HuggingFace 의 기성 sLLM 7항목 (전체/활성 파라미터, 학습 토큰, 데이터 구성, context, 라이선스, 토크나이저, 양자화) 을 어떻게 읽는지 배웠다. 이 캡스톤은 그 7항목을 **본인이 직접 채우는 경험** 이다.

@@ -11,7 +11,7 @@ sys.path.insert(0, str(HERE))
 from svg_prim import (
     svg_header, svg_footer, text_title, text_subtitle,
     node, group_around_nodes, arrow_line, arrow_path,
-    arrow_legend, role_legend,
+    arrow_legend, role_legend, P, T,
 )
 
 BASE = str(HERE.parent / 'docs' / 'assets' / 'diagrams')
@@ -132,7 +132,73 @@ def api_vs_direct(theme):
     return '\n'.join(lines)
 
 
+# =====================================================================
+# Ch 4. 오픈 웨이트 SLM 풍경 — 크기 사다리 + dense/MoE
+# =====================================================================
+
+def open_weight_landscape(theme):
+    CW, CH = 1100, 540
+    NW, NH = 200, 80
+    lines = svg_header(CW, CH, theme)
+    lines.extend(text_title(CW // 2, 38, '오픈 웨이트 SLM 풍경 — 디바이스 사다리 + dense/MoE', theme, size=18))
+    lines.extend(text_subtitle(CW // 2, 60, '크기는 디바이스에 맞춘 정확한 컷. MoE 는 메모리 / 활성 두 숫자.', theme))
+
+    # 디바이스 사다리 (왼쪽 column)
+    rungs = [
+        ('input',  '모바일 (4GB)',     '0.5B ~ 2B',  'Llama 3.2-1B / Gemma 2-2B'),
+        ('token',  '노트북 (16GB)',    '3B ~ 7B',     'Phi-3-mini / Qwen 2.5-3B'),
+        ('model',  '단일 A100 (80GB)', '8B ~ 30B',    'Llama 3 8B / Phi-3-medium'),
+        ('llm',    '큰 GPU + 양자화',  '70B (int4)',  'Llama 3 70B / Qwen 2.5-72B'),
+    ]
+    y = 105
+    gap = 10
+    for role, title, sub, detail in rungs:
+        lines.extend(node(60, y, NW + 100, NH + 18, role, theme, title=title, sub=sub, detail=detail))
+        y += NH + 18 + gap
+
+    # 오른쪽: dense vs MoE
+    rx = 460
+    lines.extend(text_subtitle(rx + 280, 100, 'dense  vs  MoE', theme, size=14))
+
+    # dense
+    lines.extend(node(rx, 130, NW + 120, NH + 30, 'token', theme,
+                      title='dense', sub='모든 파라미터 활성',
+                      detail='Llama 3 70B = 70B 메모리 + 70B 속도'))
+    # MoE
+    lines.extend(node(rx + NW + 130, 130, NW + 120, NH + 30, 'memory', theme,
+                      title='MoE', sub='router 가 k 개 expert 만',
+                      detail='Mixtral 8×7B = 47B 메모리 + 13B 속도'))
+
+    # 비교 표
+    table_y = 270
+    lines.extend(text_subtitle(rx + 280, table_y - 10, '같은 표기 모델 둘 — 메모리 vs 속도 비교', theme, size=11))
+    rows = [
+        ('Llama 3 70B (dense)',  '140 GB',  '70B 속도'),
+        ('Mixtral 8×7B (MoE)',   '90 GB',   '13B 속도'),
+        ('DeepSeek-V3 (MoE)',    '671B 메모리', '37B 속도'),
+    ]
+    for i, (name, mem, spd) in enumerate(rows):
+        ry = table_y + 12 + i * 26
+        lines.extend([
+            f'  <text x="{rx + 12}" y="{ry}" font-size="11" fill="{T(theme)["title"]}">{name}</text>',
+            f'  <text x="{rx + 240}" y="{ry}" font-size="11" font-family="JetBrains Mono, monospace" fill="{P(theme)["memory"]["sub"]}">{mem}</text>',
+            f'  <text x="{rx + 360}" y="{ry}" font-size="11" font-family="JetBrains Mono, monospace" fill="{P(theme)["token"]["sub"]}">{spd}</text>',
+        ])
+
+    # 본 책 위치 (아래)
+    lines.extend(node(60, 470, NW + 100, NH - 10, 'output', theme,
+                      title='본 책 from-scratch', sub='10M dense decoder',
+                      detail='어디든 들어가는 작은 디코더'))
+    lines.extend(node(rx + 110, 470, NW + 130, NH - 10, 'gate', theme,
+                      title='본 책 캡스톤 (LoRA)', sub='Qwen 2.5-0.5B + 어댑터',
+                      detail='기성 + 본인 도메인'))
+
+    lines.extend(svg_footer())
+    return '\n'.join(lines)
+
+
 if __name__ == '__main__':
-    save('slm-three-forces', slm_three_forces('light'), slm_three_forces('dark'))
-    save('api-vs-direct',    api_vs_direct('light'),    api_vs_direct('dark'))
+    save('slm-three-forces',       slm_three_forces('light'),       slm_three_forces('dark'))
+    save('api-vs-direct',          api_vs_direct('light'),          api_vs_direct('dark'))
+    save('open-weight-landscape',  open_weight_landscape('light'),  open_weight_landscape('dark'))
     print('Done.')

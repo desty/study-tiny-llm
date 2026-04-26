@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 540" font-family="Pretendard, -apple-system, BlinkMacSystemFont, sans-serif">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5"/>
+    </pattern>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#64748b"/></marker>
+    <marker id="arr-input" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#60a5fa"/></marker>
+    <marker id="arr-llm" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#fb923c"/></marker>
+    <marker id="arr-model" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#a78bfa"/></marker>
+    <marker id="arr-token" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#34d399"/></marker>
+    <marker id="arr-output" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#34d399"/></marker>
+    <marker id="arr-gate" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#fbbf24"/></marker>
+    <marker id="arr-tool" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#22d3ee"/></marker>
+    <marker id="arr-memory" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#f472b6"/></marker>
+    <marker id="arr-error" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#f87171"/></marker>
+  </defs>
+  <rect width="1100" height="540" fill="#020617"/>
+  <rect width="1100" height="540" fill="url(#grid)"/>
+  <text x="550" y="38" text-anchor="middle" font-size="18" font-weight="700" fill="#f1f5f9">오픈 웨이트 SLM 풍경 — 디바이스 사다리 + dense/MoE</text>
+  <text x="550" y="60" text-anchor="middle" font-size="12" fill="#94a3b8">크기는 디바이스에 맞춘 정확한 컷. MoE 는 메모리 / 활성 두 숫자.</text>
+  <rect x="60" y="105" width="300" height="98" rx="10" fill="#0f172a"/>
+  <rect x="60" y="105" width="300" height="98" rx="10" fill="rgba(96,165,250,0.15)" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="210.0" y="150.0" text-anchor="middle" font-size="14" font-weight="700" fill="#bfdbfe">모바일 (4GB)</text>
+  <text x="210.0" y="166.0" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#60a5fa">0.5B ~ 2B</text>
+  <text x="210.0" y="182.0" text-anchor="middle" font-size="10" fill="#60a5fa">Llama 3.2-1B / Gemma 2-2B</text>
+  <rect x="60" y="213" width="300" height="98" rx="10" fill="#0f172a"/>
+  <rect x="60" y="213" width="300" height="98" rx="10" fill="rgba(52,211,153,0.15)" stroke="#34d399" stroke-width="1.5"/>
+  <text x="210.0" y="258.0" text-anchor="middle" font-size="14" font-weight="700" fill="#a7f3d0">노트북 (16GB)</text>
+  <text x="210.0" y="274.0" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#34d399">3B ~ 7B</text>
+  <text x="210.0" y="290.0" text-anchor="middle" font-size="10" fill="#34d399">Phi-3-mini / Qwen 2.5-3B</text>
+  <rect x="60" y="321" width="300" height="98" rx="10" fill="#0f172a"/>
+  <rect x="60" y="321" width="300" height="98" rx="10" fill="rgba(167,139,250,0.15)" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="210.0" y="366.0" text-anchor="middle" font-size="14" font-weight="700" fill="#ddd6fe">단일 A100 (80GB)</text>
+  <text x="210.0" y="382.0" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#a78bfa">8B ~ 30B</text>
+  <text x="210.0" y="398.0" text-anchor="middle" font-size="10" fill="#a78bfa">Llama 3 8B / Phi-3-medium</text>
+  <rect x="60" y="429" width="300" height="98" rx="10" fill="#0f172a"/>
+  <rect x="60" y="429" width="300" height="98" rx="10" fill="rgba(251,146,60,0.15)" stroke="#fb923c" stroke-width="1.5"/>
+  <text x="210.0" y="474.0" text-anchor="middle" font-size="14" font-weight="700" fill="#fed7aa">큰 GPU + 양자화</text>
+  <text x="210.0" y="490.0" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#fb923c">70B (int4)</text>
+  <text x="210.0" y="506.0" text-anchor="middle" font-size="10" fill="#fb923c">Llama 3 70B / Qwen 2.5-72B</text>
+  <text x="740" y="100" text-anchor="middle" font-size="14" fill="#94a3b8">dense  vs  MoE</text>
+  <rect x="460" y="130" width="320" height="110" rx="10" fill="#0f172a"/>
+  <rect x="460" y="130" width="320" height="110" rx="10" fill="rgba(52,211,153,0.15)" stroke="#34d399" stroke-width="1.5"/>
+  <text x="620.0" y="181.0" text-anchor="middle" font-size="14" font-weight="700" fill="#a7f3d0">dense</text>
+  <text x="620.0" y="197.0" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#34d399">모든 파라미터 활성</text>
+  <text x="620.0" y="213.0" text-anchor="middle" font-size="10" fill="#34d399">Llama 3 70B = 70B 메모리 + 70B 속도</text>
+  <rect x="790" y="130" width="320" height="110" rx="10" fill="#0f172a"/>
+  <rect x="790" y="130" width="320" height="110" rx="10" fill="rgba(244,114,182,0.15)" stroke="#f472b6" stroke-width="1.5"/>
+  <text x="950.0" y="181.0" text-anchor="middle" font-size="14" font-weight="700" fill="#fbcfe8">MoE</text>
+  <text x="950.0" y="197.0" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#f472b6">router 가 k 개 expert 만</text>
+  <text x="950.0" y="213.0" text-anchor="middle" font-size="10" fill="#f472b6">Mixtral 8×7B = 47B 메모리 + 13B 속도</text>
+  <text x="740" y="260" text-anchor="middle" font-size="11" fill="#94a3b8">같은 표기 모델 둘 — 메모리 vs 속도 비교</text>
+  <text x="472" y="282" font-size="11" fill="#f1f5f9">Llama 3 70B (dense)</text>
+  <text x="700" y="282" font-size="11" font-family="JetBrains Mono, monospace" fill="#f472b6">140 GB</text>
+  <text x="820" y="282" font-size="11" font-family="JetBrains Mono, monospace" fill="#34d399">70B 속도</text>
+  <text x="472" y="308" font-size="11" fill="#f1f5f9">Mixtral 8×7B (MoE)</text>
+  <text x="700" y="308" font-size="11" font-family="JetBrains Mono, monospace" fill="#f472b6">90 GB</text>
+  <text x="820" y="308" font-size="11" font-family="JetBrains Mono, monospace" fill="#34d399">13B 속도</text>
+  <text x="472" y="334" font-size="11" fill="#f1f5f9">DeepSeek-V3 (MoE)</text>
+  <text x="700" y="334" font-size="11" font-family="JetBrains Mono, monospace" fill="#f472b6">671B 메모리</text>
+  <text x="820" y="334" font-size="11" font-family="JetBrains Mono, monospace" fill="#34d399">37B 속도</text>
+  <rect x="60" y="470" width="300" height="70" rx="10" fill="#0f172a"/>
+  <rect x="60" y="470" width="300" height="70" rx="10" fill="rgba(52,211,153,0.2)" stroke="#34d399" stroke-width="1.5"/>
+  <text x="210.0" y="501.0" text-anchor="middle" font-size="14" font-weight="700" fill="#a7f3d0">본 책 from-scratch</text>
+  <text x="210.0" y="517.0" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#34d399">10M dense decoder</text>
+  <text x="210.0" y="533.0" text-anchor="middle" font-size="10" fill="#34d399">어디든 들어가는 작은 디코더</text>
+  <rect x="570" y="470" width="330" height="70" rx="10" fill="#0f172a"/>
+  <rect x="570" y="470" width="330" height="70" rx="10" fill="rgba(251,191,36,0.15)" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="735.0" y="501.0" text-anchor="middle" font-size="14" font-weight="700" fill="#fde68a">본 책 캡스톤 (LoRA)</text>
+  <text x="735.0" y="517.0" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#fbbf24">Qwen 2.5-0.5B + 어댑터</text>
+  <text x="735.0" y="533.0" text-anchor="middle" font-size="10" fill="#fbbf24">기성 + 본인 도메인</text>
+</svg>

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 460" font-family="Pretendard, -apple-system, BlinkMacSystemFont, sans-serif">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#f1f5f9" stroke-width="0.5"/>
+    </pattern>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#6b7280"/></marker>
+    <marker id="arr-input" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#2563eb"/></marker>
+    <marker id="arr-llm" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#ea580c"/></marker>
+    <marker id="arr-model" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#7c3aed"/></marker>
+    <marker id="arr-token" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#059669"/></marker>
+    <marker id="arr-output" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#059669"/></marker>
+    <marker id="arr-gate" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#ca8a04"/></marker>
+    <marker id="arr-tool" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#0891b2"/></marker>
+    <marker id="arr-memory" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#db2777"/></marker>
+    <marker id="arr-error" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#dc2626"/></marker>
+  </defs>
+  <rect width="980" height="460" fill="#ffffff"/>
+  <rect width="980" height="460" fill="url(#grid)"/>
+  <text x="490" y="38" text-anchor="middle" font-size="18" font-weight="700" fill="#0f172a">LoRA — 작은 두 행렬의 곱으로 ΔW 근사</text>
+  <text x="490" y="60" text-anchor="middle" font-size="12" fill="#64748b">W (동결) + B·A (학습) — r 만 작으면 파라미터 1% 미만</text>
+  <text x="230" y="118" text-anchor="middle" font-size="13" fill="#64748b">Full SFT</text>
+  <rect x="100" y="130" width="240" height="220" rx="10" fill="#f3e8ff" stroke="#7c3aed" stroke-width="2"/>
+  <text x="220" y="240" text-anchor="middle" font-size="32" font-weight="700" fill="#4c1d95">W</text>
+  <text x="220" y="280" text-anchor="middle" font-size="13" fill="#6d28d9" font-family="JetBrains Mono, monospace">d × d</text>
+  <text x="220" y="310" text-anchor="middle" font-size="12" fill="#b91c1c">전체 학습 (100%)</text>
+  <text x="740" y="118" text-anchor="middle" font-size="13" fill="#64748b">LoRA — W 동결 + BA 학습</text>
+  <rect x="540" y="130" width="160" height="220" rx="10" fill="#f3e8ff" stroke="#7c3aed" stroke-width="2" stroke-dasharray="6,3"/>
+  <text x="620" y="240" text-anchor="middle" font-size="28" font-weight="700" fill="#4c1d95">W</text>
+  <text x="620" y="275" text-anchor="middle" font-size="11" fill="#6d28d9" font-family="JetBrains Mono, monospace">d × d</text>
+  <text x="620" y="305" text-anchor="middle" font-size="11" font-weight="700" fill="#b91c1c">동결 (frozen)</text>
+  <text x="715" y="245" font-size="36" font-weight="700" fill="#0f172a">+</text>
+  <rect x="740" y="190" width="40" height="100" rx="6" fill="#dcfce7" stroke="#059669" stroke-width="2"/>
+  <text x="760" y="245" text-anchor="middle" font-size="22" font-weight="700" fill="#064e3b">B</text>
+  <text x="760" y="305" text-anchor="middle" font-size="10" fill="#047857" font-family="JetBrains Mono, monospace">d×r</text>
+  <text x="790" y="245" font-size="22" fill="#0f172a">·</text>
+  <rect x="805" y="230" width="100" height="20" rx="4" fill="#dcfce7" stroke="#059669" stroke-width="2"/>
+  <text x="855" y="245" text-anchor="middle" font-size="16" font-weight="700" fill="#064e3b">A</text>
+  <text x="855" y="305" text-anchor="middle" font-size="10" fill="#047857" font-family="JetBrains Mono, monospace">r×d</text>
+  <text x="740" y="360" text-anchor="middle" font-size="13" fill="#047857">학습 파라미터 = 2·d·r ≈ 1%</text>
+  <text x="220" y="390" text-anchor="middle" font-size="11" fill="#334155" font-family="JetBrains Mono, monospace">메모리 100% · 어댑터 = 모델 전체</text>
+  <text x="740" y="390" text-anchor="middle" font-size="11" fill="#334155" font-family="JetBrains Mono, monospace">메모리 ~20% · 어댑터 ~20MB</text>
+</svg>
