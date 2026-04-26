@@ -1,8 +1,8 @@
 # Tiny LLM from Scratch
 
-**A small language model, built by hand on your laptop.** Gather data, train a tokenizer, write the transformer yourself, and run a 10M-parameter model end-to-end in four hours. Quantize and serve it with `llama.cpp` to close.
+**Build a small language model directly on your laptop.** Collect data, train a tokenizer, hand-code a transformer, and run a 10M-parameter model end-to-end in under four hours — then quantize and serve it with `llama.cpp`.
 
-## What this book covers / doesn't
+## What this book covers / doesn't cover
 
 <div class="infocards">
   <div class="card">
@@ -25,6 +25,6 @@
 
 ## Where to go
 
-- [Learning System](about/system.md) — how each chapter is built
-- [Curriculum](about/curriculum.md) — all 20 chapters + capstone
-- [Start with Part 1](part1/01-return-of-slm.md) — why small models, why now
+- [Learning system](about/system.md) — how each chapter is structured
+- [Curriculum](about/curriculum.md) — all 32 chapters + capstone
+- [Start Part 1](part1/01-return-of-slm.md) — why small models, why now
