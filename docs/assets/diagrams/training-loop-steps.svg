@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 360" font-family="Pretendard, -apple-system, BlinkMacSystemFont, sans-serif">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#f1f5f9" stroke-width="0.5"/>
+    </pattern>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#6b7280"/></marker>
+    <marker id="arr-input" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#2563eb"/></marker>
+    <marker id="arr-llm" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#ea580c"/></marker>
+    <marker id="arr-model" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#7c3aed"/></marker>
+    <marker id="arr-token" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#059669"/></marker>
+    <marker id="arr-output" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#059669"/></marker>
+    <marker id="arr-gate" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#ca8a04"/></marker>
+    <marker id="arr-tool" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#0891b2"/></marker>
+    <marker id="arr-memory" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#db2777"/></marker>
+    <marker id="arr-error" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#dc2626"/></marker>
+  </defs>
+  <rect width="1100" height="360" fill="#ffffff"/>
+  <rect width="1100" height="360" fill="url(#grid)"/>
+  <text x="550" y="38" text-anchor="middle" font-size="18" font-weight="700" fill="#0f172a">한 Step 의 6단계 — 모든 학습 루프의 본체</text>
+  <text x="550" y="60" text-anchor="middle" font-size="12" fill="#64748b">nanoGPT · Llama · GPT-4 모두 동일 — 분산·precision 만 다름</text>
+  <rect x="85" y="88" width="140" height="108" rx="10" fill="#e3f2fd" stroke="#2563eb" stroke-width="2"/>
+  <circle cx="155" cy="106" r="14" fill="#2563eb"/>
+  <text x="155" y="102" text-anchor="middle" font-size="9" font-weight="700" fill="#ffffff" font-family="JetBrains Mono, monospace">1</text>
+  <text x="155" y="112" text-anchor="middle" font-size="9" font-weight="700" fill="#ffffff" font-family="JetBrains Mono, monospace">forward</text>
+  <text x="155" y="140" text-anchor="middle" font-size="10.5" font-family="JetBrains Mono, monospace" fill="#0d47a1">logits, loss</text>
+  <text x="155" y="154" text-anchor="middle" font-size="10.5" font-family="JetBrains Mono, monospace" fill="#0d47a1">= model(x, y)</text>
+  <text x="155" y="188" text-anchor="middle" font-size="10" fill="#1e40af">현재 파라미터로 예측</text>
+  <path d="M 227,142 L 241,142" stroke="#6b7280" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <rect x="243" y="88" width="140" height="108" rx="10" fill="#f3e8ff" stroke="#7c3aed" stroke-width="2"/>
+  <circle cx="313" cy="106" r="14" fill="#7c3aed"/>
+  <text x="313" y="102" text-anchor="middle" font-size="9" font-weight="700" fill="#ffffff" font-family="JetBrains Mono, monospace">2</text>
+  <text x="313" y="112" text-anchor="middle" font-size="9" font-weight="700" fill="#ffffff" font-family="JetBrains Mono, monospace">backward</text>
+  <text x="313" y="140" text-anchor="middle" font-size="10.5" font-family="JetBrains Mono, monospace" fill="#4c1d95">loss.backward()</text>
+  <text x="313" y="188" text-anchor="middle" font-size="10" fill="#6d28d9">gradient 계산</text>
+  <path d="M 385,142 L 399,142" stroke="#6b7280" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <rect x="401" y="88" width="140" height="108" rx="10" fill="#fef9c3" stroke="#ca8a04" stroke-width="2"/>
+  <circle cx="471" cy="106" r="14" fill="#ca8a04"/>
+  <text x="471" y="102" text-anchor="middle" font-size="9" font-weight="700" fill="#ffffff" font-family="JetBrains Mono, monospace">3</text>
+  <text x="471" y="112" text-anchor="middle" font-size="9" font-weight="700" fill="#ffffff" font-family="JetBrains Mono, monospace">clip</text>
+  <text x="471" y="140" text-anchor="middle" font-size="10.5" font-family="JetBrains Mono, monospace" fill="#713f12">clip_grad_norm_</text>
+  <text x="471" y="154" text-anchor="middle" font-size="10.5" font-family="JetBrains Mono, monospace" fill="#713f12">(model, 1.0)</text>
+  <text x="471" y="188" text-anchor="middle" font-size="10" fill="#a16207">발산 방지</text>
+  <path d="M 543,142 L 557,142" stroke="#6b7280" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <rect x="559" y="88" width="140" height="108" rx="10" fill="#fef3e0" stroke="#ea580c" stroke-width="2"/>
+  <circle cx="629" cy="106" r="14" fill="#ea580c"/>
+  <text x="629" y="102" text-anchor="middle" font-size="9" font-weight="700" fill="#ffffff" font-family="JetBrains Mono, monospace">4</text>
+  <text x="629" y="112" text-anchor="middle" font-size="9" font-weight="700" fill="#ffffff" font-family="JetBrains Mono, monospace">step</text>
+  <text x="629" y="140" text-anchor="middle" font-size="10.5" font-family="JetBrains Mono, monospace" fill="#9a3412">optimizer.step()</text>
+  <text x="629" y="188" text-anchor="middle" font-size="10" fill="#c2410c">θ -= lr × grad</text>
+  <path d="M 701,142 L 715,142" stroke="#6b7280" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <rect x="717" y="88" width="140" height="108" rx="10" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+  <circle cx="787" cy="106" r="14" fill="#dc2626"/>
+  <text x="787" y="102" text-anchor="middle" font-size="9" font-weight="700" fill="#ffffff" font-family="JetBrains Mono, monospace">5</text>
+  <text x="787" y="112" text-anchor="middle" font-size="9" font-weight="700" fill="#ffffff" font-family="JetBrains Mono, monospace">zero_grad</text>
+  <text x="787" y="140" text-anchor="middle" font-size="10.5" font-family="JetBrains Mono, monospace" fill="#7f1d1d">optimizer</text>
+  <text x="787" y="154" text-anchor="middle" font-size="10.5" font-family="JetBrains Mono, monospace" fill="#7f1d1d">.zero_grad()</text>
+  <text x="787" y="188" text-anchor="middle" font-size="10" fill="#b91c1c">다음 step 초기화</text>
+  <path d="M 859,142 L 873,142" stroke="#6b7280" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <rect x="875" y="88" width="140" height="108" rx="10" fill="#dcfce7" stroke="#059669" stroke-width="2"/>
+  <circle cx="945" cy="106" r="14" fill="#059669"/>
+  <text x="945" y="102" text-anchor="middle" font-size="9" font-weight="700" fill="#ffffff" font-family="JetBrains Mono, monospace">6</text>
+  <text x="945" y="112" text-anchor="middle" font-size="9" font-weight="700" fill="#ffffff" font-family="JetBrains Mono, monospace">scheduler</text>
+  <text x="945" y="140" text-anchor="middle" font-size="10.5" font-family="JetBrains Mono, monospace" fill="#064e3b">scheduler.step()</text>
+  <text x="945" y="188" text-anchor="middle" font-size="10" fill="#047857">lr warmup→cosine</text>
+  <path d="M 945,198 L 945,218 L 155,218 L 155,198" stroke="#6b7280" stroke-width="1.5" fill="none" stroke-dasharray="5,3" marker-end="url(#arr)"/>
+  <text x="550" y="234" text-anchor="middle" font-size="11" fill="#64748b">다음 batch 반복 (수천~수만 step)</text>
+</svg>

@@ -15,6 +15,9 @@
 
 ---
 
+![서빙 스택 비교 — llama.cpp · vLLM · TGI · Ollama](../assets/diagrams/serving-stacks.svg#only-light)
+![서빙 스택 비교 — llama.cpp · vLLM · TGI · Ollama](../assets/diagrams/serving-stacks-dark.svg#only-dark)
+
 ## 1. 서빙 스택 비교
 
 | 스택 | 강점 | 약점 | 어디 |

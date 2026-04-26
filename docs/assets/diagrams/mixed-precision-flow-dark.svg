@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 380" font-family="Pretendard, -apple-system, BlinkMacSystemFont, sans-serif">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5"/>
+    </pattern>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#64748b"/></marker>
+    <marker id="arr-input" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#60a5fa"/></marker>
+    <marker id="arr-llm" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#fb923c"/></marker>
+    <marker id="arr-model" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#a78bfa"/></marker>
+    <marker id="arr-token" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#34d399"/></marker>
+    <marker id="arr-output" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#34d399"/></marker>
+    <marker id="arr-gate" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#fbbf24"/></marker>
+    <marker id="arr-tool" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#22d3ee"/></marker>
+    <marker id="arr-memory" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#f472b6"/></marker>
+    <marker id="arr-error" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#f87171"/></marker>
+  </defs>
+  <rect width="1100" height="380" fill="#020617"/>
+  <rect width="1100" height="380" fill="url(#grid)"/>
+  <text x="550" y="38" text-anchor="middle" font-size="18" font-weight="700" fill="#f1f5f9">Mixed Precision + Gradient Accumulation</text>
+  <text x="550" y="60" text-anchor="middle" font-size="12" fill="#94a3b8">bf16 forward · fp32 master copy · 작은 batch × 누적 = 큰 batch 효과</text>
+  <rect x="60" y="86" width="300" height="74" rx="8" fill="rgba(96,165,250,0.15)" stroke="#60a5fa" stroke-width="1.8"/>
+  <text x="210" y="106" text-anchor="middle" font-size="12" font-weight="700" fill="#bfdbfe">fp32 Master Weight</text>
+  <text x="210" y="124" text-anchor="middle" font-size="10" font-family="JetBrains Mono, monospace" fill="#60a5fa">4 bytes · 정밀한 업데이트</text>
+  <text x="210" y="138" text-anchor="middle" font-size="10" font-family="JetBrains Mono, monospace" fill="#60a5fa">학습률·모멘텀 상태 보관</text>
+  <rect x="60" y="174" width="300" height="74" rx="8" fill="rgba(167,139,250,0.15)" stroke="#a78bfa" stroke-width="1.8"/>
+  <text x="210" y="194" text-anchor="middle" font-size="12" font-weight="700" fill="#ddd6fe">bf16 Forward/Backward</text>
+  <text x="210" y="212" text-anchor="middle" font-size="10" font-family="JetBrains Mono, monospace" fill="#a78bfa">2 bytes · overflow 없음</text>
+  <text x="210" y="226" text-anchor="middle" font-size="10" font-family="JetBrains Mono, monospace" fill="#a78bfa">(=fp32 지수 범위)</text>
+  <text x="210" y="240" text-anchor="middle" font-size="10" font-family="JetBrains Mono, monospace" fill="#a78bfa">A100/H100 네이티브 지원</text>
+  <rect x="60" y="262" width="300" height="74" rx="8" fill="rgba(251,191,36,0.15)" stroke="#fbbf24" stroke-width="1.8"/>
+  <text x="210" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="#fde68a">fp16 (T4 한정)</text>
+  <text x="210" y="300" text-anchor="middle" font-size="10" font-family="JetBrains Mono, monospace" fill="#fbbf24">2 bytes · overflow 위험</text>
+  <text x="210" y="314" text-anchor="middle" font-size="10" font-family="JetBrains Mono, monospace" fill="#fbbf24">Loss scaling 필수</text>
+  <text x="210" y="328" text-anchor="middle" font-size="10" font-family="JetBrains Mono, monospace" fill="#fbbf24">T4 bf16 미지원</text>
+  <text x="210" y="360" text-anchor="middle" font-size="10" fill="#94a3b8">autocast(device_type, dtype=torch.bfloat16)</text>
+  <text x="740" y="76" text-anchor="middle" font-size="13" font-weight="700" fill="#f1f5f9">Gradient Accumulation</text>
+  <text x="740" y="92" text-anchor="middle" font-size="10" fill="#94a3b8">batch=4, accum=8 → effective batch=32</text>
+  <rect x="460" y="108" width="60" height="44" rx="5" fill="rgba(96,165,250,0.15)" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="490" y="122" text-anchor="middle" font-size="9" font-family="JetBrains Mono, monospace" fill="#bfdbfe">mini</text>
+  <text x="490" y="135" text-anchor="middle" font-size="9" font-family="JetBrains Mono, monospace" fill="#bfdbfe">batch 1</text>
+  <rect x="530" y="108" width="60" height="44" rx="5" fill="rgba(96,165,250,0.15)" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="560" y="122" text-anchor="middle" font-size="9" font-family="JetBrains Mono, monospace" fill="#bfdbfe">mini</text>
+  <text x="560" y="135" text-anchor="middle" font-size="9" font-family="JetBrains Mono, monospace" fill="#bfdbfe">batch 2</text>
+  <rect x="600" y="108" width="60" height="44" rx="5" fill="rgba(96,165,250,0.15)" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="630" y="122" text-anchor="middle" font-size="9" font-family="JetBrains Mono, monospace" fill="#bfdbfe">mini</text>
+  <text x="630" y="135" text-anchor="middle" font-size="9" font-family="JetBrains Mono, monospace" fill="#bfdbfe">batch 3</text>
+  <rect x="670" y="108" width="60" height="44" rx="5" fill="rgba(96,165,250,0.15)" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="700" y="122" text-anchor="middle" font-size="9" font-family="JetBrains Mono, monospace" fill="#bfdbfe">mini</text>
+  <text x="700" y="135" text-anchor="middle" font-size="9" font-family="JetBrains Mono, monospace" fill="#bfdbfe">batch 4</text>
+  <rect x="740" y="108" width="60" height="44" rx="5" fill="rgba(96,165,250,0.15)" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="770" y="122" text-anchor="middle" font-size="9" font-family="JetBrains Mono, monospace" fill="#bfdbfe">mini</text>
+  <text x="770" y="135" text-anchor="middle" font-size="9" font-family="JetBrains Mono, monospace" fill="#bfdbfe">batch 5</text>
+  <rect x="810" y="108" width="60" height="44" rx="5" fill="rgba(96,165,250,0.15)" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="840" y="122" text-anchor="middle" font-size="9" font-family="JetBrains Mono, monospace" fill="#bfdbfe">mini</text>
+  <text x="840" y="135" text-anchor="middle" font-size="9" font-family="JetBrains Mono, monospace" fill="#bfdbfe">batch 6</text>
+  <rect x="880" y="108" width="60" height="44" rx="5" fill="rgba(96,165,250,0.15)" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="910" y="122" text-anchor="middle" font-size="9" font-family="JetBrains Mono, monospace" fill="#bfdbfe">mini</text>
+  <text x="910" y="135" text-anchor="middle" font-size="9" font-family="JetBrains Mono, monospace" fill="#bfdbfe">batch 7</text>
+  <rect x="950" y="108" width="60" height="44" rx="5" fill="rgba(52,211,153,0.2)" stroke="#34d399" stroke-width="1.5"/>
+  <text x="980" y="122" text-anchor="middle" font-size="9" font-family="JetBrains Mono, monospace" fill="#a7f3d0">optimizer</text>
+  <text x="980" y="135" text-anchor="middle" font-size="9" font-family="JetBrains Mono, monospace" fill="#a7f3d0">.step()</text>
+  <path d="M 521,130 L 530,130" stroke="#64748b" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <path d="M 591,130 L 600,130" stroke="#64748b" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <path d="M 661,130 L 670,130" stroke="#64748b" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <path d="M 731,130 L 740,130" stroke="#64748b" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <path d="M 801,130 L 810,130" stroke="#64748b" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <path d="M 871,130 L 880,130" stroke="#64748b" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <path d="M 941,130 L 950,130" stroke="#64748b" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <text x="740" y="168" text-anchor="middle" font-size="10" fill="#94a3b8">gradient 누적 (÷8 안 하면 loss scale 주의)</text>
+  <rect x="460" y="172" width="60" height="18" rx="3" fill="#0f172a" stroke="#334155" stroke-width="0.8"/>
+  <rect x="460" y="172" width="7" height="18" rx="3" fill="#34d399" opacity="0.6"/>
+  <rect x="530" y="172" width="60" height="18" rx="3" fill="#0f172a" stroke="#334155" stroke-width="0.8"/>
+  <rect x="530" y="172" width="14" height="18" rx="3" fill="#34d399" opacity="0.6"/>
+  <rect x="600" y="172" width="60" height="18" rx="3" fill="#0f172a" stroke="#334155" stroke-width="0.8"/>
+  <rect x="600" y="172" width="21" height="18" rx="3" fill="#34d399" opacity="0.6"/>
+  <rect x="670" y="172" width="60" height="18" rx="3" fill="#0f172a" stroke="#334155" stroke-width="0.8"/>
+  <rect x="670" y="172" width="29" height="18" rx="3" fill="#34d399" opacity="0.6"/>
+  <rect x="740" y="172" width="60" height="18" rx="3" fill="#0f172a" stroke="#334155" stroke-width="0.8"/>
+  <rect x="740" y="172" width="36" height="18" rx="3" fill="#34d399" opacity="0.6"/>
+  <rect x="810" y="172" width="60" height="18" rx="3" fill="#0f172a" stroke="#334155" stroke-width="0.8"/>
+  <rect x="810" y="172" width="43" height="18" rx="3" fill="#34d399" opacity="0.6"/>
+  <rect x="880" y="172" width="60" height="18" rx="3" fill="#0f172a" stroke="#334155" stroke-width="0.8"/>
+  <rect x="880" y="172" width="50" height="18" rx="3" fill="#34d399" opacity="0.6"/>
+  <rect x="950" y="172" width="60" height="18" rx="3" fill="#0f172a" stroke="#334155" stroke-width="0.8"/>
+  <rect x="950" y="172" width="58" height="18" rx="3" fill="#34d399" opacity="0.6"/>
+  <rect x="460" y="204" width="560" height="36" rx="6" fill="#0f172a" stroke="#334155" stroke-width="0.8"/>
+  <text x="740" y="218" text-anchor="middle" font-size="11" font-weight="700" fill="#cbd5e1">Gradient Checkpointing: activation 재계산 → 메모리 ↓ 30~40% / 속도 ↓ 10~20%</text>
+  <text x="740" y="232" text-anchor="middle" font-size="10" font-family="JetBrains Mono, monospace" fill="#cbd5e1">model.gradient_checkpointing_enable() 한 줄</text>
+</svg>

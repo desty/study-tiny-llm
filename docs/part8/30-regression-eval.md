@@ -15,6 +15,9 @@
 
 ---
 
+![운영 평가 5축 — 회귀 · OOD · Adversarial · A/B · Hold-out](../assets/diagrams/eval-axes.svg#only-light)
+![운영 평가 5축 — 회귀 · OOD · Adversarial · A/B · Hold-out](../assets/diagrams/eval-axes-dark.svg#only-dark)
+
 ## 1. 컨셉 — 평가 3축
 
 | 평가 | 무엇 | 통과 기준 |

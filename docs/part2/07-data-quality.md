@@ -15,6 +15,9 @@
 
 ---
 
+![데이터 품질 4축 — 다양성 · 밀도 · 정확성 · 무중복](../assets/diagrams/data-quality-axes.svg#only-light)
+![데이터 품질 4축 — 다양성 · 밀도 · 정확성 · 무중복](../assets/diagrams/data-quality-axes-dark.svg#only-dark)
+
 ## 1. 개념 — 품질의 정의
 
 "좋은 학습 데이터" 는 다음 4 축의 함수다:

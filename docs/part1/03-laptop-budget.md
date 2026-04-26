@@ -11,6 +11,9 @@
 
 ---
 
+![학습 가능 3축 — 메모리 · 연산 · 시간](../assets/diagrams/training-budget-axes.svg#only-light)
+![학습 가능 3축 — 메모리 · 연산 · 시간](../assets/diagrams/training-budget-axes-dark.svg#only-dark)
+
 ## 1. 개념 — "가능하다"는 세 축
 
 직접 학습이 가능한가는 세 축의 **모두 통과**여야 한다.

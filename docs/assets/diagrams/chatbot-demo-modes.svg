@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 380" font-family="Pretendard, -apple-system, BlinkMacSystemFont, sans-serif">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#f1f5f9" stroke-width="0.5"/>
+    </pattern>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#6b7280"/></marker>
+    <marker id="arr-input" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#2563eb"/></marker>
+    <marker id="arr-llm" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#ea580c"/></marker>
+    <marker id="arr-model" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#7c3aed"/></marker>
+    <marker id="arr-token" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#059669"/></marker>
+    <marker id="arr-output" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#059669"/></marker>
+    <marker id="arr-gate" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#ca8a04"/></marker>
+    <marker id="arr-tool" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#0891b2"/></marker>
+    <marker id="arr-memory" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#db2777"/></marker>
+    <marker id="arr-error" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#dc2626"/></marker>
+  </defs>
+  <rect width="1100" height="380" fill="#ffffff"/>
+  <rect width="1100" height="380" fill="url(#grid)"/>
+  <text x="550" y="38" text-anchor="middle" font-size="18" font-weight="700" fill="#0f172a">3가지 데모 형태 — CLI · Python REPL · Gradio Spaces</text>
+  <text x="550" y="60" text-anchor="middle" font-size="12" fill="#64748b">같은 GGUF 모델, 다른 껍데기 — 목적에 따라 고른다</text>
+  <rect x="85" y="86" width="290" height="180" rx="10" fill="#e3f2fd" stroke="#2563eb" stroke-width="2"/>
+  <text x="230" y="112" text-anchor="middle" font-size="15" font-weight="700" fill="#0d47a1">CLI 한 줄</text>
+  <text x="230" y="128" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#1e40af">Ch 20 llama-cli</text>
+  <rect x="97" y="140" width="266" height="52" rx="5" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.8"/>
+  <text x="103" y="156" font-size="9.5" font-family="JetBrains Mono, monospace" fill="#334155">llama-cli -m tiny-tale-q4km.gguf \</text>
+  <text x="103" y="172" font-size="9.5" font-family="JetBrains Mono, monospace" fill="#334155">  -p "Once upon a time"</text>
+  <text x="230" y="206" text-anchor="middle" font-size="11" fill="#0d47a1">데모·빠른 디버깅</text>
+  <text x="230" y="221" text-anchor="middle" font-size="11" fill="#0d47a1">설치 외 설정 없음</text>
+  <text x="230" y="242" text-anchor="middle" font-size="10" fill="#1e40af">× 대화 유지 안 됨</text>
+  <text x="230" y="256" text-anchor="middle" font-size="10" fill="#1e40af">× 공유 불가</text>
+  <rect x="405" y="86" width="290" height="180" rx="10" fill="#f3e8ff" stroke="#7c3aed" stroke-width="2"/>
+  <text x="550" y="112" text-anchor="middle" font-size="15" font-weight="700" fill="#4c1d95">Python REPL 루프</text>
+  <text x="550" y="128" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#6d28d9">본 챕터 핵심</text>
+  <rect x="417" y="140" width="266" height="52" rx="5" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.8"/>
+  <text x="423" y="156" font-size="9.5" font-family="JetBrains Mono, monospace" fill="#334155">from llama_cpp import Llama</text>
+  <text x="423" y="172" font-size="9.5" font-family="JetBrains Mono, monospace" fill="#334155">llm = Llama(model_path=...)</text>
+  <text x="423" y="188" font-size="9.5" font-family="JetBrains Mono, monospace" fill="#334155">while True: llm(input(">>> "))</text>
+  <text x="550" y="206" text-anchor="middle" font-size="11" fill="#4c1d95">노트북 시연</text>
+  <text x="550" y="221" text-anchor="middle" font-size="11" fill="#4c1d95">파라미터 실험 쉬움</text>
+  <text x="550" y="242" text-anchor="middle" font-size="10" fill="#6d28d9">△ 터미널만 가능</text>
+  <text x="550" y="256" text-anchor="middle" font-size="10" fill="#6d28d9">× URL 공유 불가</text>
+  <rect x="725" y="86" width="290" height="180" rx="10" fill="#d1fae5" stroke="#059669" stroke-width="2"/>
+  <text x="870" y="112" text-anchor="middle" font-size="15" font-weight="700" fill="#064e3b">Gradio Spaces</text>
+  <text x="870" y="128" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#047857">캡스톤 마지막 단계</text>
+  <rect x="737" y="140" width="266" height="52" rx="5" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.8"/>
+  <text x="743" y="156" font-size="9.5" font-family="JetBrains Mono, monospace" fill="#334155">import gradio as gr</text>
+  <text x="743" y="172" font-size="9.5" font-family="JetBrains Mono, monospace" fill="#334155">gr.ChatInterface(fn=chat).launch()</text>
+  <text x="743" y="188" font-size="9.5" font-family="JetBrains Mono, monospace" fill="#334155">→ HuggingFace Spaces 배포</text>
+  <text x="870" y="206" text-anchor="middle" font-size="11" fill="#064e3b">공개 URL · 누구나 접근</text>
+  <text x="870" y="221" text-anchor="middle" font-size="11" fill="#064e3b">LinkedIn · 발표용</text>
+  <text x="870" y="242" text-anchor="middle" font-size="10" fill="#047857">○ 설정 필요</text>
+  <text x="870" y="256" text-anchor="middle" font-size="10" fill="#047857">○ 퍼블릭 노출</text>
+  <text x="550" y="360" text-anchor="middle" font-size="12" fill="#64748b">본 챕터 = Python REPL · 캡스톤 = Gradio Spaces (HF Hub 업로드 + 데모)</text>
+</svg>

@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 360" font-family="Pretendard, -apple-system, BlinkMacSystemFont, sans-serif">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#f1f5f9" stroke-width="0.5"/>
+    </pattern>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#6b7280"/></marker>
+    <marker id="arr-input" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#2563eb"/></marker>
+    <marker id="arr-llm" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#ea580c"/></marker>
+    <marker id="arr-model" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#7c3aed"/></marker>
+    <marker id="arr-token" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#059669"/></marker>
+    <marker id="arr-output" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#059669"/></marker>
+    <marker id="arr-gate" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#ca8a04"/></marker>
+    <marker id="arr-tool" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#0891b2"/></marker>
+    <marker id="arr-memory" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#db2777"/></marker>
+    <marker id="arr-error" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#dc2626"/></marker>
+  </defs>
+  <rect width="1100" height="360" fill="#ffffff"/>
+  <rect width="1100" height="360" fill="url(#grid)"/>
+  <text x="550" y="38" text-anchor="middle" font-size="18" font-weight="700" fill="#0f172a">운영 데이터 파이프라인 — PII · 라벨 · 버전</text>
+  <text x="550" y="60" text-anchor="middle" font-size="12" fill="#64748b">실로그는 법무·보안·품질 세 게이트를 통과해야 학습 가능</text>
+  <rect x="78" y="90" width="168" height="105" rx="10" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+  <text x="162" y="110" text-anchor="middle" font-size="13" font-weight="700" fill="#7f1d1d">원시 실로그</text>
+  <text x="162" y="126" text-anchor="middle" font-size="11" fill="#b91c1c">콜·채팅·CRM</text>
+  <line x1="92" y1="134" x2="232" y2="134" stroke="#dc2626" stroke-width="0.5" stroke-dasharray="3,3"/>
+  <text x="162" y="150" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#b91c1c">PII 무더기</text>
+  <text x="162" y="166" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#b91c1c">개인정보 포함</text>
+  <path d="M 248,142 L 270,142" stroke="#6b7280" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <rect x="272" y="90" width="168" height="105" rx="10" fill="#fef9c3" stroke="#ca8a04" stroke-width="2"/>
+  <text x="356" y="110" text-anchor="middle" font-size="13" font-weight="700" fill="#713f12">PII 마스킹</text>
+  <text x="356" y="126" text-anchor="middle" font-size="11" fill="#a16207">4단계 필터</text>
+  <line x1="286" y1="134" x2="426" y2="134" stroke="#ca8a04" stroke-width="0.5" stroke-dasharray="3,3"/>
+  <text x="356" y="150" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#a16207">정규식→NER</text>
+  <text x="356" y="166" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#a16207">→사람→감사</text>
+  <path d="M 442,142 L 464,142" stroke="#6b7280" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <rect x="466" y="90" width="168" height="105" rx="10" fill="#e3f2fd" stroke="#2563eb" stroke-width="2"/>
+  <text x="550" y="110" text-anchor="middle" font-size="13" font-weight="700" fill="#0d47a1">합성 라벨</text>
+  <text x="550" y="126" text-anchor="middle" font-size="11" fill="#1e40af">Teacher + 사람</text>
+  <line x1="480" y1="134" x2="620" y2="134" stroke="#2563eb" stroke-width="0.5" stroke-dasharray="3,3"/>
+  <text x="550" y="150" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#1e40af">LLM 제안</text>
+  <text x="550" y="166" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#1e40af">+ 검수·IAA</text>
+  <path d="M 636,142 L 658,142" stroke="#6b7280" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <rect x="660" y="90" width="168" height="105" rx="10" fill="#f3e8ff" stroke="#7c3aed" stroke-width="2"/>
+  <text x="744" y="110" text-anchor="middle" font-size="13" font-weight="700" fill="#4c1d95">데이터 버전</text>
+  <text x="744" y="126" text-anchor="middle" font-size="11" fill="#6d28d9">DVC/MLflow</text>
+  <line x1="674" y1="134" x2="814" y2="134" stroke="#7c3aed" stroke-width="0.5" stroke-dasharray="3,3"/>
+  <text x="744" y="150" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#6d28d9">hash 기록</text>
+  <text x="744" y="166" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#6d28d9">학습 1:1 추적</text>
+  <path d="M 830,142 L 852,142" stroke="#6b7280" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <rect x="854" y="90" width="168" height="105" rx="10" fill="#d1fae5" stroke="#059669" stroke-width="2"/>
+  <text x="938" y="110" text-anchor="middle" font-size="13" font-weight="700" fill="#064e3b">학습 준비 완료</text>
+  <text x="938" y="126" text-anchor="middle" font-size="11" fill="#047857">배포 허가</text>
+  <line x1="868" y1="134" x2="1008" y2="134" stroke="#059669" stroke-width="0.5" stroke-dasharray="3,3"/>
+  <text x="938" y="150" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#047857">법무 승인</text>
+  <text x="938" y="166" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#047857">품질 게이트 통과</text>
+  <rect x="78" y="223" width="944" height="40" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="550" y="238" text-anchor="middle" font-size="11" font-weight="700" fill="#334155">IAA (Inter-Annotator Agreement) — Cohen κ ≥ 0.8 기준 · 불일치 = 재학습 신호</text>
+  <text x="550" y="254" text-anchor="middle" font-size="10" font-family="JetBrains Mono, monospace" fill="#334155">데이터 버전 = 모델 버전 — 어떤 데이터로 어떤 모델이 나왔는지 1:1 추적</text>
+</svg>

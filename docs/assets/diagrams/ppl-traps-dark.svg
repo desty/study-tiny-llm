@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 440" font-family="Pretendard, -apple-system, BlinkMacSystemFont, sans-serif">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5"/>
+    </pattern>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#64748b"/></marker>
+    <marker id="arr-input" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#60a5fa"/></marker>
+    <marker id="arr-llm" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#fb923c"/></marker>
+    <marker id="arr-model" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#a78bfa"/></marker>
+    <marker id="arr-token" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#34d399"/></marker>
+    <marker id="arr-output" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#34d399"/></marker>
+    <marker id="arr-gate" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#fbbf24"/></marker>
+    <marker id="arr-tool" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#22d3ee"/></marker>
+    <marker id="arr-memory" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#f472b6"/></marker>
+    <marker id="arr-error" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#f87171"/></marker>
+  </defs>
+  <rect width="1100" height="440" fill="#020617"/>
+  <rect width="1100" height="440" fill="url(#grid)"/>
+  <text x="550" y="38" text-anchor="middle" font-size="18" font-weight="700" fill="#f1f5f9">PPL 이 거짓말하는 4가지 순간</text>
+  <text x="550" y="60" text-anchor="middle" font-size="12" fill="#94a3b8">PPL 이 낮아도 실제 품질이 높지 않을 수 있다 — 원인별 점검</text>
+  <rect x="60" y="90" width="230" height="160" rx="10" fill="rgba(248,113,113,0.15)" stroke="#f87171" stroke-width="2"/>
+  <text x="175" y="114" text-anchor="middle" font-size="14" font-weight="700" fill="#fecaca">① 토크나이저 불일치</text>
+  <text x="175" y="132" text-anchor="middle" font-size="11" fill="#f87171">vocab 크기가 다르면 비교 불가</text>
+  <line x1="76" y1="142" x2="274" y2="142" stroke="#f87171" stroke-width="0.6" stroke-dasharray="4,3"/>
+  <text x="175" y="162" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#f87171">A: "안녕"→6토큰 PPL5</text>
+  <text x="175" y="180" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#f87171">B: "안녕"→1토큰 PPL50</text>
+  <text x="175" y="198" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#f87171">→ B가 더 나쁜 모델 아님</text>
+  <rect x="310" y="90" width="230" height="160" rx="10" fill="rgba(251,191,36,0.15)" stroke="#fbbf24" stroke-width="2"/>
+  <text x="425" y="114" text-anchor="middle" font-size="14" font-weight="700" fill="#fde68a">② 도메인 밖 텍스트</text>
+  <text x="425" y="132" text-anchor="middle" font-size="11" fill="#fbbf24">학습 도메인 밖 = PPL 폭등</text>
+  <line x1="326" y1="142" x2="524" y2="142" stroke="#fbbf24" stroke-width="0.6" stroke-dasharray="4,3"/>
+  <text x="425" y="162" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#fbbf24">동화 모델에 코드 입력</text>
+  <text x="425" y="180" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#fbbf24">→ PPL 500+</text>
+  <text x="425" y="198" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#fbbf24">실제 동화 능력과 무관</text>
+  <rect x="560" y="90" width="230" height="160" rx="10" fill="rgba(167,139,250,0.15)" stroke="#a78bfa" stroke-width="2"/>
+  <text x="675" y="114" text-anchor="middle" font-size="14" font-weight="700" fill="#ddd6fe">③ 데이터 오염</text>
+  <text x="675" y="132" text-anchor="middle" font-size="11" fill="#a78bfa">테스트 셋이 학습에 끼면</text>
+  <line x1="576" y1="142" x2="774" y2="142" stroke="#a78bfa" stroke-width="0.6" stroke-dasharray="4,3"/>
+  <text x="675" y="162" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#a78bfa">Common Crawl → 벤치마크 포함</text>
+  <text x="675" y="180" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#a78bfa">→ PPL 인위적으로 낮음</text>
+  <text x="675" y="198" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#a78bfa">eval set isolation 필수</text>
+  <rect x="810" y="90" width="230" height="160" rx="10" fill="rgba(251,146,60,0.15)" stroke="#fb923c" stroke-width="2"/>
+  <text x="925" y="114" text-anchor="middle" font-size="14" font-weight="700" fill="#fed7aa">④ 반복·붕괴</text>
+  <text x="925" y="132" text-anchor="middle" font-size="11" fill="#fb923c">반복 루프도 PPL은 낮다</text>
+  <line x1="826" y1="142" x2="1024" y2="142" stroke="#fb923c" stroke-width="0.6" stroke-dasharray="4,3"/>
+  <text x="925" y="162" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#fb923c">"is is is is is..." 반복도</text>
+  <text x="925" y="180" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#fb923c">토큰 예측 쉬움 → PPL↓</text>
+  <text x="925" y="198" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#fb923c">생성 샘플 직접 봐야</text>
+  <rect x="60" y="280" width="980" height="56" rx="10" fill="rgba(52,211,153,0.2)" stroke="#34d399" stroke-width="1.5"/>
+  <text x="550" y="302" text-anchor="middle" font-size="13" font-weight="700" fill="#a7f3d0">대신 볼 것 — 생성 샘플 검토 + 도메인 맞춤 프로브</text>
+  <text x="550" y="322" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#34d399">같은 토크나이저 · 같은 도메인 · 이중 맹검 샘플 평가 · 반복 감지</text>
+</svg>

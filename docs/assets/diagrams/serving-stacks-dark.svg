@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 380" font-family="Pretendard, -apple-system, BlinkMacSystemFont, sans-serif">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5"/>
+    </pattern>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#64748b"/></marker>
+    <marker id="arr-input" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#60a5fa"/></marker>
+    <marker id="arr-llm" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#fb923c"/></marker>
+    <marker id="arr-model" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#a78bfa"/></marker>
+    <marker id="arr-token" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#34d399"/></marker>
+    <marker id="arr-output" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#34d399"/></marker>
+    <marker id="arr-gate" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#fbbf24"/></marker>
+    <marker id="arr-tool" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#22d3ee"/></marker>
+    <marker id="arr-memory" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#f472b6"/></marker>
+    <marker id="arr-error" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#f87171"/></marker>
+  </defs>
+  <rect width="1100" height="380" fill="#020617"/>
+  <rect width="1100" height="380" fill="url(#grid)"/>
+  <text x="550" y="38" text-anchor="middle" font-size="18" font-weight="700" fill="#f1f5f9">서빙 스택 비교 — llama.cpp · vLLM · TGI · Ollama</text>
+  <text x="550" y="60" text-anchor="middle" font-size="12" fill="#94a3b8">같은 모델, 다른 껍데기 — 처리량·환경·운영 복잡도가 갈림</text>
+  <rect x="80" y="86" width="220" height="170" rx="10" fill="rgba(167,139,250,0.15)" stroke="#a78bfa" stroke-width="2.5"/>
+  <text x="190" y="106" text-anchor="middle" font-size="15" font-weight="700" fill="#ddd6fe">llama.cpp</text>
+  <text x="190" y="122" text-anchor="middle" font-size="15" font-weight="700" fill="#ddd6fe">server</text>
+  <text x="190" y="140" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#a78bfa">CPU/Mac/Vulkan</text>
+  <line x1="94" y1="148" x2="286" y2="148" stroke="#a78bfa" stroke-width="0.6" stroke-dasharray="4,3"/>
+  <text x="190" y="162" text-anchor="middle" font-size="11" fill="#ddd6fe">사내·소규모</text>
+  <text x="190" y="176" text-anchor="middle" font-size="11" fill="#ddd6fe">동시 ≤ 10</text>
+  <line x1="94" y1="192" x2="286" y2="192" stroke="#a78bfa" stroke-width="0.4" stroke-dasharray="3,3"/>
+  <text x="190" y="206" text-anchor="middle" font-size="10" fill="#ddd6fe">가벼움 · 설치 쉬움</text>
+  <text x="190" y="234" text-anchor="middle" font-size="10" fill="#a78bfa">vLLM 대비 처리량 낮음</text>
+  <text x="190" y="76" text-anchor="middle" font-size="10" font-weight="700" fill="#a78bfa">본 책 권장</text>
+  <rect x="320" y="86" width="220" height="170" rx="10" fill="rgba(251,146,60,0.15)" stroke="#fb923c" stroke-width="2.5"/>
+  <text x="430" y="106" text-anchor="middle" font-size="15" font-weight="700" fill="#fed7aa">vLLM</text>
+  <text x="430" y="140" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#fb923c">GPU 필수</text>
+  <line x1="334" y1="148" x2="526" y2="148" stroke="#fb923c" stroke-width="0.6" stroke-dasharray="4,3"/>
+  <text x="430" y="162" text-anchor="middle" font-size="11" fill="#fed7aa">GPU 1장+</text>
+  <text x="430" y="176" text-anchor="middle" font-size="11" fill="#fed7aa">많은 동시 사용자</text>
+  <line x1="334" y1="192" x2="526" y2="192" stroke="#fb923c" stroke-width="0.4" stroke-dasharray="3,3"/>
+  <text x="430" y="206" text-anchor="middle" font-size="10" fill="#fed7aa">PagedAttention</text>
+  <text x="430" y="219" text-anchor="middle" font-size="10" fill="#fed7aa">처리량 최강</text>
+  <text x="430" y="234" text-anchor="middle" font-size="10" fill="#fb923c">무거움 · GPU 전용</text>
+  <text x="430" y="76" text-anchor="middle" font-size="10" font-weight="700" fill="#fb923c">본 책 권장</text>
+  <rect x="560" y="86" width="220" height="170" rx="10" fill="rgba(96,165,250,0.15)" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="670" y="106" text-anchor="middle" font-size="15" font-weight="700" fill="#bfdbfe">HF TGI</text>
+  <text x="670" y="140" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#60a5fa">GPU 권장</text>
+  <line x1="574" y1="148" x2="766" y2="148" stroke="#60a5fa" stroke-width="0.6" stroke-dasharray="4,3"/>
+  <text x="670" y="162" text-anchor="middle" font-size="11" fill="#bfdbfe">HF 생태계</text>
+  <text x="670" y="176" text-anchor="middle" font-size="11" fill="#bfdbfe">의존 환경</text>
+  <line x1="574" y1="192" x2="766" y2="192" stroke="#60a5fa" stroke-width="0.4" stroke-dasharray="3,3"/>
+  <text x="670" y="206" text-anchor="middle" font-size="10" fill="#bfdbfe">표준 HF 모델 자동</text>
+  <text x="670" y="234" text-anchor="middle" font-size="10" fill="#60a5fa">운영 학습곡선</text>
+  <rect x="800" y="86" width="220" height="170" rx="10" fill="rgba(251,191,36,0.15)" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="910" y="106" text-anchor="middle" font-size="15" font-weight="700" fill="#fde68a">Ollama</text>
+  <text x="910" y="140" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#fbbf24">Mac/Linux/Win</text>
+  <line x1="814" y1="148" x2="1006" y2="148" stroke="#fbbf24" stroke-width="0.6" stroke-dasharray="4,3"/>
+  <text x="910" y="162" text-anchor="middle" font-size="11" fill="#fde68a">데모·개발</text>
+  <line x1="814" y1="192" x2="1006" y2="192" stroke="#fbbf24" stroke-width="0.4" stroke-dasharray="3,3"/>
+  <text x="910" y="206" text-anchor="middle" font-size="10" fill="#fde68a">사용자 친화</text>
+  <text x="910" y="219" text-anchor="middle" font-size="10" fill="#fde68a">설정 최소</text>
+  <text x="910" y="234" text-anchor="middle" font-size="10" fill="#fbbf24">운영급 X</text>
+  <text x="550" y="360" text-anchor="middle" font-size="12" fill="#94a3b8">동시 ≤ 10 사내 → llama.cpp server · GPU 많은 사용자 → vLLM</text>
+</svg>

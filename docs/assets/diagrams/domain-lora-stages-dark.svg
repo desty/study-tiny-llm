@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 360" font-family="Pretendard, -apple-system, BlinkMacSystemFont, sans-serif">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5"/>
+    </pattern>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#64748b"/></marker>
+    <marker id="arr-input" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#60a5fa"/></marker>
+    <marker id="arr-llm" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#fb923c"/></marker>
+    <marker id="arr-model" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#a78bfa"/></marker>
+    <marker id="arr-token" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#34d399"/></marker>
+    <marker id="arr-output" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#34d399"/></marker>
+    <marker id="arr-gate" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#fbbf24"/></marker>
+    <marker id="arr-tool" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#22d3ee"/></marker>
+    <marker id="arr-memory" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#f472b6"/></marker>
+    <marker id="arr-error" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#f87171"/></marker>
+  </defs>
+  <rect width="1100" height="360" fill="#020617"/>
+  <rect width="1100" height="360" fill="url(#grid)"/>
+  <text x="550" y="38" text-anchor="middle" font-size="18" font-weight="700" fill="#f1f5f9">두 단계 도메인 적응 — CPT (선택) + Domain SFT (LoRA)</text>
+  <text x="550" y="60" text-anchor="middle" font-size="12" fill="#94a3b8">도메인 어휘·스타일 먼저 (CPT) → 도메인 task 형식 학습 (SFT)</text>
+  <rect x="94" y="90" width="160" height="105" rx="10" fill="rgba(167,139,250,0.15)" stroke="#a78bfa" stroke-width="2"/>
+  <text x="174" y="108" text-anchor="middle" font-size="12" font-weight="700" fill="#ddd6fe">기반 모델</text>
+  <text x="174" y="140" text-anchor="middle" font-size="10" font-family="JetBrains Mono, monospace" fill="#a78bfa">Qwen 2.5-0.5B-Instruct</text>
+  <text x="174" y="152" text-anchor="middle" font-size="10" font-family="JetBrains Mono, monospace" fill="#a78bfa">공개 오픈웨이트</text>
+  <text x="174" y="172" text-anchor="middle" font-size="10" font-weight="700" fill="#ddd6fe">이미 한국어 · 도구 호출</text>
+  <path d="M 256,142 L 280,142" stroke="#64748b" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <rect x="282" y="90" width="160" height="105" rx="10" fill="rgba(96,165,250,0.15)" stroke="#60a5fa" stroke-width="2"/>
+  <text x="362" y="108" text-anchor="middle" font-size="12" font-weight="700" fill="#bfdbfe">① Continued</text>
+  <text x="362" y="122" text-anchor="middle" font-size="12" font-weight="700" fill="#bfdbfe">Pre-training</text>
+  <text x="362" y="140" text-anchor="middle" font-size="10" font-family="JetBrains Mono, monospace" fill="#60a5fa">raw text 1B+ 토큰</text>
+  <text x="362" y="152" text-anchor="middle" font-size="10" font-family="JetBrains Mono, monospace" fill="#60a5fa">도메인 어휘·스타일</text>
+  <text x="362" y="172" text-anchor="middle" font-size="10" font-weight="700" fill="#bfdbfe">선택 — 도메인 어휘</text>
+  <text x="362" y="184" text-anchor="middle" font-size="10" font-weight="700" fill="#bfdbfe">희귀하면 필요</text>
+  <path d="M 444,142 L 468,142" stroke="#64748b" stroke-width="1.5" fill="none" marker-end="url(#arr)" stroke-dasharray="4,2"/>
+  <rect x="470" y="90" width="160" height="105" rx="10" fill="rgba(251,191,36,0.15)" stroke="#fbbf24" stroke-width="2"/>
+  <text x="550" y="108" text-anchor="middle" font-size="12" font-weight="700" fill="#fde68a">② Domain SFT</text>
+  <text x="550" y="122" text-anchor="middle" font-size="12" font-weight="700" fill="#fde68a">(LoRA)</text>
+  <text x="550" y="140" text-anchor="middle" font-size="10" font-family="JetBrains Mono, monospace" fill="#fbbf24">instruction 페어</text>
+  <text x="550" y="152" text-anchor="middle" font-size="10" font-family="JetBrains Mono, monospace" fill="#fbbf24">1K~100K</text>
+  <text x="550" y="172" text-anchor="middle" font-size="10" font-weight="700" fill="#fde68a">필수 — task 형식</text>
+  <text x="550" y="184" text-anchor="middle" font-size="10" font-weight="700" fill="#fde68a">빠름·저비용</text>
+  <path d="M 632,142 L 656,142" stroke="#64748b" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <rect x="658" y="90" width="160" height="105" rx="10" fill="rgba(52,211,153,0.15)" stroke="#34d399" stroke-width="2"/>
+  <text x="738" y="108" text-anchor="middle" font-size="12" font-weight="700" fill="#a7f3d0">어댑터 저장</text>
+  <text x="738" y="140" text-anchor="middle" font-size="10" font-family="JetBrains Mono, monospace" fill="#34d399">adapter_model.safetensors</text>
+  <text x="738" y="152" text-anchor="middle" font-size="10" font-family="JetBrains Mono, monospace" fill="#34d399">~20MB</text>
+  <text x="738" y="172" text-anchor="middle" font-size="10" font-weight="700" fill="#a7f3d0">merge_and_unload()</text>
+  <text x="738" y="184" text-anchor="middle" font-size="10" font-weight="700" fill="#a7f3d0">→ GGUF</text>
+  <path d="M 820,142 L 844,142" stroke="#64748b" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <rect x="846" y="90" width="160" height="105" rx="10" fill="rgba(52,211,153,0.2)" stroke="#34d399" stroke-width="2"/>
+  <text x="926" y="108" text-anchor="middle" font-size="12" font-weight="700" fill="#a7f3d0">배포</text>
+  <text x="926" y="140" text-anchor="middle" font-size="10" font-family="JetBrains Mono, monospace" fill="#34d399">GGUF Q4_K_M</text>
+  <text x="926" y="152" text-anchor="middle" font-size="10" font-family="JetBrains Mono, monospace" fill="#34d399">5MB</text>
+  <text x="926" y="172" text-anchor="middle" font-size="10" font-weight="700" fill="#a7f3d0">노트북·사내 서버</text>
+  <text x="926" y="184" text-anchor="middle" font-size="10" font-weight="700" fill="#a7f3d0">llama.cpp</text>
+  <text x="268" y="70" text-anchor="middle" font-size="10" fill="#60a5fa">선택 (optional)</text>
+  <text x="550" y="70" text-anchor="middle" font-size="10" font-weight="700" fill="#fbbf24">필수</text>
+  <rect x="94" y="223" width="912" height="40" rx="8" fill="rgba(251,191,36,0.15)" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="550" y="239" text-anchor="middle" font-size="13" font-weight="700" fill="#fde68a">본 책 캡스톤 = ② 만 (CPT 스킵) — Qwen 한국어 능력 의존, LoRA 페어만</text>
+  <text x="550" y="255" text-anchor="middle" font-size="10" font-family="JetBrains Mono, monospace" fill="#fbbf24">한국 동화 instruction 페어 ~1K + QLoRA → adapter → GGUF → HF Hub</text>
+</svg>

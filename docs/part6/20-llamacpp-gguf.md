@@ -15,6 +15,9 @@
 
 ---
 
+![HF → GGUF 변환 파이프라인](../assets/diagrams/gguf-pipeline.svg#only-light)
+![HF → GGUF 변환 파이프라인](../assets/diagrams/gguf-pipeline-dark.svg#only-dark)
+
 ## 1. 개념 — GGUF 가 무엇인가
 
 **GGUF (GPT-Generated Unified Format)** — `llama.cpp` 프로젝트가 정의한 단일 파일 모델 포맷. 2023년 GGML → 2024년 GGUF 로 진화.

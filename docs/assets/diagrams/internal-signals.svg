@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 420" font-family="Pretendard, -apple-system, BlinkMacSystemFont, sans-serif">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#f1f5f9" stroke-width="0.5"/>
+    </pattern>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#6b7280"/></marker>
+    <marker id="arr-input" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#2563eb"/></marker>
+    <marker id="arr-llm" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#ea580c"/></marker>
+    <marker id="arr-model" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#7c3aed"/></marker>
+    <marker id="arr-token" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#059669"/></marker>
+    <marker id="arr-output" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#059669"/></marker>
+    <marker id="arr-gate" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#ca8a04"/></marker>
+    <marker id="arr-tool" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#0891b2"/></marker>
+    <marker id="arr-memory" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#db2777"/></marker>
+    <marker id="arr-error" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#dc2626"/></marker>
+  </defs>
+  <rect width="1100" height="420" fill="#ffffff"/>
+  <rect width="1100" height="420" fill="url(#grid)"/>
+  <text x="550" y="38" text-anchor="middle" font-size="18" font-weight="700" fill="#0f172a">모델 내부 두 신호 — Attention Map · Logit 분포</text>
+  <text x="550" y="60" text-anchor="middle" font-size="12" fill="#64748b">출력이 아닌 내부를 보면 학습 상태·실패 원인이 직접 보인다</text>
+  <text x="180" y="80" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">Attention Map</text>
+  <text x="180" y="96" text-anchor="middle" font-size="10" fill="#64748b">head × (T×T) softmax 행렬</text>
+  <rect x="80" y="110" width="39" height="39" rx="2" fill="rgb(75,75,255)" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="100" y="134" text-anchor="middle" font-size="9" fill="#0d47a1">0.9</text>
+  <rect x="120" y="110" width="39" height="39" rx="2" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="0.5"/>
+  <rect x="160" y="110" width="39" height="39" rx="2" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="0.5"/>
+  <rect x="200" y="110" width="39" height="39" rx="2" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="0.5"/>
+  <rect x="240" y="110" width="39" height="39" rx="2" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="0.5"/>
+  <rect x="80" y="150" width="39" height="39" rx="2" fill="rgb(175,175,255)" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="100" y="174" text-anchor="middle" font-size="9" fill="#0d47a1">0.4</text>
+  <rect x="120" y="150" width="39" height="39" rx="2" fill="rgb(135,135,255)" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="140" y="174" text-anchor="middle" font-size="9" fill="#0d47a1">0.6</text>
+  <rect x="160" y="150" width="39" height="39" rx="2" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="0.5"/>
+  <rect x="200" y="150" width="39" height="39" rx="2" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="0.5"/>
+  <rect x="240" y="150" width="39" height="39" rx="2" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="0.5"/>
+  <rect x="80" y="190" width="39" height="39" rx="2" fill="rgb(215,215,255)" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="100" y="214" text-anchor="middle" font-size="9" fill="#0d47a1">0.2</text>
+  <rect x="120" y="190" width="39" height="39" rx="2" fill="rgb(195,195,255)" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="140" y="214" text-anchor="middle" font-size="9" fill="#0d47a1">0.3</text>
+  <rect x="160" y="190" width="39" height="39" rx="2" fill="rgb(155,155,255)" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="180" y="214" text-anchor="middle" font-size="9" fill="#0d47a1">0.5</text>
+  <rect x="200" y="190" width="39" height="39" rx="2" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="0.5"/>
+  <rect x="240" y="190" width="39" height="39" rx="2" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="0.5"/>
+  <rect x="80" y="230" width="39" height="39" rx="2" fill="rgb(235,235,255)" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="100" y="254" text-anchor="middle" font-size="9" fill="#0d47a1">0.1</text>
+  <rect x="120" y="230" width="39" height="39" rx="2" fill="rgb(215,215,255)" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="140" y="254" text-anchor="middle" font-size="9" fill="#0d47a1">0.2</text>
+  <rect x="160" y="230" width="39" height="39" rx="2" fill="rgb(215,215,255)" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="180" y="254" text-anchor="middle" font-size="9" fill="#0d47a1">0.2</text>
+  <rect x="200" y="230" width="39" height="39" rx="2" fill="rgb(155,155,255)" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="220" y="254" text-anchor="middle" font-size="9" fill="#0d47a1">0.5</text>
+  <rect x="240" y="230" width="39" height="39" rx="2" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="0.5"/>
+  <rect x="80" y="270" width="39" height="39" rx="2" fill="rgb(235,235,255)" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="100" y="294" text-anchor="middle" font-size="9" fill="#0d47a1">0.1</text>
+  <rect x="120" y="270" width="39" height="39" rx="2" fill="rgb(235,235,255)" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="140" y="294" text-anchor="middle" font-size="9" fill="#0d47a1">0.1</text>
+  <rect x="160" y="270" width="39" height="39" rx="2" fill="rgb(235,235,255)" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="180" y="294" text-anchor="middle" font-size="9" fill="#0d47a1">0.1</text>
+  <rect x="200" y="270" width="39" height="39" rx="2" fill="rgb(195,195,255)" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="220" y="294" text-anchor="middle" font-size="9" fill="#0d47a1">0.3</text>
+  <rect x="240" y="270" width="39" height="39" rx="2" fill="rgb(175,175,255)" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="260" y="294" text-anchor="middle" font-size="9" fill="#0d47a1">0.4</text>
+  <text x="100" y="106" text-anchor="middle" font-size="8" fill="#64748b">Once</text>
+  <text x="140" y="106" text-anchor="middle" font-size="8" fill="#64748b">upon</text>
+  <text x="180" y="106" text-anchor="middle" font-size="8" fill="#64748b">a</text>
+  <text x="220" y="106" text-anchor="middle" font-size="8" fill="#64748b">time</text>
+  <text x="260" y="106" text-anchor="middle" font-size="8" fill="#64748b">,</text>
+  <text x="76" y="134" text-anchor="end" font-size="8" fill="#64748b">Once</text>
+  <text x="76" y="174" text-anchor="end" font-size="8" fill="#64748b">upon</text>
+  <text x="76" y="214" text-anchor="end" font-size="8" fill="#64748b">a</text>
+  <text x="76" y="254" text-anchor="end" font-size="8" fill="#64748b">time</text>
+  <text x="76" y="294" text-anchor="end" font-size="8" fill="#64748b">,</text>
+  <rect x="80" y="326" width="200" height="52" rx="6" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.8"/>
+  <text x="180" y="342" text-anchor="middle" font-size="10" font-family="JetBrains Mono, monospace" fill="#334155">학습 전: 균등 (uniform)</text>
+  <text x="180" y="356" text-anchor="middle" font-size="10" font-family="JetBrains Mono, monospace" fill="#334155">학습 후: 특화 (specialized)</text>
+  <text x="180" y="370" text-anchor="middle" font-size="10" font-family="JetBrains Mono, monospace" fill="#334155"> — head 별로 다른 패턴</text>
+  <text x="740" y="80" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">Logit 분포</text>
+  <text x="740" y="96" text-anchor="middle" font-size="10" fill="#64748b">(vocab,) 마지막 레이어 출력</text>
+  <text x="545" y="112" text-anchor="middle" font-size="11" font-weight="700" fill="#064e3b">정상 분포</text>
+  <rect x="470" y="190" width="13" height="42" rx="2" fill="#dcfce7" stroke="#059669" stroke-width="1"/>
+  <rect x="485" y="211" width="13" height="21" rx="2" fill="#dcfce7" stroke="#059669" stroke-width="1"/>
+  <rect x="500" y="218" width="13" height="14" rx="2" fill="#dcfce7" stroke="#059669" stroke-width="1"/>
+  <rect x="515" y="223" width="13" height="9" rx="2" fill="#dcfce7" stroke="#059669" stroke-width="1"/>
+  <rect x="530" y="225" width="13" height="7" rx="2" fill="#dcfce7" stroke="#059669" stroke-width="1"/>
+  <rect x="545" y="226" width="13" height="6" rx="2" fill="#dcfce7" stroke="#059669" stroke-width="1"/>
+  <rect x="560" y="228" width="13" height="4" rx="2" fill="#dcfce7" stroke="#059669" stroke-width="1"/>
+  <rect x="575" y="229" width="13" height="3" rx="2" fill="#dcfce7" stroke="#059669" stroke-width="1"/>
+  <rect x="590" y="230" width="13" height="2" rx="2" fill="#dcfce7" stroke="#059669" stroke-width="1"/>
+  <rect x="605" y="224" width="13" height="8" rx="2" fill="#dcfce7" stroke="#059669" stroke-width="1"/>
+  <line x1="468" y1="232" x2="622" y2="232" stroke="#e2e8f0" stroke-width="0.8"/>
+  <text x="545" y="250" text-anchor="middle" font-size="10" font-family="JetBrains Mono, monospace" fill="#047857">적절히 피크</text>
+  <text x="739" y="112" text-anchor="middle" font-size="11" font-weight="700" fill="#7f1d1d">붕괴 (반복)</text>
+  <rect x="664" y="115" width="13" height="117" rx="2" fill="#fee2e2" stroke="#dc2626" stroke-width="1"/>
+  <rect x="679" y="231" width="13" height="1" rx="2" fill="#fee2e2" stroke="#dc2626" stroke-width="1"/>
+  <rect x="694" y="232" width="13" height="0" rx="2" fill="#fee2e2" stroke="#dc2626" stroke-width="1"/>
+  <rect x="709" y="232" width="13" height="0" rx="2" fill="#fee2e2" stroke="#dc2626" stroke-width="1"/>
+  <rect x="724" y="232" width="13" height="0" rx="2" fill="#fee2e2" stroke="#dc2626" stroke-width="1"/>
+  <rect x="739" y="232" width="13" height="0" rx="2" fill="#fee2e2" stroke="#dc2626" stroke-width="1"/>
+  <rect x="754" y="232" width="13" height="0" rx="2" fill="#fee2e2" stroke="#dc2626" stroke-width="1"/>
+  <rect x="769" y="232" width="13" height="0" rx="2" fill="#fee2e2" stroke="#dc2626" stroke-width="1"/>
+  <rect x="784" y="232" width="13" height="0" rx="2" fill="#fee2e2" stroke="#dc2626" stroke-width="1"/>
+  <rect x="799" y="232" width="13" height="0" rx="2" fill="#fee2e2" stroke="#dc2626" stroke-width="1"/>
+  <line x1="662" y1="232" x2="816" y2="232" stroke="#e2e8f0" stroke-width="0.8"/>
+  <text x="739" y="250" text-anchor="middle" font-size="10" font-family="JetBrains Mono, monospace" fill="#b91c1c">top-1 99%→반복</text>
+  <text x="933" y="112" text-anchor="middle" font-size="11" font-weight="700" fill="#713f12">학습 부족</text>
+  <rect x="858" y="218" width="13" height="14" rx="2" fill="#fef9c3" stroke="#ca8a04" stroke-width="1"/>
+  <rect x="873" y="219" width="13" height="13" rx="2" fill="#fef9c3" stroke="#ca8a04" stroke-width="1"/>
+  <rect x="888" y="220" width="13" height="12" rx="2" fill="#fef9c3" stroke="#ca8a04" stroke-width="1"/>
+  <rect x="903" y="220" width="13" height="12" rx="2" fill="#fef9c3" stroke="#ca8a04" stroke-width="1"/>
+  <rect x="918" y="222" width="13" height="10" rx="2" fill="#fef9c3" stroke="#ca8a04" stroke-width="1"/>
+  <rect x="933" y="222" width="13" height="10" rx="2" fill="#fef9c3" stroke="#ca8a04" stroke-width="1"/>
+  <rect x="948" y="222" width="13" height="10" rx="2" fill="#fef9c3" stroke="#ca8a04" stroke-width="1"/>
+  <rect x="963" y="222" width="13" height="10" rx="2" fill="#fef9c3" stroke="#ca8a04" stroke-width="1"/>
+  <rect x="978" y="222" width="13" height="10" rx="2" fill="#fef9c3" stroke="#ca8a04" stroke-width="1"/>
+  <rect x="993" y="218" width="13" height="14" rx="2" fill="#fef9c3" stroke="#ca8a04" stroke-width="1"/>
+  <line x1="856" y1="232" x2="1010" y2="232" stroke="#e2e8f0" stroke-width="0.8"/>
+  <text x="933" y="250" text-anchor="middle" font-size="10" font-family="JetBrains Mono, monospace" fill="#a16207">균등→헷갈림</text>
+  <rect x="80" y="374" width="940" height="38" rx="8" fill="#d1fae5" stroke="#059669" stroke-width="1.5"/>
+  <text x="550" y="390" text-anchor="middle" font-size="12" font-weight="700" fill="#064e3b">사용처: 학습 진단 · 실패 분석 · head 해석 · logit lens</text>
+  <text x="550" y="406" text-anchor="middle" font-size="10" font-family="JetBrains Mono, monospace" fill="#047857">작은 모델일수록 직접 시각화가 유일한 디버깅 수단</text>
+</svg>

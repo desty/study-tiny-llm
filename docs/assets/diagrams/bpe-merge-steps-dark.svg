@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 400" font-family="Pretendard, -apple-system, BlinkMacSystemFont, sans-serif">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5"/>
+    </pattern>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#64748b"/></marker>
+    <marker id="arr-input" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#60a5fa"/></marker>
+    <marker id="arr-llm" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#fb923c"/></marker>
+    <marker id="arr-model" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#a78bfa"/></marker>
+    <marker id="arr-token" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#34d399"/></marker>
+    <marker id="arr-output" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#34d399"/></marker>
+    <marker id="arr-gate" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#fbbf24"/></marker>
+    <marker id="arr-tool" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#22d3ee"/></marker>
+    <marker id="arr-memory" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#f472b6"/></marker>
+    <marker id="arr-error" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#f87171"/></marker>
+  </defs>
+  <rect width="1100" height="400" fill="#020617"/>
+  <rect width="1100" height="400" fill="url(#grid)"/>
+  <text x="550" y="38" text-anchor="middle" font-size="18" font-weight="700" fill="#f1f5f9">BPE — 가장 자주 나오는 쌍을 반복해서 합친다</text>
+  <text x="550" y="60" text-anchor="middle" font-size="12" fill="#94a3b8">초기: 글자 단위 → 반복: 빈도 1위 쌍 합치기 → 종료: vocab size 도달</text>
+  <text x="160" y="90" text-anchor="middle" font-size="12" font-weight="700" fill="#f1f5f9">Step 0</text>
+  <text x="160" y="106" text-anchor="middle" font-size="12" font-weight="700" fill="#f1f5f9">초기화</text>
+  <rect x="140" y="132" width="40" height="32" rx="6" fill="rgba(96,165,250,0.15)" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="160" y="153" text-anchor="middle" font-size="13" font-weight="700" font-family="JetBrains Mono, monospace" fill="#bfdbfe">l</text>
+  <rect x="140" y="172" width="40" height="32" rx="6" fill="rgba(96,165,250,0.15)" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="160" y="193" text-anchor="middle" font-size="13" font-weight="700" font-family="JetBrains Mono, monospace" fill="#bfdbfe">o</text>
+  <rect x="140" y="212" width="40" height="32" rx="6" fill="rgba(96,165,250,0.15)" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="160" y="233" text-anchor="middle" font-size="13" font-weight="700" font-family="JetBrains Mono, monospace" fill="#bfdbfe">w</text>
+  <rect x="130" y="252" width="60" height="32" rx="6" fill="rgba(52,211,153,0.15)" stroke="#34d399" stroke-width="1.5"/>
+  <text x="160" y="273" text-anchor="middle" font-size="13" font-weight="700" font-family="JetBrains Mono, monospace" fill="#a7f3d0">⟨/w⟩</text>
+  <text x="160" y="350" text-anchor="middle" font-size="10" fill="#94a3b8">"low" 를 글자 단위로</text>
+  <path d="M 262,166 L 318,166" stroke="#34d399" stroke-width="1.5" fill="none" marker-end="url(#arr-output)"/>
+  <text x="290" y="158" text-anchor="middle" font-size="9" font-family="JetBrains Mono, monospace" fill="#94a3b8">merge</text>
+  <text x="420" y="90" text-anchor="middle" font-size="12" font-weight="700" fill="#f1f5f9">Step 1</text>
+  <text x="420" y="106" text-anchor="middle" font-size="12" font-weight="700" fill="#f1f5f9">(l o→lo)</text>
+  <rect x="400" y="132" width="40" height="32" rx="6" fill="rgba(96,165,250,0.15)" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="420" y="153" text-anchor="middle" font-size="13" font-weight="700" font-family="JetBrains Mono, monospace" fill="#bfdbfe">lo</text>
+  <rect x="400" y="172" width="40" height="32" rx="6" fill="rgba(96,165,250,0.15)" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="420" y="193" text-anchor="middle" font-size="13" font-weight="700" font-family="JetBrains Mono, monospace" fill="#bfdbfe">w</text>
+  <rect x="390" y="212" width="60" height="32" rx="6" fill="rgba(52,211,153,0.15)" stroke="#34d399" stroke-width="1.5"/>
+  <text x="420" y="233" text-anchor="middle" font-size="13" font-weight="700" font-family="JetBrains Mono, monospace" fill="#a7f3d0">⟨/w⟩</text>
+  <text x="420" y="350" text-anchor="middle" font-size="10" fill="#94a3b8">l·o 가 가장 자주 붙어 등장</text>
+  <path d="M 522,166 L 578,166" stroke="#34d399" stroke-width="1.5" fill="none" marker-end="url(#arr-output)"/>
+  <text x="550" y="158" text-anchor="middle" font-size="9" font-family="JetBrains Mono, monospace" fill="#94a3b8">merge</text>
+  <text x="680" y="90" text-anchor="middle" font-size="12" font-weight="700" fill="#f1f5f9">Step 2</text>
+  <text x="680" y="106" text-anchor="middle" font-size="12" font-weight="700" fill="#f1f5f9">(lo w→low)</text>
+  <rect x="655" y="132" width="49" height="32" rx="6" fill="rgba(52,211,153,0.15)" stroke="#34d399" stroke-width="1.5"/>
+  <text x="679" y="153" text-anchor="middle" font-size="13" font-weight="700" font-family="JetBrains Mono, monospace" fill="#a7f3d0">low</text>
+  <rect x="650" y="172" width="60" height="32" rx="6" fill="rgba(52,211,153,0.15)" stroke="#34d399" stroke-width="1.5"/>
+  <text x="680" y="193" text-anchor="middle" font-size="13" font-weight="700" font-family="JetBrains Mono, monospace" fill="#a7f3d0">⟨/w⟩</text>
+  <text x="680" y="350" text-anchor="middle" font-size="10" fill="#94a3b8">lo·w 다음으로 자주</text>
+  <path d="M 782,166 L 838,166" stroke="#34d399" stroke-width="1.5" fill="none" marker-end="url(#arr-output)"/>
+  <text x="810" y="158" text-anchor="middle" font-size="9" font-family="JetBrains Mono, monospace" fill="#94a3b8">merge</text>
+  <text x="940" y="90" text-anchor="middle" font-size="12" font-weight="700" fill="#f1f5f9">Step 3</text>
+  <text x="940" y="106" text-anchor="middle" font-size="12" font-weight="700" fill="#f1f5f9">(low ⟨/w⟩→low⟨/w⟩)</text>
+  <rect x="893" y="132" width="93" height="32" rx="6" fill="rgba(52,211,153,0.15)" stroke="#34d399" stroke-width="1.5"/>
+  <text x="939" y="153" text-anchor="middle" font-size="13" font-weight="700" font-family="JetBrains Mono, monospace" fill="#a7f3d0">low⟨/w⟩</text>
+  <text x="940" y="350" text-anchor="middle" font-size="10" fill="#94a3b8">단어 경계 합치기 완료</text>
+  <text x="550" y="372" text-anchor="middle" font-size="12" font-weight="700" fill="#cbd5e1">실제 BPE: 이 과정을 수만 번 → vocab size (본 책 8K) 까지</text>
+  <text x="910" y="210" text-anchor="middle" font-size="10" font-weight="700" fill="#94a3b8">vocab 성장</text>
+  <rect x="820" y="280" width="40" height="10" rx="3" fill="rgba(52,211,153,0.15)" stroke="#34d399" stroke-width="1.2"/>
+  <text x="840" y="304" text-anchor="middle" font-size="9" font-family="JetBrains Mono, monospace" fill="#cbd5e1">init</text>
+  <text x="840" y="277" text-anchor="middle" font-size="9" font-weight="700" font-family="JetBrains Mono, monospace" fill="#a7f3d0">7</text>
+  <rect x="870" y="276" width="40" height="14" rx="3" fill="rgba(52,211,153,0.15)" stroke="#34d399" stroke-width="1.2"/>
+  <text x="890" y="304" text-anchor="middle" font-size="9" font-family="JetBrains Mono, monospace" fill="#cbd5e1">+1</text>
+  <text x="890" y="273" text-anchor="middle" font-size="9" font-weight="700" font-family="JetBrains Mono, monospace" fill="#a7f3d0">8</text>
+  <rect x="920" y="273" width="40" height="17" rx="3" fill="rgba(52,211,153,0.15)" stroke="#34d399" stroke-width="1.2"/>
+  <text x="940" y="304" text-anchor="middle" font-size="9" font-family="JetBrains Mono, monospace" fill="#cbd5e1">+2</text>
+  <text x="940" y="270" text-anchor="middle" font-size="9" font-weight="700" font-family="JetBrains Mono, monospace" fill="#a7f3d0">9</text>
+  <rect x="970" y="220" width="40" height="70" rx="3" fill="rgba(52,211,153,0.2)" stroke="#34d399" stroke-width="1.2"/>
+  <text x="990" y="304" text-anchor="middle" font-size="9" font-family="JetBrains Mono, monospace" fill="#cbd5e1">final</text>
+  <text x="990" y="217" text-anchor="middle" font-size="9" font-weight="700" font-family="JetBrains Mono, monospace" fill="#a7f3d0">8K</text>
+</svg>

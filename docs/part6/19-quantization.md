@@ -15,6 +15,9 @@
 
 ---
 
+![양자화 — 비트 줄이기와 트레이드오프](../assets/diagrams/quant-bit-tradeoff.svg#only-light)
+![양자화 — 비트 줄이기와 트레이드오프](../assets/diagrams/quant-bit-tradeoff-dark.svg#only-dark)
+
 ## 1. 개념 — 비트 줄이기
 
 | 형식 | bytes | 표현 가능 값 | 정확도 손실 |

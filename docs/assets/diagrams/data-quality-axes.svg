@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 360" font-family="Pretendard, -apple-system, BlinkMacSystemFont, sans-serif">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#f1f5f9" stroke-width="0.5"/>
+    </pattern>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#6b7280"/></marker>
+    <marker id="arr-input" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#2563eb"/></marker>
+    <marker id="arr-llm" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#ea580c"/></marker>
+    <marker id="arr-model" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#7c3aed"/></marker>
+    <marker id="arr-token" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#059669"/></marker>
+    <marker id="arr-output" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#059669"/></marker>
+    <marker id="arr-gate" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#ca8a04"/></marker>
+    <marker id="arr-tool" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#0891b2"/></marker>
+    <marker id="arr-memory" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#db2777"/></marker>
+    <marker id="arr-error" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#dc2626"/></marker>
+  </defs>
+  <rect width="1100" height="360" fill="#ffffff"/>
+  <rect width="1100" height="360" fill="url(#grid)"/>
+  <text x="550" y="38" text-anchor="middle" font-size="18" font-weight="700" fill="#0f172a">데이터 품질 4축 — 다양성 · 밀도 · 정확성 · 무중복</text>
+  <text x="550" y="60" text-anchor="middle" font-size="12" fill="#64748b">"좋은 학습 데이터" = 4축 모두 합격선 위 — 하나라도 빠지면 깨진다</text>
+  <rect x="80" y="88" width="220" height="140" rx="10" fill="#e3f2fd" stroke="#2563eb" stroke-width="2"/>
+  <text x="190" y="108" text-anchor="middle" font-size="14" font-weight="700" fill="#0d47a1">다양성</text>
+  <text x="190" y="124" text-anchor="middle" font-size="14" font-weight="700" fill="#0d47a1">Diversity</text>
+  <text x="190" y="146" text-anchor="middle" font-size="10" fill="#1e40af">어휘·구조·스타일이 넓음</text>
+  <line x1="94" y1="156" x2="286" y2="156" stroke="#2563eb" stroke-width="0.5" stroke-dasharray="3,3"/>
+  <text x="190" y="170" text-anchor="middle" font-size="10" font-weight="700" fill="#b91c1c">▲ 모델이 한 패턴만 학습</text>
+  <text x="190" y="190" text-anchor="middle" font-size="10" font-family="JetBrains Mono, monospace" fill="#1e40af">exact dedup</text>
+  <text x="190" y="204" text-anchor="middle" font-size="10" font-family="JetBrains Mono, monospace" fill="#1e40af">+ near-dup LSH</text>
+  <rect x="320" y="88" width="220" height="140" rx="10" fill="#dcfce7" stroke="#059669" stroke-width="2"/>
+  <text x="430" y="108" text-anchor="middle" font-size="14" font-weight="700" fill="#064e3b">밀도</text>
+  <text x="430" y="124" text-anchor="middle" font-size="14" font-weight="700" fill="#064e3b">Density</text>
+  <text x="430" y="146" text-anchor="middle" font-size="10" fill="#047857">단위 토큰당 정보량 큼</text>
+  <line x1="334" y1="156" x2="526" y2="156" stroke="#059669" stroke-width="0.5" stroke-dasharray="3,3"/>
+  <text x="430" y="170" text-anchor="middle" font-size="10" font-weight="700" fill="#b91c1c">▲ 광고·boilerplate 학습</text>
+  <text x="430" y="190" text-anchor="middle" font-size="10" font-family="JetBrains Mono, monospace" fill="#047857">perplexity 필터</text>
+  <text x="430" y="204" text-anchor="middle" font-size="10" font-family="JetBrains Mono, monospace" fill="#047857">+ classifier</text>
+  <rect x="560" y="88" width="220" height="140" rx="10" fill="#fef9c3" stroke="#ca8a04" stroke-width="2"/>
+  <text x="670" y="108" text-anchor="middle" font-size="14" font-weight="700" fill="#713f12">정확성</text>
+  <text x="670" y="124" text-anchor="middle" font-size="14" font-weight="700" fill="#713f12">Correctness</text>
+  <text x="670" y="146" text-anchor="middle" font-size="10" fill="#a16207">사실·문법이 맞음</text>
+  <line x1="574" y1="156" x2="766" y2="156" stroke="#ca8a04" stroke-width="0.5" stroke-dasharray="3,3"/>
+  <text x="670" y="170" text-anchor="middle" font-size="10" font-weight="700" fill="#b91c1c">▲ 환각·오류 학습</text>
+  <text x="670" y="190" text-anchor="middle" font-size="10" font-family="JetBrains Mono, monospace" fill="#a16207">fact-check 규칙</text>
+  <text x="670" y="204" text-anchor="middle" font-size="10" font-family="JetBrains Mono, monospace" fill="#a16207">+ LLM judge</text>
+  <rect x="800" y="88" width="220" height="140" rx="10" fill="#f3e8ff" stroke="#7c3aed" stroke-width="2"/>
+  <text x="910" y="108" text-anchor="middle" font-size="14" font-weight="700" fill="#4c1d95">무중복</text>
+  <text x="910" y="124" text-anchor="middle" font-size="14" font-weight="700" fill="#4c1d95">Dedup</text>
+  <text x="910" y="146" text-anchor="middle" font-size="10" fill="#6d28d9">같은 내용 반복 없음</text>
+  <line x1="814" y1="156" x2="1006" y2="156" stroke="#7c3aed" stroke-width="0.5" stroke-dasharray="3,3"/>
+  <text x="910" y="170" text-anchor="middle" font-size="10" font-weight="700" fill="#b91c1c">▲ 같은 곳 반복 학습</text>
+  <text x="910" y="190" text-anchor="middle" font-size="10" font-family="JetBrains Mono, monospace" fill="#6d28d9">MinHash LSH</text>
+  <text x="910" y="204" text-anchor="middle" font-size="10" font-family="JetBrains Mono, monospace" fill="#6d28d9">+ URL 중복 제거</text>
+  <rect x="80" y="254" width="940" height="40" rx="8" fill="#fef3e0" stroke="#ea580c" stroke-width="1.5"/>
+  <text x="550" y="270" text-anchor="middle" font-size="13" font-weight="700" fill="#9a3412">Phi-1 의 증명 — 교과서 품질 1B 토큰 > 일반 100B 토큰</text>
+  <text x="550" y="286" text-anchor="middle" font-size="10" font-family="JetBrains Mono, monospace" fill="#c2410c">데이터 품질 향상이 데이터 양 증가보다 먼저 — 10배 효율 차이</text>
+</svg>

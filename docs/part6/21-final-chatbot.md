@@ -38,6 +38,9 @@
 
 ---
 
+![3가지 데모 형태 — CLI · Python REPL · Gradio Spaces](../assets/diagrams/chatbot-demo-modes.svg#only-light)
+![3가지 데모 형태 — CLI · Python REPL · Gradio Spaces](../assets/diagrams/chatbot-demo-modes-dark.svg#only-dark)
+
 ## 3. 어디에 쓰이나 — 3가지 데모 형태
 
 | 형태 | 도구 | 어디에 |

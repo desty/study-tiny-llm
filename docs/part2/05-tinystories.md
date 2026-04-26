@@ -38,6 +38,9 @@
 
 ---
 
+![합성 데이터 3줄기 — TinyStories · Phi · Cosmopedia](../assets/diagrams/synth-data-streams.svg#only-light)
+![합성 데이터 3줄기 — TinyStories · Phi · Cosmopedia](../assets/diagrams/synth-data-streams-dark.svg#only-dark)
+
 ## 2. 왜 부활했나 — 합성 데이터의 세 줄기
 
 TinyStories 이후 합성 데이터가 표준 도구가 됐다.

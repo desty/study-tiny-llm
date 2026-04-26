@@ -15,6 +15,9 @@
 
 ---
 
+![4시간 훈련 실전 — 모든 조각이 합쳐지는 순간](../assets/diagrams/four-hour-run.svg#only-light)
+![4시간 훈련 실전 — 모든 조각이 합쳐지는 순간](../assets/diagrams/four-hour-run-dark.svg#only-dark)
+
 ## 1. 컨셉 — 모든 조각이 모이는 자리
 
 이 챕터까지 만든 조각들:

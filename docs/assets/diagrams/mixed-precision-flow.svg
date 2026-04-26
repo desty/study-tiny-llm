@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 380" font-family="Pretendard, -apple-system, BlinkMacSystemFont, sans-serif">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#f1f5f9" stroke-width="0.5"/>
+    </pattern>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#6b7280"/></marker>
+    <marker id="arr-input" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#2563eb"/></marker>
+    <marker id="arr-llm" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#ea580c"/></marker>
+    <marker id="arr-model" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#7c3aed"/></marker>
+    <marker id="arr-token" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#059669"/></marker>
+    <marker id="arr-output" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#059669"/></marker>
+    <marker id="arr-gate" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#ca8a04"/></marker>
+    <marker id="arr-tool" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#0891b2"/></marker>
+    <marker id="arr-memory" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#db2777"/></marker>
+    <marker id="arr-error" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#dc2626"/></marker>
+  </defs>
+  <rect width="1100" height="380" fill="#ffffff"/>
+  <rect width="1100" height="380" fill="url(#grid)"/>
+  <text x="550" y="38" text-anchor="middle" font-size="18" font-weight="700" fill="#0f172a">Mixed Precision + Gradient Accumulation</text>
+  <text x="550" y="60" text-anchor="middle" font-size="12" fill="#64748b">bf16 forward · fp32 master copy · 작은 batch × 누적 = 큰 batch 효과</text>
+  <rect x="60" y="86" width="300" height="74" rx="8" fill="#e3f2fd" stroke="#2563eb" stroke-width="1.8"/>
+  <text x="210" y="106" text-anchor="middle" font-size="12" font-weight="700" fill="#0d47a1">fp32 Master Weight</text>
+  <text x="210" y="124" text-anchor="middle" font-size="10" font-family="JetBrains Mono, monospace" fill="#1e40af">4 bytes · 정밀한 업데이트</text>
+  <text x="210" y="138" text-anchor="middle" font-size="10" font-family="JetBrains Mono, monospace" fill="#1e40af">학습률·모멘텀 상태 보관</text>
+  <rect x="60" y="174" width="300" height="74" rx="8" fill="#f3e8ff" stroke="#7c3aed" stroke-width="1.8"/>
+  <text x="210" y="194" text-anchor="middle" font-size="12" font-weight="700" fill="#4c1d95">bf16 Forward/Backward</text>
+  <text x="210" y="212" text-anchor="middle" font-size="10" font-family="JetBrains Mono, monospace" fill="#6d28d9">2 bytes · overflow 없음</text>
+  <text x="210" y="226" text-anchor="middle" font-size="10" font-family="JetBrains Mono, monospace" fill="#6d28d9">(=fp32 지수 범위)</text>
+  <text x="210" y="240" text-anchor="middle" font-size="10" font-family="JetBrains Mono, monospace" fill="#6d28d9">A100/H100 네이티브 지원</text>
+  <rect x="60" y="262" width="300" height="74" rx="8" fill="#fef9c3" stroke="#ca8a04" stroke-width="1.8"/>
+  <text x="210" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="#713f12">fp16 (T4 한정)</text>
+  <text x="210" y="300" text-anchor="middle" font-size="10" font-family="JetBrains Mono, monospace" fill="#a16207">2 bytes · overflow 위험</text>
+  <text x="210" y="314" text-anchor="middle" font-size="10" font-family="JetBrains Mono, monospace" fill="#a16207">Loss scaling 필수</text>
+  <text x="210" y="328" text-anchor="middle" font-size="10" font-family="JetBrains Mono, monospace" fill="#a16207">T4 bf16 미지원</text>
+  <text x="210" y="360" text-anchor="middle" font-size="10" fill="#64748b">autocast(device_type, dtype=torch.bfloat16)</text>
+  <text x="740" y="76" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">Gradient Accumulation</text>
+  <text x="740" y="92" text-anchor="middle" font-size="10" fill="#64748b">batch=4, accum=8 → effective batch=32</text>
+  <rect x="460" y="108" width="60" height="44" rx="5" fill="#e3f2fd" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="490" y="122" text-anchor="middle" font-size="9" font-family="JetBrains Mono, monospace" fill="#0d47a1">mini</text>
+  <text x="490" y="135" text-anchor="middle" font-size="9" font-family="JetBrains Mono, monospace" fill="#0d47a1">batch 1</text>
+  <rect x="530" y="108" width="60" height="44" rx="5" fill="#e3f2fd" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="560" y="122" text-anchor="middle" font-size="9" font-family="JetBrains Mono, monospace" fill="#0d47a1">mini</text>
+  <text x="560" y="135" text-anchor="middle" font-size="9" font-family="JetBrains Mono, monospace" fill="#0d47a1">batch 2</text>
+  <rect x="600" y="108" width="60" height="44" rx="5" fill="#e3f2fd" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="630" y="122" text-anchor="middle" font-size="9" font-family="JetBrains Mono, monospace" fill="#0d47a1">mini</text>
+  <text x="630" y="135" text-anchor="middle" font-size="9" font-family="JetBrains Mono, monospace" fill="#0d47a1">batch 3</text>
+  <rect x="670" y="108" width="60" height="44" rx="5" fill="#e3f2fd" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="700" y="122" text-anchor="middle" font-size="9" font-family="JetBrains Mono, monospace" fill="#0d47a1">mini</text>
+  <text x="700" y="135" text-anchor="middle" font-size="9" font-family="JetBrains Mono, monospace" fill="#0d47a1">batch 4</text>
+  <rect x="740" y="108" width="60" height="44" rx="5" fill="#e3f2fd" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="770" y="122" text-anchor="middle" font-size="9" font-family="JetBrains Mono, monospace" fill="#0d47a1">mini</text>
+  <text x="770" y="135" text-anchor="middle" font-size="9" font-family="JetBrains Mono, monospace" fill="#0d47a1">batch 5</text>
+  <rect x="810" y="108" width="60" height="44" rx="5" fill="#e3f2fd" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="840" y="122" text-anchor="middle" font-size="9" font-family="JetBrains Mono, monospace" fill="#0d47a1">mini</text>
+  <text x="840" y="135" text-anchor="middle" font-size="9" font-family="JetBrains Mono, monospace" fill="#0d47a1">batch 6</text>
+  <rect x="880" y="108" width="60" height="44" rx="5" fill="#e3f2fd" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="910" y="122" text-anchor="middle" font-size="9" font-family="JetBrains Mono, monospace" fill="#0d47a1">mini</text>
+  <text x="910" y="135" text-anchor="middle" font-size="9" font-family="JetBrains Mono, monospace" fill="#0d47a1">batch 7</text>
+  <rect x="950" y="108" width="60" height="44" rx="5" fill="#d1fae5" stroke="#059669" stroke-width="1.5"/>
+  <text x="980" y="122" text-anchor="middle" font-size="9" font-family="JetBrains Mono, monospace" fill="#064e3b">optimizer</text>
+  <text x="980" y="135" text-anchor="middle" font-size="9" font-family="JetBrains Mono, monospace" fill="#064e3b">.step()</text>
+  <path d="M 521,130 L 530,130" stroke="#6b7280" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <path d="M 591,130 L 600,130" stroke="#6b7280" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <path d="M 661,130 L 670,130" stroke="#6b7280" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <path d="M 731,130 L 740,130" stroke="#6b7280" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <path d="M 801,130 L 810,130" stroke="#6b7280" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <path d="M 871,130 L 880,130" stroke="#6b7280" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <path d="M 941,130 L 950,130" stroke="#6b7280" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <text x="740" y="168" text-anchor="middle" font-size="10" fill="#64748b">gradient 누적 (÷8 안 하면 loss scale 주의)</text>
+  <rect x="460" y="172" width="60" height="18" rx="3" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.8"/>
+  <rect x="460" y="172" width="7" height="18" rx="3" fill="#059669" opacity="0.6"/>
+  <rect x="530" y="172" width="60" height="18" rx="3" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.8"/>
+  <rect x="530" y="172" width="14" height="18" rx="3" fill="#059669" opacity="0.6"/>
+  <rect x="600" y="172" width="60" height="18" rx="3" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.8"/>
+  <rect x="600" y="172" width="21" height="18" rx="3" fill="#059669" opacity="0.6"/>
+  <rect x="670" y="172" width="60" height="18" rx="3" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.8"/>
+  <rect x="670" y="172" width="29" height="18" rx="3" fill="#059669" opacity="0.6"/>
+  <rect x="740" y="172" width="60" height="18" rx="3" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.8"/>
+  <rect x="740" y="172" width="36" height="18" rx="3" fill="#059669" opacity="0.6"/>
+  <rect x="810" y="172" width="60" height="18" rx="3" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.8"/>
+  <rect x="810" y="172" width="43" height="18" rx="3" fill="#059669" opacity="0.6"/>
+  <rect x="880" y="172" width="60" height="18" rx="3" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.8"/>
+  <rect x="880" y="172" width="50" height="18" rx="3" fill="#059669" opacity="0.6"/>
+  <rect x="950" y="172" width="60" height="18" rx="3" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.8"/>
+  <rect x="950" y="172" width="58" height="18" rx="3" fill="#059669" opacity="0.6"/>
+  <rect x="460" y="204" width="560" height="36" rx="6" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.8"/>
+  <text x="740" y="218" text-anchor="middle" font-size="11" font-weight="700" fill="#334155">Gradient Checkpointing: activation 재계산 → 메모리 ↓ 30~40% / 속도 ↓ 10~20%</text>
+  <text x="740" y="232" text-anchor="middle" font-size="10" font-family="JetBrains Mono, monospace" fill="#334155">model.gradient_checkpointing_enable() 한 줄</text>
+</svg>

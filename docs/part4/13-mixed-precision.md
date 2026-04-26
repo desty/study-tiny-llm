@@ -16,6 +16,9 @@
 
 ---
 
+![Mixed Precision + Gradient Accumulation](../assets/diagrams/mixed-precision-flow.svg#only-light)
+![Mixed Precision + Gradient Accumulation](../assets/diagrams/mixed-precision-flow-dark.svg#only-dark)
+
 ## 1. 개념 — 정밀도 (precision) 의 트레이드오프
 
 | 형식 | bytes | 지수 비트 | 가수 비트 | 표현 범위 | 정밀도 |

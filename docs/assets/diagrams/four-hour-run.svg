@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 360" font-family="Pretendard, -apple-system, BlinkMacSystemFont, sans-serif">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#f1f5f9" stroke-width="0.5"/>
+    </pattern>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#6b7280"/></marker>
+    <marker id="arr-input" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#2563eb"/></marker>
+    <marker id="arr-llm" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#ea580c"/></marker>
+    <marker id="arr-model" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#7c3aed"/></marker>
+    <marker id="arr-token" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#059669"/></marker>
+    <marker id="arr-output" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#059669"/></marker>
+    <marker id="arr-gate" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#ca8a04"/></marker>
+    <marker id="arr-tool" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#0891b2"/></marker>
+    <marker id="arr-memory" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#db2777"/></marker>
+    <marker id="arr-error" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#dc2626"/></marker>
+  </defs>
+  <rect width="1100" height="360" fill="#ffffff"/>
+  <rect width="1100" height="360" fill="url(#grid)"/>
+  <text x="550" y="38" text-anchor="middle" font-size="18" font-weight="700" fill="#0f172a">4시간 훈련 실전 — 모든 조각이 합쳐지는 순간</text>
+  <text x="550" y="60" text-anchor="middle" font-size="12" fill="#64748b">Ch 5~14 조각 6개 → 한 번의 학습 실행 → final.pt</text>
+  <rect x="60" y="90" width="270" height="34" rx="7" fill="#e3f2fd" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="72" y="112" font-size="12" font-weight="700" font-family="JetBrains Mono, monospace" fill="#0d47a1">Ch 5  데이터</text>
+  <text x="320" y="112" text-anchor="end" font-size="10" fill="#1e40af">TinyStories 200M 토큰</text>
+  <rect x="60" y="132" width="270" height="34" rx="7" fill="#dcfce7" stroke="#059669" stroke-width="1.5"/>
+  <text x="72" y="154" font-size="12" font-weight="700" font-family="JetBrains Mono, monospace" fill="#064e3b">Ch 6  토크나이저</text>
+  <text x="320" y="154" text-anchor="end" font-size="10" fill="#047857">ByteLevel BPE 8K</text>
+  <rect x="60" y="174" width="270" height="34" rx="7" fill="#f3e8ff" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="72" y="196" font-size="12" font-weight="700" font-family="JetBrains Mono, monospace" fill="#4c1d95">Ch 10 모델</text>
+  <text x="320" y="196" text-anchor="end" font-size="10" fill="#6d28d9">GPTMini 10M (decoder)</text>
+  <rect x="60" y="216" width="270" height="34" rx="7" fill="#fef3e0" stroke="#ea580c" stroke-width="1.5"/>
+  <text x="72" y="238" font-size="12" font-weight="700" font-family="JetBrains Mono, monospace" fill="#9a3412">Ch 12 학습루프</text>
+  <text x="320" y="238" text-anchor="end" font-size="10" fill="#c2410c">AdamW + cosine</text>
+  <rect x="60" y="258" width="270" height="34" rx="7" fill="#fef9c3" stroke="#ca8a04" stroke-width="1.5"/>
+  <text x="72" y="280" font-size="12" font-weight="700" font-family="JetBrains Mono, monospace" fill="#713f12">Ch 13 정밀도</text>
+  <text x="320" y="280" text-anchor="end" font-size="10" fill="#a16207">bf16 / fp16</text>
+  <rect x="60" y="300" width="270" height="34" rx="7" fill="#fce7f3" stroke="#db2777" stroke-width="1.5"/>
+  <text x="72" y="322" font-size="12" font-weight="700" font-family="JetBrains Mono, monospace" fill="#500724">Ch 14 로깅</text>
+  <text x="320" y="322" text-anchor="end" font-size="10" fill="#be185d">jsonl + last.pt</text>
+  <path d="M 332,212 L 358,180" stroke="#059669" stroke-width="1.5" fill="none" marker-end="url(#arr-output)"/>
+  <rect x="360" y="140" width="180" height="80" rx="10" fill="#d1fae5" stroke="#059669" stroke-width="2.5"/>
+  <text x="450" y="168" text-anchor="middle" font-size="15" font-weight="700" fill="#064e3b">학습 실행</text>
+  <text x="450" y="186" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#047857">~4시간</text>
+  <text x="450" y="202" text-anchor="middle" font-size="10" fill="#047857">T4 / M1·M2</text>
+  <path d="M 542,180 L 568,190" stroke="#6b7280" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+  <rect x="570" y="106" width="270" height="34" rx="7" fill="#d1fae5" stroke="#059669" stroke-width="1.5"/>
+  <text x="582" y="128" font-size="12" font-weight="700" font-family="JetBrains Mono, monospace" fill="#064e3b">final.pt</text>
+  <text x="830" y="128" text-anchor="end" font-size="10" fill="#047857">체크포인트 · 배포 준비</text>
+  <rect x="570" y="148" width="270" height="34" rx="7" fill="#dcfce7" stroke="#059669" stroke-width="1.5"/>
+  <text x="582" y="170" font-size="12" font-weight="700" font-family="JetBrains Mono, monospace" fill="#064e3b">손실 곡선</text>
+  <text x="830" y="170" text-anchor="end" font-size="10" fill="#047857">jsonl → 진단 · 재학습 결정</text>
+  <rect x="570" y="190" width="270" height="34" rx="7" fill="#f3e8ff" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="582" y="212" font-size="12" font-weight="700" font-family="JetBrains Mono, monospace" fill="#4c1d95">동화 샘플 5개</text>
+  <text x="830" y="212" text-anchor="end" font-size="10" fill="#6d28d9">생성 품질 육안 확인</text>
+  <rect x="570" y="232" width="270" height="34" rx="7" fill="#fef9c3" stroke="#ca8a04" stroke-width="1.5"/>
+  <text x="582" y="254" font-size="12" font-weight="700" font-family="JetBrains Mono, monospace" fill="#713f12">PPL 측정</text>
+  <text x="830" y="254" text-anchor="end" font-size="10" fill="#a16207">Ch 16 → 숫자로 검증</text>
+</svg>

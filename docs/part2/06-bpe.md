@@ -15,6 +15,9 @@
 
 ---
 
+![BPE — 가장 자주 나오는 쌍을 반복해서 합친다](../assets/diagrams/bpe-merge-steps.svg#only-light)
+![BPE — 가장 자주 나오는 쌍을 반복해서 합친다](../assets/diagrams/bpe-merge-steps-dark.svg#only-dark)
+
 ## 1. 개념 — BPE 알고리즘 한 페이지
 
 **Byte-Pair Encoding** (Sennrich et al., 2016 이 NMT 에 도입).

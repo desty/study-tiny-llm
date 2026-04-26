@@ -16,6 +16,9 @@
 
 ---
 
+![한 Step 의 6단계 — 모든 학습 루프의 본체](../assets/diagrams/training-loop-steps.svg#only-light)
+![한 Step 의 6단계 — 모든 학습 루프의 본체](../assets/diagrams/training-loop-steps-dark.svg#only-dark)
+
 ## 1. 개념 — 한 step 의 5 단계
 
 ```python

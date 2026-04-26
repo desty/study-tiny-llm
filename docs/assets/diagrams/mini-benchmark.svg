@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 400" font-family="Pretendard, -apple-system, BlinkMacSystemFont, sans-serif">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#f1f5f9" stroke-width="0.5"/>
+    </pattern>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#6b7280"/></marker>
+    <marker id="arr-input" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#2563eb"/></marker>
+    <marker id="arr-llm" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#ea580c"/></marker>
+    <marker id="arr-model" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#7c3aed"/></marker>
+    <marker id="arr-token" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#059669"/></marker>
+    <marker id="arr-output" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#059669"/></marker>
+    <marker id="arr-gate" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#ca8a04"/></marker>
+    <marker id="arr-tool" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#0891b2"/></marker>
+    <marker id="arr-memory" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#db2777"/></marker>
+    <marker id="arr-error" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0,0 10,3.5 0,7" fill="#dc2626"/></marker>
+  </defs>
+  <rect width="1100" height="400" fill="#ffffff"/>
+  <rect width="1100" height="400" fill="url(#grid)"/>
+  <text x="550" y="38" text-anchor="middle" font-size="18" font-weight="700" fill="#0f172a">작은 벤치마크 3종 — 도메인 맞춤 평가</text>
+  <text x="550" y="60" text-anchor="middle" font-size="12" fill="#64748b">표준 벤치마크 없을 때 직접 만드는 세 가지 방법</text>
+  <rect x="100" y="90" width="280" height="160" rx="10" fill="#e3f2fd" stroke="#2563eb" stroke-width="2"/>
+  <text x="240" y="114" text-anchor="middle" font-size="14" font-weight="700" fill="#0d47a1">① 완성도 점수</text>
+  <text x="240" y="132" text-anchor="middle" font-size="11" fill="#1e40af">생성 샘플 N개 수동 채점</text>
+  <line x1="116" y1="142" x2="364" y2="142" stroke="#2563eb" stroke-width="0.6" stroke-dasharray="4,3"/>
+  <text x="240" y="160" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#1e40af">기준: 문법 · 일관성 · 도메인 적절성</text>
+  <text x="240" y="176" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#1e40af">평가자 2명 · 점수 평균</text>
+  <text x="240" y="192" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#1e40af">비용: 사람 시간</text>
+  <text x="240" y="240" text-anchor="middle" font-size="11" font-weight="700" fill="#0d47a1">주관적이나 가장 신뢰도 높음</text>
+  <rect x="410" y="90" width="280" height="160" rx="10" fill="#dcfce7" stroke="#059669" stroke-width="2"/>
+  <text x="550" y="114" text-anchor="middle" font-size="14" font-weight="700" fill="#064e3b">② 자동 프로브</text>
+  <text x="550" y="132" text-anchor="middle" font-size="11" fill="#047857">레이블 데이터로 분류 정확도</text>
+  <line x1="426" y1="142" x2="674" y2="142" stroke="#059669" stroke-width="0.6" stroke-dasharray="4,3"/>
+  <text x="550" y="160" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#047857">시작 단어 → 이야기 완성 여부</text>
+  <text x="550" y="176" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#047857">규칙 기반 자동 채점</text>
+  <text x="550" y="192" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#047857">비용: 거의 없음</text>
+  <text x="550" y="240" text-anchor="middle" font-size="11" font-weight="700" fill="#064e3b">재현 가능 · 빠른 반복 가능</text>
+  <rect x="720" y="90" width="280" height="160" rx="10" fill="#f3e8ff" stroke="#7c3aed" stroke-width="2"/>
+  <text x="860" y="114" text-anchor="middle" font-size="14" font-weight="700" fill="#4c1d95">③ 교차 PPL</text>
+  <text x="860" y="132" text-anchor="middle" font-size="11" fill="#6d28d9">다른 모델/데이터로 PPL 비교</text>
+  <line x1="736" y1="142" x2="984" y2="142" stroke="#7c3aed" stroke-width="0.6" stroke-dasharray="4,3"/>
+  <text x="860" y="160" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#6d28d9">학습셋과 독립된 홀드아웃 셋</text>
+  <text x="860" y="176" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#6d28d9">모델 간 같은 토크나이저 필수</text>
+  <text x="860" y="192" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#6d28d9">비용: 추론 1회</text>
+  <text x="860" y="240" text-anchor="middle" font-size="11" font-weight="700" fill="#4c1d95">정량 비교 가능한 유일한 방법</text>
+  <rect x="100" y="280" width="900" height="46" rx="10" fill="#fef9c3" stroke="#ca8a04" stroke-width="1.5"/>
+  <rect x="100" y="280" width="900" height="46" rx="10" fill="#fef9c3" stroke="#ca8a04" stroke-width="1.5"/>
+  <text x="550" y="300" text-anchor="middle" font-size="13" font-weight="700" fill="#713f12">권고: ①+② 조합 — 수동 신뢰도 + 자동 반복성</text>
+  <text x="550" y="318" text-anchor="middle" font-size="11" font-family="JetBrains Mono, monospace" fill="#a16207">③ 교차 PPL은 모델 간 비교할 때만 (토크나이저 동일 조건)</text>
+</svg>

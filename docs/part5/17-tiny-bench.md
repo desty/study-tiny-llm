@@ -31,6 +31,9 @@ PPL 은 **언어 모델의 평균 손실**. 벤치마크는 **특정 능력**.
 
 ---
 
+![작은 벤치마크 3종 — 도메인 맞춤 평가](../assets/diagrams/mini-benchmark.svg#only-light)
+![작은 벤치마크 3종 — 도메인 맞춤 평가](../assets/diagrams/mini-benchmark-dark.svg#only-dark)
+
 ## 2. 왜 필요한가 — PPL 의 보완
 
 | 측정 | 무엇을 잡나 | 본 책 모델 |

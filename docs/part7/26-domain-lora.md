@@ -15,6 +15,9 @@
 
 ---
 
+![두 단계 도메인 적응 — CPT (선택) + Domain SFT (LoRA)](../assets/diagrams/domain-lora-stages.svg#only-light)
+![두 단계 도메인 적응 — CPT (선택) + Domain SFT (LoRA)](../assets/diagrams/domain-lora-stages-dark.svg#only-dark)
+
 ## 1. 컨셉 — 두 단계 도메인 적응
 
 instruction 모델을 도메인에 맞추는 표준 길:

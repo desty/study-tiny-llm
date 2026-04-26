@@ -15,6 +15,9 @@
 
 ---
 
+![Encoder NER — IOB 태깅 파이프라인](../assets/diagrams/encoder-ner-pipeline.svg#only-light)
+![Encoder NER — IOB 태깅 파이프라인](../assets/diagrams/encoder-ner-pipeline-dark.svg#only-dark)
+
 ## 1. 컨셉 — Decoder vs Encoder
 
 | 구조 | 마스크 | 토큰 i 가 보는 것 | 적합 작업 |

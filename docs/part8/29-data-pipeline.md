@@ -15,6 +15,9 @@
 
 ---
 
+![운영 데이터 파이프라인 — PII · 라벨 · 버전](../assets/diagrams/ops-data-pipeline.svg#only-light)
+![운영 데이터 파이프라인 — PII · 라벨 · 버전](../assets/diagrams/ops-data-pipeline-dark.svg#only-dark)
+
 ## 1. 컨셉 — 운영 데이터 vs 학습 데이터
 
 | 측면 | Ch 5/7 의 합성 데이터 | 운영 데이터 (이 챕터) |

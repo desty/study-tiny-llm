@@ -15,6 +15,9 @@
 
 ---
 
+![모델 내부 두 신호 — Attention Map · Logit 분포](../assets/diagrams/internal-signals.svg#only-light)
+![모델 내부 두 신호 — Attention Map · Logit 분포](../assets/diagrams/internal-signals-dark.svg#only-dark)
+
 ## 1. 개념 — 모델 내부의 두 가지 신호
 
 PPL · 벤치마크 · 사람 평가 모두 **모델 출력** 을 본다. 한 단계 안으로 들어가면:
