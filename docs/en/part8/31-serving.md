@@ -8,6 +8,7 @@
     - **3 serving stacks** — `llama.cpp server` / **vLLM** / HF TGI
     - **Latency budget** arithmetic — token count × TPS = latency
     - **Batching, concurrency, KV cache** — 5–10× throughput on the same GPU
+    - **Speculative decoding** — use the small model you built as a draft model to cut latency 2–3×
     - **Health checks, graceful shutdown, adapter hot-swap**
 
 !!! quote "Prerequisites"
@@ -140,6 +141,33 @@ asyncio.run(benchmark(50))   # throughput ceiling
 
 ---
 
+## 5b. Speculative decoding — another seat for small models
+
+There's a different axis for cutting latency. **Speculative decoding**: a small, fast **draft model** guesses several tokens ahead, and the large, accurate **target model** verifies those guesses in a single pass, accepting them up to the first mismatch. The output distribution is **guaranteed identical** to the target model's (zero quality loss), while memory-bandwidth-bound decoding speeds up by 2–3×.
+
+Why this matters for this book in particular: **the small model you built is exactly that draft model**. A 0.5–1B model from the same tokenizer family attaches as an accelerator for a 7B–70B target — another exit ramp for an SLM.
+
+```python title="vllm_speculative.py" linenums="1"
+# vLLM: accelerate a large target with a small draft (output quality guaranteed identical)
+from vllm import LLM, SamplingParams
+
+llm = LLM(
+    model="Qwen/Qwen2.5-7B-Instruct",          # target (accurate)
+    speculative_model="Qwen/Qwen2.5-0.5B-Instruct",  # draft (fast, same tokenizer family)
+    num_speculative_tokens=5,                    # guess 5 at a time → verify
+)
+print(llm.generate("What is quantization?", SamplingParams(max_tokens=128)))
+```
+
+When it helps:
+
+- **Single user / low concurrency**, where per-token latency is what matters — speculative decoding's main payoff is lower latency.
+- The **better the draft matches** (same domain and tokenizer), the higher the acceptance rate → more speedup. A domain SLM makes a great draft.
+
+Gotcha: **the gain shrinks at high concurrency**. If continuous batching already saturates the GPU, draft verification can become overhead. Look at which one is your bottleneck (latency vs throughput) and choose alongside the batching strategy in §5.
+
+---
+
 ## 6. Health Checks · Graceful Shutdown · Adapter Hot-Swap
 
 ### Health check
@@ -220,6 +248,8 @@ Serving gates:
 ## References
 
 - Kwon et al. (2023). *Efficient Memory Management for Large Language Model Serving with PagedAttention.* arXiv:2309.06180
+- Leviathan et al. (2023). *Fast Inference from Transformers via Speculative Decoding.* arXiv:2211.17192
+- Chen et al. (2023). *Accelerating Large Language Model Decoding with Speculative Sampling.* (DeepMind) arXiv:2302.01318
 - llama.cpp `examples/server/` README
 - HuggingFace TGI docs
 - "Designing Data-Intensive Applications" (Kleppmann) — serving patterns

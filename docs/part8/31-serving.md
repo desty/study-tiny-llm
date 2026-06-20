@@ -8,6 +8,7 @@
     - **3가지 서빙 스택** — `llama.cpp server` / **vLLM** / HF TGI
     - **지연 예산** 산수 — 토큰 수 × TPS = 지연
     - **배치·동시성·KV cache** — 같은 GPU 에서 처리량 5~10×
+    - **Speculative decoding** — 우리가 만든 작은 모델을 draft 로 써서 지연 2~3× 단축
     - **헬스체크·그레이스풀 셧다운·어댑터 핫스왑**
 
 !!! quote "전제"
@@ -140,6 +141,33 @@ asyncio.run(benchmark(50))   # 처리량 한계
 
 ---
 
+## 5b. Speculative decoding — 작은 모델의 또 다른 자리
+
+지연을 줄이는 다른 축이 있습니다. **Speculative decoding**: 작고 빠른 **draft 모델**이 토큰 여러 개를 앞질러 추측하고, 크고 정확한 **target 모델**이 그 추측을 한 번에 검증해 맞는 데까지 받아들입니다. 출력 분포는 target 모델과 **동일하게 보장**되면서(품질 손실 0), 메모리 대역폭에 묶인 디코딩을 2~3× 앞당깁니다.
+
+이 책 입장에서 특별한 이유: **우리가 만든 작은 모델이 바로 그 draft 모델**이 됩니다. 같은 토크나이저 계열의 0.5~1B 모델이 7B~70B target 의 가속기로 붙는 식 — SLM 의 또 다른 출구입니다.
+
+```python title="vllm_speculative.py" linenums="1"
+# vLLM: 작은 draft 모델로 큰 target 가속 (출력 품질 동일 보장)
+from vllm import LLM, SamplingParams
+
+llm = LLM(
+    model="Qwen/Qwen2.5-7B-Instruct",          # target (정확)
+    speculative_model="Qwen/Qwen2.5-0.5B-Instruct",  # draft (빠름, 같은 토크나이저 계열)
+    num_speculative_tokens=5,                    # 한 번에 5개 추측 → 검증
+)
+print(llm.generate("양자화란?", SamplingParams(max_tokens=128)))
+```
+
+언제 효과적인가:
+
+- **단독 사용자·낮은 동시성**에서 토큰당 지연(latency)이 중요할 때 — speculative 의 주 효과는 지연 단축이다.
+- draft 가 **잘 맞을수록**(같은 도메인·토크나이저) 채택률↑ → 가속↑. 도메인 SLM 을 draft 로 쓰면 궁합이 좋다.
+
+함정: **높은 동시성에서는 이득이 줄어든다**. continuous batching 이 이미 GPU 를 꽉 채우면 draft 검증이 오히려 오버헤드일 수 있다. §5 의 배치 전략과 **둘 중 무엇이 병목인지**(지연 vs 처리량) 보고 고를 것.
+
+---
+
 ## 6. 헬스체크·그레이스풀 셧다운·어댑터 핫스왑
 
 ### 헬스체크
@@ -220,6 +248,8 @@ resp = client.chat.completions.create(
 ## 원전
 
 - Kwon et al. (2023). *Efficient Memory Management for Large Language Model Serving with PagedAttention.* (vLLM) arXiv:2309.06180
+- Leviathan et al. (2023). *Fast Inference from Transformers via Speculative Decoding.* arXiv:2211.17192
+- Chen et al. (2023). *Accelerating Large Language Model Decoding with Speculative Sampling.* (DeepMind) arXiv:2302.01318
 - llama.cpp `examples/server/` README
 - HuggingFace TGI docs
 - "Designing Data-Intensive Applications" (Kleppmann) — 서빙 패턴 일반
