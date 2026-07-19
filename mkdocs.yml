@@ -1,5 +1,5 @@
 site_name: Tiny LLM from Scratch
-site_description: 노트북에서 직접 만드는 작은 언어 모델 — 데이터 · 토크나이저 · 트랜스포머 · 훈련 · 양자화 · 배포
+site_description: 노트북에서 직접 만드는 작은 언어 모델 — 데이터 · 토크나이저 · 트랜스포머 · 훈련 · 평가 · 배포 경계
 site_author: desty
 site_url: https://desty.github.io/study-tiny-llm/
 repo_url: https://github.com/desty/study-tiny-llm

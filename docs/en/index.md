@@ -1,6 +1,9 @@
 # Tiny LLM from Scratch
 
-**Build a small language model directly on your laptop.** Collect data, train a tokenizer, hand-code a transformer, and run a 10M-parameter model end-to-end in under four hours — then quantize and serve it with `llama.cpp`.
+**Build a small language model directly on your laptop.** Collect data, train a tokenizer, hand-code a transformer, and run a 10M-parameter model end-to-end in under four hours. Publish the custom model as a reproducible PyTorch artifact, then learn GGUF and `llama.cpp` on a separate Hugging Face-compatible deployment track.
+
+!!! info "Two completion paths"
+    The **from-scratch track** runs from data through training, evaluation, and PyTorch distribution of `GPTMini`. The **compatible deployment track** fine-tunes an existing HF model and takes it through GGUF to `llama.cpp`. The book makes the boundary explicit: a custom architecture does not become GGUF without converter support.
 
 ## What this book covers / doesn't cover
 

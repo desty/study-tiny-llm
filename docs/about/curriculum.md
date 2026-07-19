@@ -50,7 +50,7 @@
 | # | 제목 | 무엇을 |
 |:--:|---|---|
 | 19 | [양자화 입문](../part6/19-quantization.md) | int8/int4 · symmetric/asymmetric · PTQ 한 번. |
-| 20 | [llama.cpp와 GGUF](../part6/20-llamacpp-gguf.md) | HF→GGUF 변환 · `llama-cli` 로 띄우기. |
+| 20 | [llama.cpp와 GGUF](../part6/20-llamacpp-gguf.md) | **HF 호환 모델**→GGUF 변환 · `llama-cli` · 커스텀 아키텍처의 변환 경계. |
 | 21 | [작은 챗봇으로 마감](../part6/21-final-chatbot.md) | CLI 대화 루프 · system prompt · sampling 파라미터. |
 
 ## Part 7. 파인튜닝 응용 (7 챕터)
@@ -82,4 +82,9 @@ DPO · RLHF 는 본 책 범위 밖 — 자매 프로젝트 *AI Assistant Enginee
 
 ## 캡스톤
 
-[나만의 도메인 SLM](../capstone/domain-slm.md) — 데이터 수집 → BPE 훈련 → 모델 훈련 → 평가 → 양자화 → GGUF → **HuggingFace Hub 업로드** → 데모. **본인이 만든 모델이 다음 사람의 "기성 sLLM" 이 되는 경험.**
+[나만의 도메인 SLM](../capstone/domain-slm.md) — 두 트랙 중 하나를 끝까지 완주한다.
+
+- **A · From scratch**: 데이터 → BPE → `GPTMini` 학습·평가 → 재현 가능한 PyTorch 패키지 → **Hugging Face Hub 업로드**
+- **B · Compatible deployment**: HF 호환 sLLM 선택 → 도메인 파인튜닝 → 평가 → GGUF → `llama.cpp` → **Hub + 데모**
+
+직접 만든 커스텀 모델에 GGUF를 억지로 약속하지 않는다. 변환기와 런타임이 지원하는 아키텍처인지가 배포 형식을 결정한다.

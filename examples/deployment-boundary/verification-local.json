@@ -1,0 +1,50 @@
+{
+  "observed_at": "2026-07-19",
+  "environment": {
+    "python": "3.9.6",
+    "torch": "2.8.0",
+    "platform": "macOS-26.5.1-arm64-arm-64bit"
+  },
+  "track_a_custom_pytorch": {
+    "status": "pass",
+    "artifact_contract": [
+      "nano_gpt.py",
+      "config.json",
+      "final.pt"
+    ],
+    "parameter_count": 108864,
+    "sample_shape": [
+      1,
+      5
+    ],
+    "logit_shape": [
+      1,
+      5,
+      128
+    ],
+    "max_abs_logit_delta_after_reload": 0.0,
+    "supports_auto_model": false,
+    "supports_gguf": false
+  },
+  "track_b_compatible_gguf": {
+    "status": "pass",
+    "model": "ai/smollm2:360M-Q4_K_M",
+    "runtime": "Docker Model Runner llama.cpp backend",
+    "format": "gguf",
+    "architecture": "llama",
+    "quantization": "IQ2_XXS/Q4_K_M",
+    "parameters": "361.82 M",
+    "size": "256.35 MiB",
+    "smoke_prompt": "What is 2 + 2?",
+    "smoke_answer": "2 + 2 = 4",
+    "latency_ms": 1213.2,
+    "usage": {
+      "completion_tokens": 8,
+      "prompt_tokens": 28,
+      "total_tokens": 36,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      }
+    }
+  }
+}

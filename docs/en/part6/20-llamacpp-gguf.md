@@ -8,7 +8,7 @@
     - **GGUF** format — what's inside it and why it became the standard
     - Convert a HuggingFace model to GGUF **in one step** (`convert_hf_to_gguf.py`)
     - Run inference on your laptop with **llama.cpp / llama-cli**
-    - Take the book's model through quantization + GGUF conversion and serve it
+    - Distinguish the deployment boundary between custom `GPTMini` and HF-compatible models
 
 !!! quote "Prerequisites"
     [Ch 19 Quantization](19-quantization.md). A model in HuggingFace `transformers` format (`safetensors` + `config.json` + `tokenizer.json`).
@@ -60,14 +60,21 @@ The de facto standard for **laptop, mobile, and Apple Silicon inference**.
 
 ---
 
-## 2. Why Use It — The Book's Path
+## 2. Why Use It — Separate the Two Paths
 
-The 10M model fits into a laptop even as plain PyTorch. **But there are still good reasons to use GGUF**:
+This book has two different model paths.
 
-1. **Capstone** — when you upload your model to HuggingFace Hub, including a GGUF variant lets anyone run it with `llama.cpp` immediately (Ch 22 / capstone).
-2. **Quantized storage** — int4 GGUF is 30% smaller than comparable compressed formats, thanks to compressed metadata.
-3. **CLI demo** — one line with `llama-cli` and you're chatting instantly (Ch 21).
-4. **Mobile / single-GPU serving** (Part 8, Ch 31) — lighter than vLLM.
+| Path | Model | Where this chapter ends |
+|---|---|---|
+| **From scratch** | The custom 10M `GPTMini` | Reproducible PyTorch checkpoint + code + tokenizer |
+| **Compatible deployment** | An HF model supported by the `llama.cpp` converter | GGUF quantization + `llama-cli` |
+
+GGUF is not a universal serialization format for arbitrary PyTorch models. **`llama.cpp` must know the architecture and tensor mapping.** Exporting `GPTMini` therefore requires architecture support and a converter implementation. The book no longer assumes that work is already done.
+
+This chapter uses a **supported HF model** to teach the deployment ecosystem. The from-scratch model finishes as a PyTorch package in Track A of the [capstone](../capstone/domain-slm.md).
+
+!!! success "Boundary verified in code"
+    [`examples/deployment-boundary`](https://github.com/desty/study-tiny-llm/tree/main/examples/deployment-boundary) saves and reloads the Track A checkpoint and requires identical logits, then invokes a real Q4 GGUF through a llama.cpp backend for Track B. Both checks passed in the 2026-07-19 local run; Track A is intentionally recorded as unsupported by `AutoModel` and GGUF.
 
 ---
 
@@ -75,15 +82,15 @@ The 10M model fits into a laptop even as plain PyTorch. **But there are still go
 
 Quantization types defined by llama.cpp:
 
-| Format | bits | per-element cost | Book's 10M size | PPL loss |
-|---|---:|---:|---:|---:|
-| F16 | 16 | 2.0 byte | 20 MB | 0% |
-| Q8_0 | 8 | 1.0 byte | 10 MB | <1% |
-| Q5_K_M | 5 | 0.6 byte | 6 MB | 1–2% |
-| **Q4_K_M** | 4 | **0.5 byte** | **5 MB** | **3–5%** |
-| Q3_K_S | 3 | 0.4 byte | 4 MB | 8–15% |
+| Format | Approx. bits | Size vs F16 | Tradeoff |
+|---|---:|---:|---|
+| F16 | 16 | 1× | Baseline · largest |
+| Q8_0 | 8 | about 1/2 | Prioritizes quality retention |
+| Q5_K_M | 5 | about 1/3 | Middle ground |
+| **Q4_K_M** | 4 | about 1/4 | Common practical choice |
+| Q3_K_S | 3 | about 1/5 | Smaller, with higher regression risk |
 
-**Q4_K_M is the standard** — 1/4 the memory, PPL loss under 5%. SmolLM2, Phi-3, and Llama 3 all recommend Q4_K_M.
+Actual size and quality loss depend on architecture, tensor layout, and evaluation set. **Do not treat an average PPL number as a guarantee for your model; evaluate before and after conversion.**
 
 ---
 
@@ -92,72 +99,67 @@ Quantization types defined by llama.cpp:
 ### 4.1 Install llama.cpp
 
 ```bash
-git clone https://github.com/ggerganov/llama.cpp
+git clone https://github.com/ggml-org/llama.cpp
 cd llama.cpp
-make                          # CPU only
-# or with GPU:
-# make GGML_CUDA=1            # NVIDIA
-# make GGML_METAL=1           # Apple Silicon
-pip install -r requirements.txt
+cmake -B build                # CPU; Metal is enabled by default on Apple Silicon
+# For NVIDIA CUDA: cmake -B build -DGGML_CUDA=ON
+cmake --build build --config Release
+pip install -r requirements/requirements-convert_hf_to_gguf.txt
 ```
+
+Build options can change; use the [official `llama.cpp` build guide](https://github.com/ggml-org/llama.cpp/blob/master/docs/build.md) for other backends.
 
 ### 4.2 Convert
 
+First save a converter-supported model as a standard HF directory.
+
+```python title="prepare_hf.py"
+from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model_id = "HuggingFaceTB/SmolLM2-360M"
+out_dir = "runs/compatible_hf"
+
+model = AutoModelForCausalLM.from_pretrained(model_id)
+tokenizer = AutoTokenizer.from_pretrained(model_id)
+model.save_pretrained(out_dir, safe_serialization=True)
+tokenizer.save_pretrained(out_dir)
+```
+
+Then convert that directory.
+
 ```bash title="convert.sh"
-# Book's model directory: runs/exp1/final/  (assume Ch 15's final.pt exported to HF format)
 
 # 1. Convert to fp16 GGUF                                              (1)
 python llama.cpp/convert_hf_to_gguf.py \
-    runs/exp1/final \
-    --outfile dist/tiny-tale-f16.gguf \
+    runs/compatible_hf \
+    --outfile dist/model-f16.gguf \
     --outtype f16
 
 # 2. Quantize to Q4_K_M                                                (2)
-./llama.cpp/llama-quantize \
-    dist/tiny-tale-f16.gguf \
-    dist/tiny-tale-q4km.gguf \
+./llama.cpp/build/bin/llama-quantize \
+    dist/model-f16.gguf \
+    dist/model-q4km.gguf \
     Q4_K_M
 
 ls -lh dist/
-# tiny-tale-f16.gguf    20M
-# tiny-tale-q4km.gguf    5M
+# Size depends on the selected model.
 ```
 
 1. The script needs a **HuggingFace transformers format** directory, not a raw PyTorch state_dict. Export with `model.save_pretrained(...)`.
-2. fp16 GGUF → Q4_K_M quantization. Takes about 30 seconds.
+2. fp16 GGUF → Q4_K_M quantization. Measure runtime on the selected model and hardware.
 
-### 4.3 Export the Book's Model to HF Format
+### 4.3 Why `GPTMini → GPT2LMHeadModel` Is Not a Format Conversion
 
-The book's GPTMini isn't a standard `transformers` class — it needs a **conversion adapter**. Following the nanoGPT pattern:
+`GPTMini` uses RoPE, RMSNorm, and SwiGLU; GPT-2 uses absolute position embeddings, LayerNorm, and GeLU. Copying tensors with similar shapes does **not** preserve the model. A method named `save_pretrained()` or a `config.json` file does not create architecture compatibility.
 
-```python title="export_hf.py" linenums="1" hl_lines="6 18"
-from transformers import GPT2Config, GPT2LMHeadModel    # closest standard class
-from nano_gpt import GPTMini, GPTConfig
-import torch
+Taking a custom model to GGUF requires all of the following:
 
-# 1. Load the book's model
-cfg = GPTConfig(vocab_size=8000, n_layer=6, n_head=8, d_model=320, max_len=512)
-mine = GPTMini(cfg)
-mine.load_state_dict(torch.load("runs/exp1/final.pt")['model'])
+1. Custom `PreTrainedModel` and `PretrainedConfig` support in `transformers`
+2. Weight-mapping tests that prove output equivalence
+3. Architecture loader and GGUF converter support in `llama.cpp`
+4. Logit and PPL regression tests between the PyTorch and GGUF versions
 
-# 2. Map to GPT-2 config                                               (1)
-hf_cfg = GPT2Config(
-    vocab_size=8000, n_layer=6, n_head=8, n_embd=320, n_positions=512,
-    activation_function="silu",                          # SwiGLU unsupported — closest is silu
-)
-hf = GPT2LMHeadModel(hf_cfg)
-
-# 3. Map weights (manual)                                              (2)
-# ... (omitted — around 30–50 lines in practice)
-
-hf.save_pretrained("runs/exp1/final_hf")
-tok.save_pretrained("runs/exp1/final_hf")               # tokenizer too
-```
-
-1. The book's GPTMini (RoPE + RMSNorm + SwiGLU) differs from GPT-2 (absolute PE + LayerNorm + GeLU). **Not fully compatible**.
-2. The conversion is lossy in practice. **Recommended: build the book's model directly as a `transformers` LlamaForCausalLM-compatible class from the start** — or, for the capstone, use a model like SmolLM2-360M that's already compatible, then LoRA it and export to GGUF.
-
-The **book's main content**: takes the custom 10M model through PyTorch only. **Capstone**: exports an HF-compatible model (or LoRA adapter) to GGUF.
+That is a valuable advanced project, not a 30–50-line format conversion. Track A finishes in PyTorch; Track B uses a supported HF model.
 
 ---
 
@@ -166,8 +168,8 @@ The **book's main content**: takes the custom 10M model through PyTorch only. **
 Once you have a GGUF file:
 
 ```bash
-./llama.cpp/llama-cli \
-    -m dist/tiny-tale-q4km.gguf \
+./llama.cpp/build/bin/llama-cli \
+    -m dist/model-q4km.gguf \
     -p "Once upon a time" \
     -n 100 \
     --temp 0.8 \
@@ -188,7 +190,7 @@ llama_print_timings: prompt eval time =      8.12 ms /     5 tokens
 llama_print_timings:        eval time =    234.56 ms /    99 runs
 ```
 
-**Throughput**: The book's 10M Q4_K_M model runs at **~400 tokens/sec** on an M2 MacBook. A 1B Q4 model runs at ~50 tokens/sec.
+**Measure throughput on your own hardware.** Model size is only one variable; context length, prompt processing, batching, CPU/GPU offload, and build flags can all change the result. Do not present someone else's benchmark as your deployment performance.
 
 ### Python wrapper (optional)
 
@@ -205,15 +207,15 @@ print(out["choices"][0]["text"])
 
 ## 6. Common Failure Points
 
-**1. Trying to convert the book's nanoGPT directly** — `convert_hf_to_gguf.py` doesn't know about GPTMini. **Export to an HF-compatible class first**.
+**1. Trying to convert the book's nanoGPT directly** — `convert_hf_to_gguf.py` does not know `GPTMini`. An HF wrapper alone is insufficient; `llama.cpp` also needs architecture, tensor-mapping, converter, and runtime support.
 
 **2. Missing tokenizer** — GGUF must include its own vocab/merges. `convert_hf_to_gguf.py` handles this automatically, but `tokenizer.json` must be in the export directory.
 
 **3. Missing RoPE base in metadata** — For Llama-compatible conversions, `rope_freq_base` (default 10000) must be in the metadata or inference will use a different RoPE.
 
-**4. Skipping PPL check after quantization** — Q4_K_M staying within 5% PPL is an average. Your model may vary. **Always compare PPL before and after conversion**.
+**4. Skipping PPL checks after quantization** — There is no universal acceptable quality delta. **Always compare PPL and task metrics before and after conversion**.
 
-**5. llama.cpp build errors** — Apple Silicon: plain `make` works. CUDA: `GGML_CUDA=1`. A wrong build silently falls back to CPU-only and runs slowly.
+**5. llama.cpp build errors** — The current official path uses CMake. Metal is enabled by default on Apple Silicon; CUDA uses `-DGGML_CUDA=ON`. Check the build log and actual offload state.
 
 **6. Not enough RAM for mmap** — Very large models (70B Q4 = 40 GB) can exceed RAM. mmap lets the OS handle it automatically, but **enabling swap** is recommended.
 
@@ -249,7 +251,7 @@ GGUF conversion + deployment gate:
 
 ## References
 
-- llama.cpp repo — <https://github.com/ggerganov/llama.cpp>
-- GGUF spec — <https://github.com/ggerganov/ggml/blob/master/docs/gguf.md>
+- llama.cpp repo — <https://github.com/ggml-org/llama.cpp>
+- GGUF spec — <https://github.com/ggml-org/ggml/blob/master/docs/gguf.md>
 - llama.cpp quantization variant comparisons (PR #1684 etc.) — definitions of Q4_K_M, Q5_K_M
 - HuggingFace GGUF integration docs (2024)

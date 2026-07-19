@@ -50,7 +50,7 @@
 | # | Title | What you'll do |
 |:--:|---|---|
 | 19 | [Quantization Basics](../part6/19-quantization.md) | int8/int4, symmetric/asymmetric, one PTQ pass. |
-| 20 | [llama.cpp and GGUF](../part6/20-llamacpp-gguf.md) | HF → GGUF conversion, running with `llama-cli`. |
+| 20 | [llama.cpp and GGUF](../part6/20-llamacpp-gguf.md) | **HF-compatible model** → GGUF, `llama-cli`, and the conversion boundary for custom architectures. |
 | 21 | [Wrap Up with a Small Chatbot](../part6/21-final-chatbot.md) | CLI conversation loop, system prompt, sampling parameters. |
 
 ## Part 7. Fine-tuning in Practice (7 chapters)
@@ -82,4 +82,9 @@ DPO and RLHF are out of scope — see the sister book *AI Assistant Engineering*
 
 ## Capstone
 
-[My Own Domain SLM](../capstone/domain-slm.md) — full cycle: data collection → BPE training → model training → evaluation → quantization → GGUF → **publish to HuggingFace Hub** → demo. **Your model becomes the next person's "off-the-shelf sLLM."**
+[My Own Domain SLM](../capstone/domain-slm.md) — finish one of two honest end-to-end tracks:
+
+- **A · From scratch**: data → BPE → `GPTMini` training and evaluation → reproducible PyTorch package → **Hugging Face Hub**
+- **B · Compatible deployment**: choose an HF-compatible sLLM → domain fine-tuning → evaluation → GGUF → `llama.cpp` → **Hub + demo**
+
+The book does not pretend that a custom model automatically converts to GGUF. The deployment format depends on whether the converter and runtime support the architecture.

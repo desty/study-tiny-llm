@@ -5,10 +5,10 @@
 </a>
 
 !!! abstract "What you'll do in this capstone"
-    - Data collection → BPE → training → evaluation → quantization → GGUF → **upload to HuggingFace Hub** → demo
-    - **Your model becomes someone else's "off-the-shelf sLLM"** — the other side of Ch 22
-    - Model card, license, README, tokenizer, and config — all production-grade
-    - Full cycle = one complete pass through all 8 parts of the book
+    - **A · From scratch** — data → BPE → `GPTMini` training and evaluation → reproducible PyTorch package → Hub
+    - **B · Compatible deployment** — HF-compatible sLLM → domain fine-tuning → evaluation → GGUF → `llama.cpp` → Hub and demo
+    - Keep the model card, license, tokenizer, config, and usage code aligned with the path that actually runs
+    - Complete the book without assuming that every custom architecture automatically becomes GGUF
 
 !!! quote "Prerequisites"
     All of Parts 1–8. At minimum: Ch 4 (open-weight landscape), Ch 22 (choosing an sLLM), Ch 27 (distillation), Ch 29 (data pipeline) — especially the PII and licensing sections.
@@ -22,6 +22,17 @@
 
 In [Ch 22](../part7/22-choosing-slm.md) you learned how to read HuggingFace model cards — 7 items: total/active parameters, training tokens, data composition, context length, license, tokenizer, and quantization. This capstone is your turn to **fill in those 7 items yourself**.
 
+Choose the completion criterion first.
+
+| Track | Choose it when | Final artifact | Claim you do not make |
+|---|---|---|---|
+| **A · From scratch** | Your goal is to design and understand the transformer | `GPTMini` code, checkpoint, tokenizer, config, reproduction script, model card | No GGUF or `AutoModel` compatibility without converter support |
+| **B · Compatible deployment** | Your goal is to experience the deployment ecosystem | HF-compatible model, evaluation, GGUF, `llama.cpp`, optional demo | No claim that you designed the architecture from scratch |
+
+Both are complete capstones; they optimize for different learning outcomes.
+
+Both contracts are executable in [`examples/deployment-boundary`](https://github.com/desty/study-tiny-llm/tree/main/examples/deployment-boundary). The current local baseline requires a 0.0 maximum logit delta after Track A reload and a successful llama.cpp call against a real Q4 GGUF for Track B.
+
 ## 2. The 10 Steps
 
 | Step | What | Related chapter |
@@ -32,10 +43,13 @@ In [Ch 22](../part7/22-choosing-slm.md) you learned how to read HuggingFace mode
 | 4 | Decide model config (10M–30M, dense, decoder-only) | Ch 4, 11 |
 | 5 | Train (mixed precision, grad accum, checkpointing) | Ch 12–15 |
 | 6 | Evaluate (perplexity + domain probe + regression) | Ch 16–18, 30 |
-| 7 | int4 quantization + GGUF conversion | Ch 19, 20 |
+| 7 | **A:** PyTorch quantization experiment · **B:** int4 + GGUF conversion | Ch 19, 20 |
 | 8 | **Upload to HuggingFace Hub** | (this chapter) |
-| 9 | (Optional) Spaces demo — Gradio in a few lines | (this chapter) |
+| 9 | **A:** reproduction notebook · **B:** optional Spaces demo | (this chapter) |
 | 10 | Retrospective — "What would I change next time?" | — |
+
+!!! warning "Do not mix tracks halfway through"
+    Wrapping a Track A checkpoint in a GPT-2 config does not make it HF-compatible. Fine-tuning an existing Track B model does not make it from-scratch. Record the path honestly in the model card.
 
 ## 3. Candidate Domains
 
@@ -66,7 +80,7 @@ from transformers import AutoTokenizer
 repo_id = "desty/tiny-tale-ko-10m"                    # (1)
 create_repo(repo_id, repo_type="model", exist_ok=True)
 
-# Model weights (PyTorch state_dict or safetensors recommended)
+# Complete execution artifact for the selected track
 api = HfApi()
 api.upload_folder(
     folder_path="checkpoints/final",                  # (2)
@@ -74,7 +88,7 @@ api.upload_folder(
     repo_type="model",
 )
 
-# (Optional) also upload the GGUF quantized file           (3)
+# Track B only: also upload the GGUF file                  (3)
 api.upload_file(
     path_or_fileobj="dist/tiny-tale-ko-10m-q4.gguf",
     path_in_repo="tiny-tale-ko-10m-q4.gguf",
@@ -83,8 +97,8 @@ api.upload_file(
 ```
 
 1. `{username}/{model-name}` format. Put the domain code name in the model name. Decide **public vs. private** upfront (private repos may require a Pro account).
-2. `final/` must contain `config.json`, `model.safetensors`, `tokenizer.json`, `tokenizer_config.json`, and `special_tokens_map.json`.
-3. Uploading the GGUF to the same repo lets users run it directly with `llama.cpp` — HuggingFace recognizes GGUF natively.
+2. **Track A:** upload `nano_gpt.py`, checkpoint, book-specific `config.json`, `tokenizer.json`, `requirements.txt`, and a reproduction script. **Track B:** upload the standard HF config, safetensors, and tokenizer files.
+3. Upload GGUF only for Track B. If Track A has no GGUF support, say so explicitly in the model card.
 
 ### 4.3 Model card (`README.md`)
 
@@ -112,6 +126,8 @@ capstone of [Tiny LLM from Scratch](https://desty.github.io/study-tiny-llm/).
 
 ## Model — 7 Items
 
+> The values below illustrate the model-card format. Replace every value with observed training logs and license-review results before publishing.
+
 | Item | Value |
 |---|---|
 | Total / active parameters | 10M / 10M (dense) |
@@ -120,21 +136,26 @@ capstone of [Tiny LLM from Scratch](https://desty.github.io/study-tiny-llm/).
 | Context length | 512 |
 | License | Apache 2.0 |
 | Tokenizer | BPE 8K vocab (Korean character-level) |
-| Quantization | fp16, int4 GGUF available |
+| Distribution | PyTorch checkpoint + reproduction code (Track A) |
 
 ## Usage
 
 \`\`\`python
-from transformers import AutoModelForCausalLM, AutoTokenizer
-tok = AutoTokenizer.from_pretrained("desty/tiny-tale-ko-10m")
-m = AutoModelForCausalLM.from_pretrained("desty/tiny-tale-ko-10m")
+import json, sys, torch
+from huggingface_hub import snapshot_download
+
+repo = snapshot_download("desty/tiny-tale-ko-10m")
+sys.path.insert(0, repo)
+from nano_gpt import GPTConfig, GPTMini
+
+cfg = GPTConfig(**json.load(open(f"{repo}/config.json")))
+model = GPTMini(cfg)
+checkpoint = torch.load(f"{repo}/final.pt", map_location="cpu")
+model.load_state_dict(checkpoint["model"])
+model.eval()
 \`\`\`
 
-llama.cpp:
-
-\`\`\`bash
-llama-cli -m tiny-tale-ko-10m-q4.gguf -p "Once upon a time"
-\`\`\`
+This is a custom `GPTMini` architecture, so it does not currently support GGUF or `AutoModelForCausalLM`.
 
 ## Limitations
 
@@ -143,16 +164,19 @@ llama-cli -m tiny-tale-ko-10m-q4.gguf -p "Once upon a time"
 - Korean only — English input breaks
 ```
 
-### 4.4 (Optional) Spaces demo
+!!! tip "Track B usage"
+    For Track B, record the real base model and provide both `AutoModelForCausalLM.from_pretrained(...)` and `llama-cli -m model-q4km.gguf ...` examples. Do not copy those claims into a Track A model card.
 
-A Gradio demo in HF Spaces takes about 5 lines.
+### 4.4 Track B: Optional Spaces Demo
+
+A standard HF architecture in Track B can use this short Gradio demo. Track A needs a `GPTMini` loader instead of the code below.
 
 ```python title="app.py" linenums="1"
 import gradio as gr
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-tok = AutoTokenizer.from_pretrained("desty/tiny-tale-ko-10m")
-m = AutoModelForCausalLM.from_pretrained("desty/tiny-tale-ko-10m")
+tok = AutoTokenizer.from_pretrained("your-hf-username/domain-slm-hf")
+m = AutoModelForCausalLM.from_pretrained("your-hf-username/domain-slm-hf")
 
 def gen(prompt):
     ids = tok(prompt, return_tensors="pt").input_ids
@@ -171,9 +195,9 @@ gr.Interface(fn=gen, inputs="text", outputs="text",
 
 **3. Empty model card** — HF's search and trust scores both suffer for models without a README. At minimum: the 7 items from Ch 22 + a Limitations section.
 
-**4. Missing tokenizer files** — without `tokenizer.json` + `tokenizer_config.json`, `from_pretrained` fails. Don't assume `config.json` alone is enough.
+**4. Missing execution code** — a Track A checkpoint alone is not reproducible. Upload `nano_gpt.py`, the exact config, tokenizer, dependencies, and loader example. Track B still needs the standard tokenizer files for `from_pretrained`.
 
-**5. Uploading GGUF only, skipping PyTorch** — GGUF only works with `llama.cpp`. `transformers` users can't use it. **Upload both**.
+**5. Mixing the two tracks in the model card** — claiming that Track A works with GGUF/`AutoModel`, or calling Track B from-scratch. **Document only the execution path you verified.**
 
 **6. Mistakes when going public after private** — once public, taking it back is hard. Finish your PII and copyright review before flipping the switch.
 
@@ -183,10 +207,12 @@ gr.Interface(fn=gen, inputs="text", outputs="text",
 - [ ] Training data licenses audited + model license decided
 - [ ] Model card: 7 items + Limitations + usage code
 - [ ] `tokenizer.json` included
-- [ ] (Optional) GGUF int4 + fp16 both uploaded
-- [ ] (Optional) safetensors format (safer than PyTorch `.bin`)
+- [ ] **A:** model code + config + checkpoint + reproduction script included
+- [ ] **B:** `from_pretrained` works from the standard HF directory
+- [ ] **B:** GGUF included only after pre/post-conversion evaluation passes
+- [ ] (Optional) safetensors format, with a matching custom loader when needed
 - [ ] Regression evaluation passed (Ch 30)
-- [ ] Upload private first, verify `from_pretrained` works from your own account
+- [ ] Upload private first and run the documented usage in a clean environment
 - [ ] Then flip to public
 
 ## 7. Retrospective (The Last Page)
@@ -204,11 +230,12 @@ This retrospective is **the starting point for the next model you build**.
 
 ## 8. Graduation
 
-If you've made it here, your model is:
+If you've made it here, the artifact meets these conditions:
 
-- Live on HuggingFace Hub (`https://huggingface.co/{username}/{model}`)
-- Evaluable by someone using the Ch 22 decision tree
-- Potentially someone's Teacher model — the next learner can distill from it (Ch 27)
+- It is live on Hugging Face Hub (`https://huggingface.co/{username}/{model}`)
+- **Track A:** code, config, checkpoint, and tokenizer reproduce `GPTMini` in a clean environment
+- **Track B:** both `from_pretrained` and GGUF execution are verified, with the base model disclosed
+- Someone else can evaluate it with the Ch 22 decision tree
 
 That's where **all 8 parts of the book come together**.
 
